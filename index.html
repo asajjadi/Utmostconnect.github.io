@@ -1,214 +1,370 @@
-export default function UtmostConnectHomepage() {
-  const services = [
-    {
-      title: "R&D Strategy & Technical Leadership",
-      body:
-        "Support for product strategy, technical planning, cross-functional execution, and development roadmaps for complex engineering programs.",
-    },
-    {
-      title: "Medical Device & Regulated Product Development",
-      body:
-        "Guidance across concept development, systems thinking, verification planning, risk-focused execution, and design transfer support.",
-    },
-    {
-      title: "Optics, Lasers & Advanced Engineering",
-      body:
-        "Consulting for optical systems, laser-enabled processes, instrumentation development, and multidisciplinary engineering challenges.",
-    },
-    {
-      title: "Data Analytics for Engineering Decisions",
-      body:
-        "Custom analysis workflows, dashboarding, and data-driven problem solving to improve performance, quality, and development speed.",
-    },
-  ];
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utmost Connect - Technical Product &amp; R&amp;D Leadership</title>
+  <meta name="description" content="Utmost Connect helps organizations move complex engineering and product initiatives forward through technical strategy, disciplined execution, and data-driven problem solving." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --slate-50: #f8fafc; --slate-100: #f1f5f9; --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1; --slate-500: #475569; --slate-600: #334155;
+      --slate-700: #334155; --slate-900: #0f172a; --white: #ffffff;
+      --accent: #1d4ed8;
+      --bg-gradient: linear-gradient(135deg, #dbeafe 0%, #f8fafc 42%, #dcfce7 100%);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--slate-900); background: var(--bg-gradient); background-attachment: fixed; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--slate-200); }
+    .nav-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .brand-name { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.02em; }
+    .brand-tagline { font-size: 0.75rem; color: var(--slate-500); margin-top: 1px; }
+    nav { display: flex; gap: 2rem; }
+    nav a { font-size: 0.875rem; color: var(--slate-600); transition: color 0.15s; }
+    nav a:hover { color: var(--slate-900); }
+    .nav-cta { background: var(--slate-900); color: var(--white) !important; font-size: 0.8125rem; font-weight: 500; padding: 0.45rem 1.1rem; border-radius: 999px; transition: opacity 0.15s; }
+    .nav-cta:hover { opacity: 0.85; }
+    .section { max-width: 1152px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .hero-section { background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(99,102,241,0.12) 0%, transparent 70%); }
+    .section-bg { background: rgba(248,250,252,0.9); backdrop-filter: blur(4px); border-top: 1px solid var(--slate-300); border-bottom: 1px solid var(--slate-300); }
+    .section-bg .section { max-width: 1152px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .hero-badge { display: inline-flex; align-items: center; border: 1px solid var(--slate-200); border-radius: 999px; padding: 0.3rem 0.85rem; font-size: 0.75rem; color: var(--slate-600); margin-bottom: 1rem; }
+    .hero-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; margin-right: 0.5rem; }
+    h1 { font-size: clamp(1.35rem, 2.7vw, 2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; color: var(--slate-900); }
+    .hero-sub { margin-top: 1.25rem; font-size: 1.0625rem; color: var(--slate-600); line-height: 1.75; max-width: 520px; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+    .btn-primary { background: var(--slate-900); color: var(--white); font-size: 0.875rem; font-weight: 500; padding: 0.7rem 1.5rem; border-radius: 999px; transition: opacity 0.15s; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-secondary { background: var(--white); color: var(--slate-700); font-size: 0.875rem; font-weight: 500; padding: 0.7rem 1.5rem; border-radius: 999px; border: 1px solid var(--slate-300); transition: background 0.15s; }
+    .btn-secondary:hover { background: var(--slate-50); }
+    .highlights-card { background: var(--white); border: 1px solid var(--slate-300); border-radius: 1.5rem; padding: 1.75rem; box-shadow: 0 2px 8px rgba(15,23,42,0.08); }
+    .highlights-label { font-size: 0.82rem; color: var(--slate-500); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .highlight-item { display: flex; align-items: center; gap: 0.6rem; background: var(--white); border: 1px solid var(--slate-200); border-radius: 0.75rem; padding: 0.82rem 1rem; font-size: 0.94rem; color: var(--slate-700); margin-top: 0.75rem; }
+    .highlight-item::before { content: ''; width: 16px; height: 16px; min-width: 16px; background: var(--accent); border-radius: 50%; display: inline-block; }
+    .eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+    h2 { font-size: clamp(1.5rem, 2.5vw, 2.125rem); font-weight: 700; letter-spacing: -0.025em; margin-top: 0.5rem; line-height: 1.25; }
+    .section-desc { margin-top: 0.75rem; color: var(--slate-600); line-height: 1.75; max-width: 560px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 3.5rem; align-items: start; }
+    .about-body { color: var(--slate-600); line-height: 1.8; }
+    .about-body p + p { margin-top: 1.125rem; }
+    .card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .card { background: rgba(255,255,255,0.96); border: 1px solid var(--slate-300); border-top: 3px solid transparent; border-radius: 1.25rem; padding: 1.75rem; box-shadow: 0 2px 10px rgba(15,23,42,0.08); transition: box-shadow 0.2s, transform 0.2s; }
+    .card:nth-child(1) { border-top-color: #6366f1; }
+    .card:nth-child(2) { border-top-color: #0ea5e9; }
+    .card:nth-child(3) { border-top-color: #10b981; }
+    .card:nth-child(4) { border-top-color: #f59e0b; }
+    .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .card h3 { font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.015em; }
+    .card p { margin-top: 0.625rem; font-size: 0.9rem; color: var(--slate-600); line-height: 1.75; }
+    .projects-media-grid { margin-top: 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .projects-media { background: rgba(255,255,255,0.96); border: 1px solid var(--slate-300); border-radius: 1.25rem; padding: 0.9rem; box-shadow: 0 2px 10px rgba(15,23,42,0.08); }
+    .projects-media img { width: 100%; height: auto; display: block; border-radius: 0.9rem; cursor: zoom-in; }
+    .projects-media-caption { margin-top: 0.75rem; font-size: 0.84rem; color: var(--slate-500); text-align: center; }
+    .image-lightbox { position: fixed; inset: 0; background: rgba(2,6,23,0.82); display: none; align-items: center; justify-content: center; padding: 2rem; z-index: 2000; }
+    .image-lightbox.open { display: flex; }
+    .lightbox-img { max-width: min(1100px, 92vw); max-height: 86vh; width: auto; height: auto; border-radius: 0.9rem; box-shadow: 0 16px 48px rgba(0,0,0,0.35); }
+    .lightbox-close { position: absolute; top: 1rem; right: 1rem; width: 2.25rem; height: 2.25rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); background: rgba(15,23,42,0.6); color: #fff; font-size: 1.35rem; line-height: 1; cursor: pointer; }
+    .lightbox-close:hover { background: rgba(15,23,42,0.85); }
+    .value-banner { background: var(--slate-900); border-radius: 2rem; padding: 3.5rem 3rem; color: var(--white); display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 3rem; align-items: center; }
+    .value-eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #93c5fd; }
+    .value-banner h2 { color: var(--white); margin-top: 0.5rem; }
+    .value-banner p { color: #cbd5e1; margin-top: 0.75rem; line-height: 1.75; font-size: 0.9375rem; }
+    .value-pills { display: grid; gap: 0.625rem; }
+    .value-pill { background: rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 0.65rem 1rem; font-size: 0.875rem; color: #e2e8f0; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-card { background: var(--white); border: 1px solid var(--slate-300); border-radius: 1.25rem; padding: 2rem; box-shadow: 0 2px 10px rgba(15,23,42,0.08); }
+    .contact-label { font-size: 0.75rem; color: var(--slate-500); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; }
+    .contact-value { font-size: 1rem; font-weight: 500; margin-top: 0.25rem; color: var(--slate-900); }
+    .contact-row + .contact-row { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--slate-100); }
+    .contact-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; color: var(--accent); font-weight: 500; margin-top: 0.375rem; transition: opacity 0.15s; }
+    .contact-link:hover { opacity: 0.75; }
+    .contact-form { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--slate-100); display: grid; gap: 0.75rem; }
+    .contact-form label { font-size: 0.75rem; font-weight: 600; color: var(--slate-600); text-transform: uppercase; letter-spacing: 0.08em; }
+    .contact-form input, .contact-form textarea { width: 100%; border: 1px solid var(--slate-300); border-radius: 0.75rem; padding: 0.7rem 0.85rem; font: inherit; color: var(--slate-900); background: #fff; }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(29,78,216,0.12); }
+    .contact-note { font-size: 0.78rem; color: var(--slate-500); line-height: 1.55; }
+    footer { border-top: 1px solid var(--slate-200); padding: 2rem 1.5rem; text-align: center; font-size: 0.8125rem; color: var(--slate-500); }
+    .menu-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: 8px; }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--slate-700); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+    .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav { display: none; position: fixed; inset: 64px 0 0 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); z-index: 99; flex-direction: column; padding: 1.5rem; border-top: 1px solid var(--slate-200); }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.125rem; font-weight: 500; color: var(--slate-700); padding: 1rem 0; border-bottom: 1px solid var(--slate-100); transition: color 0.15s; }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover { color: var(--accent); }
+    .mobile-nav .nav-cta { margin-top: 1rem; background: var(--slate-900); color: var(--white) !important; text-align: center; padding: 0.9rem; border-radius: 999px; border: none; font-size: 1rem; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      nav { display: none; }
+      .hero, .about-grid, .contact-grid, .value-banner { grid-template-columns: 1fr; gap: 2rem; }
+      .card-grid-2, .card-grid-3 { grid-template-columns: 1fr; }
+      .section { padding: 3rem 1.25rem; }
+      .section-bg .section { padding: 3rem 1.25rem; }
+      .value-banner { padding: 2rem 1.5rem; border-radius: 1.25rem; }
+      .value-banner h2 { font-size: 1.35rem; }
+      h1 { font-size: 1.65rem; }
+      .hero-sub { font-size: 0.9375rem; }
+      .btn-group { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; padding: 0.85rem 1.5rem; font-size: 0.9375rem; }
+      .highlights-card { padding: 1.25rem; }
+      .card { padding: 1.25rem; }
+      .projects-media-grid { grid-template-columns: 1fr; }
+      .contact-card { padding: 1.5rem; }
+      footer { padding: 1.5rem 1.25rem; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
 
-  const projects = [
-    {
-      title: "Medical Device Innovation",
-      body:
-        "Examples of platform development, design optimization, and cross-functional execution in regulated environments.",
-    },
-    {
-      title: "Engineering Data & Automation",
-      body:
-        "Python-based analysis, reporting workflows, and structured decision support for product and process development.",
-    },
-    {
-      title: "Optomechanical & Laser Systems",
-      body:
-        "Work spanning imaging, laser processing, instrumentation, and advanced product development.",
-    },
-  ];
-
-  const highlights = [
-    "Ph.D.-level technical depth",
-    "PMP-certified program leadership",
-    "Medical device, aerospace, and advanced technology experience",
-    "Bridging engineering, product, and execution",
-  ];
-
-  return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <section className="border-b border-slate-200">
-        <div className="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between">
-          <div>
-            <div className="text-xl font-semibold tracking-tight">Utmost Connect</div>
-            <div className="text-sm text-slate-500">Tech · Product · Innovation</div>
-          </div>
-          <nav className="hidden md:flex gap-6 text-sm text-slate-600">
-            <a href="#about" className="hover:text-slate-900">About</a>
-            <a href="#services" className="hover:text-slate-900">Services</a>
-            <a href="#projects" className="hover:text-slate-900">Projects</a>
-            <a href="#contact" className="hover:text-slate-900">Contact</a>
-          </nav>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-              Based in Irvine, California
-            </div>
-            <h1 className="mt-6 text-4xl md:text-6xl font-semibold tracking-tight leading-tight">
-              Technical Product & R&D Leadership for High-Impact Innovation
-            </h1>
-            <p className="mt-6 text-lg text-slate-600 leading-8 max-w-2xl">
-              Utmost Connect helps organizations move complex engineering and product initiatives forward through technical strategy, disciplined execution, and data-driven problem solving.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="#contact"
-                className="rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white shadow-sm hover:opacity-90"
-              >
-                Book a Consultation
-              </a>
-              <a
-                href="#services"
-                className="rounded-2xl border border-slate-300 px-5 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
-              >
-                Explore Services
-              </a>
-            </div>
-          </div>
-
-          <div className="grid gap-4">
-            <div className="rounded-3xl border border-slate-200 p-6 shadow-sm">
-              <div className="text-sm text-slate-500">Focus Areas</div>
-              <div className="mt-4 grid gap-3">
-                {highlights.map((item) => (
-                  <div key={item} className="rounded-2xl bg-slate-50 px-4 py-3 text-sm text-slate-700">
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="bg-slate-50 border-y border-slate-200">
-        <div className="mx-auto max-w-6xl px-6 py-20 grid md:grid-cols-[1fr,1.5fr] gap-10">
-          <div>
-            <div className="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">About</div>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight">Engineering depth with product perspective</h2>
-          </div>
-          <div className="text-slate-600 leading-8 space-y-5">
-            <p>
-              Founded by Amir Sajjadi, Ph.D., Utmost Connect brings together advanced engineering, product development, and program execution experience across medical devices, optics, lasers, and complex technology platforms.
-            </p>
-            <p>
-              The goal is simple: help teams reduce technical ambiguity, accelerate progress, and make better development decisions through clear strategy, strong cross-functional coordination, and practical execution support.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="mx-auto max-w-6xl px-6 py-20">
-        <div className="max-w-2xl">
-          <div className="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Services</div>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight">Where Utmost Connect can help</h2>
-          <p className="mt-4 text-slate-600 leading-8">
-            Flexible support for startups, growth-stage companies, and established teams tackling challenging product and engineering work.
-          </p>
-        </div>
-
-        <div className="mt-10 grid md:grid-cols-2 gap-6">
-          {services.map((service) => (
-            <div key={service.title} className="rounded-3xl border border-slate-200 p-7 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-semibold tracking-tight">{service.title}</h3>
-              <p className="mt-3 text-slate-600 leading-7">{service.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="projects" className="bg-slate-50 border-y border-slate-200">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="max-w-2xl">
-            <div className="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Projects</div>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight">Representative work</h2>
-            <p className="mt-4 text-slate-600 leading-8">
-              This section can feature selected case studies, product programs, technical problem-solving examples, and outcomes.
-            </p>
-          </div>
-
-          <div className="mt-10 grid md:grid-cols-3 gap-6">
-            {projects.map((project) => (
-              <div key={project.title} className="rounded-3xl bg-white border border-slate-200 p-7 shadow-sm">
-                <h3 className="text-xl font-semibold tracking-tight">{project.title}</h3>
-                <p className="mt-3 text-slate-600 leading-7">{project.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="rounded-[2rem] bg-slate-900 px-8 py-12 text-white shadow-xl">
-          <div className="grid md:grid-cols-[1.3fr,0.7fr] gap-10 items-center">
-            <div>
-              <div className="text-sm uppercase tracking-[0.2em] text-slate-300">Why this approach works</div>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight">Clear thinking. Strong execution. Real technical credibility.</h2>
-              <p className="mt-4 text-slate-300 leading-8">
-                Utmost Connect is built for organizations that need more than generic consulting — they need someone who can understand the technical details, communicate across functions, and keep execution moving.
-              </p>
-            </div>
-            <div className="grid gap-3 text-sm text-slate-200">
-              <div className="rounded-2xl bg-white/10 px-4 py-3">Technical strategy</div>
-              <div className="rounded-2xl bg-white/10 px-4 py-3">Cross-functional leadership</div>
-              <div className="rounded-2xl bg-white/10 px-4 py-3">Product development support</div>
-              <div className="rounded-2xl bg-white/10 px-4 py-3">Data-informed decisions</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="border-t border-slate-200">
-        <div className="mx-auto max-w-6xl px-6 py-20 grid md:grid-cols-2 gap-10">
-          <div>
-            <div className="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Contact</div>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight">Let’s talk about your next project</h2>
-            <p className="mt-4 text-slate-600 leading-8 max-w-xl">
-              Whether you need technical leadership, product development support, or engineering analysis, Utmost Connect can help you move faster with more clarity.
-            </p>
-          </div>
-          <div className="rounded-3xl border border-slate-200 p-7 shadow-sm bg-white">
-            <div className="text-sm text-slate-500">Email</div>
-            <div className="mt-1 text-lg font-medium">info@utmostconnect.org</div>
-            <div className="mt-6 text-sm text-slate-500">Location</div>
-            <div className="mt-1 text-lg font-medium">Irvine, California</div>
-            <div className="mt-8">
-              <a
-                href="mailto:info@utmostconnect.org"
-                className="inline-flex rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90"
-              >
-                Email Utmost Connect
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+<header>
+  <div class="nav-inner">
+    <div>
+      <div class="brand-name">Utmost Connect</div>
+      <div class="brand-tagline">Tech &middot; Product &middot; Innovation</div>
     </div>
-  );
-}
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeMobileNav()">About</a>
+  <a href="#services" onclick="closeMobileNav()">Services</a>
+  <a href="#projects" onclick="closeMobileNav()">Projects</a>
+  <a href="#contact" class="nav-cta" onclick="closeMobileNav()">Contact</a>
+</div>
+
+<!-- Hero -->
+<div class="hero-section">
+  <div class="section">
+    <div class="hero">
+      <div>
+        <div class="hero-badge">Based in Irvine, California</div>
+        <h1>Technical Product &amp; R&amp;D Leadership for High-Impact Innovation</h1>
+        <p class="hero-sub">Utmost Connect helps organizations move complex engineering and product initiatives forward through technical strategy, disciplined execution, and data-driven problem solving.</p>
+        <div class="btn-group">
+          <a href="https://calendly.com/utmost-connect" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Consultation</a>
+          <a href="#services" class="btn-secondary">Explore Services</a>
+        </div>
+      </div>
+      <div class="highlights-card">
+        <div class="highlights-label">Focus Areas</div>
+        <div class="highlight-item">Ph.D.-level technical depth</div>
+        <div class="highlight-item">PMP-certified program leadership</div>
+        <div class="highlight-item">Medical device, aerospace, and advanced technology experience</div>
+        <div class="highlight-item">Bridging engineering, product, and execution</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About -->
+<div class="section-bg" id="about">
+  <div class="section">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2>Engineering depth with product perspective</h2>
+      </div>
+      <div class="about-body">
+        <p>Founded by Amir Sajjadi, Ph.D., Utmost Connect brings together advanced engineering, product development, and program execution experience across medical devices, optics, lasers, and complex technology platforms.</p>
+        <p>The goal is simple: help teams reduce technical ambiguity, accelerate progress, and make better development decisions through clear strategy, strong cross-functional coordination, and practical execution support.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Services -->
+<div class="section" id="services">
+  <div class="eyebrow">Services</div>
+  <h2>Where Utmost Connect can help</h2>
+  <p class="section-desc">Flexible support for startups, growth-stage companies, and established teams tackling challenging product and engineering work.</p>
+  <div class="card-grid-2">
+    <div class="card">
+      <h3>R&amp;D Strategy &amp; Technical Leadership</h3>
+      <p>Support for product strategy, technical planning, cross-functional execution, and development roadmaps for complex engineering programs.</p>
+    </div>
+    <div class="card">
+      <h3>Medical Device &amp; Regulated Product Development</h3>
+      <p>Guidance across concept development, systems thinking, verification planning, risk-focused execution, and design transfer support.</p>
+    </div>
+    <div class="card">
+      <h3>Optics, Lasers &amp; Advanced Engineering</h3>
+      <p>Consulting for optical systems, laser-enabled processes, instrumentation development, and multidisciplinary engineering challenges.</p>
+    </div>
+    <div class="card">
+      <h3>Data Analytics for Engineering Decisions</h3>
+      <p>Custom analysis workflows, dashboarding, and data-driven problem solving to improve performance, quality, and development speed.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Projects -->
+<div class="section-bg" id="projects">
+  <div class="section">
+    <div class="eyebrow">Projects</div>
+    <h2>Representative work</h2>
+    <p class="section-desc">Selected case studies, product programs, technical problem-solving examples, and outcomes.</p>
+    <div class="card-grid-3">
+      <div class="card">
+        <h3>Medical Device Innovation</h3>
+        <p>Examples of platform development, design optimization, and cross-functional execution in regulated environments.</p>
+      </div>
+      <div class="card">
+        <h3>Engineering Data &amp; Automation</h3>
+        <p>Python-based analysis, reporting workflows, and structured decision support for product and process development.</p>
+      </div>
+      <div class="card">
+        <h3>Optomechanical &amp; Laser Systems</h3>
+        <p>Work spanning imaging, laser processing, instrumentation, and advanced product development.</p>
+      </div>
+    </div>
+    <div class="projects-media-grid">
+      <div class="projects-media">
+        <img src="images/PLM.png" alt="PLM-based product lifecycle and engineering workflow" />
+        <p class="projects-media-caption">PLM-integrated engineering workflow: design, simulation, and lifecycle management.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/PLM_Desgin_Simulation_Optimization.png" alt="CAD, simulation, and data pipeline integration" />
+        <p class="projects-media-caption">Connected digital engineering thread: CAD + simulation + data pipeline powered by PLM.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/Medical Device.png" alt="Medical device development and innovation" />
+        <p class="projects-media-caption">Medical device platform development in regulated environments.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/product-development-process.png" alt="Structured product development process" />
+        <p class="projects-media-caption">Structured product development: from concept through design transfer.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/supersonic nozzle.png" alt="Supersonic nozzle simulation and engineering" />
+        <p class="projects-media-caption">Optomechanical and fluid systems: advanced engineering problem solving.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/OWDqals2WcrY.jpg" alt="Engineering and technical project example" />
+        <p class="projects-media-caption">Cross-functional engineering execution and technical leadership in action.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Value banner -->
+<div class="section">
+  <div class="value-banner">
+    <div>
+      <div class="value-eyebrow">Why this approach works</div>
+      <h2>Clear thinking. Strong execution. Real technical credibility.</h2>
+      <p>Utmost Connect is built for organizations that need more than generic consulting &mdash; they need someone who can understand the technical details, communicate across functions, and keep execution moving.</p>
+    </div>
+    <div class="value-pills">
+      <div class="value-pill">Technical strategy</div>
+      <div class="value-pill">Cross-functional leadership</div>
+      <div class="value-pill">Product development support</div>
+      <div class="value-pill">Data-informed decisions</div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="section-bg" id="contact">
+  <div class="section">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <h2>Let&apos;s talk about your next project</h2>
+        <p class="section-desc">Whether you need technical leadership, product development support, or engineering analysis, Utmost Connect can help you move faster with more clarity.</p>
+        <a href="https://calendly.com/utmost-connect" class="btn-primary" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:1.5rem;">Book a Consultation</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-row">
+          <div class="contact-label">Email</div>
+          <div class="contact-value">info@utmostconnect.org</div>
+          <a href="mailto:utmostconnect2026@gmail.com" class="contact-link">Send an email &rarr;</a>
+          <a href="https://calendly.com/utmost-connect" class="contact-link" target="_blank" rel="noopener noreferrer">Book via Calendly &rarr;</a>
+        </div>
+        <div class="contact-row">
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Irvine, California</div>
+        </div>
+        <form class="contact-form" action="https://formsubmit.co/utmostconnect2026@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New consultation request from Utmost Connect website" />
+          <input type="hidden" name="_captcha" value="true" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://utmostconnect.org/" />
+          <label for="contactName">Name</label>
+          <input id="contactName" name="name" type="text" required />
+          <label for="contactEmail">Email</label>
+          <input id="contactEmail" name="email" type="email" required />
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" placeholder="Tell us about your project, goals, and how we can help." required></textarea>
+          <p class="contact-note">Helpful details: project type, stage, key goals, and preferred contact method.</p>
+          <button type="submit" class="btn-primary" style="border:none;cursor:pointer;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Utmost Connect &middot; Irvine, California &middot; <a href="mailto:info@utmostconnect.org" style="color:inherit;">info@utmostconnect.org</a></p>
+</footer>
+
+<div class="image-lightbox" id="imageLightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&times;</button>
+  <img id="lightboxImg" class="lightbox-img" src="" alt="Expanded project image" />
+</div>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobileNav() {
+    toggle.classList.remove('open');
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  const lightbox = document.getElementById('imageLightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  document.querySelectorAll('.projects-media img').forEach(function(img) {
+    img.addEventListener('click', function() {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  }
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
