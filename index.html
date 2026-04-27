@@ -34,21 +34,18 @@
     .nav-cta:hover { opacity: 0.85; }
     .section { max-width: 1152px; margin: 0 auto; padding: 5rem 1.5rem; }
     .hero-section { background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(99,102,241,0.12) 0%, transparent 70%); }
+    .hero-section .section { min-height: calc(100svh - 64px); display: flex; align-items: center; }
     .section-bg { background: rgba(248,250,252,0.9); backdrop-filter: blur(4px); border-top: 1px solid var(--slate-300); border-bottom: 1px solid var(--slate-300); }
     .section-bg .section { max-width: 1152px; margin: 0 auto; padding: 5rem 1.5rem; }
-    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .hero { width: min(100%, 780px); }
     h1 { font-size: clamp(1.35rem, 2.7vw, 2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; color: var(--slate-900); }
-    .hero-sub { margin-top: 1.25rem; font-size: 1.0625rem; color: var(--slate-600); line-height: 1.75; max-width: 520px; }
+    .hero-sub { margin-top: 1.25rem; font-size: 1.0625rem; color: var(--slate-600); line-height: 1.75; max-width: 680px; }
     .hero-sub p + p { margin-top: 1rem; }
     .btn-group { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
     .btn-primary { background: var(--slate-900); color: var(--white); font-size: 0.875rem; font-weight: 500; padding: 0.7rem 1.5rem; border-radius: 999px; transition: opacity 0.15s; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
     .btn-primary:hover { opacity: 0.85; }
     .btn-secondary { background: var(--white); color: var(--slate-700); font-size: 0.875rem; font-weight: 500; padding: 0.7rem 1.5rem; border-radius: 999px; border: 1px solid var(--slate-300); transition: background 0.15s; }
     .btn-secondary:hover { background: var(--slate-50); }
-    .highlights-card { background: var(--white); border: 1px solid var(--slate-300); border-radius: 1.5rem; padding: 1.75rem; box-shadow: 0 2px 8px rgba(15,23,42,0.08); }
-    .highlights-label { font-size: 0.82rem; color: var(--slate-500); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-    .highlight-item { display: flex; align-items: center; gap: 0.6rem; background: var(--white); border: 1px solid var(--slate-200); border-radius: 0.75rem; padding: 0.82rem 1rem; font-size: 0.94rem; color: var(--slate-700); margin-top: 0.75rem; }
-    .highlight-item::before { content: ''; width: 16px; height: 16px; min-width: 16px; background: var(--accent); border-radius: 50%; display: inline-block; }
     .eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
     h2 { font-size: clamp(1.5rem, 2.5vw, 2.125rem); font-weight: 700; letter-spacing: -0.025em; margin-top: 0.5rem; line-height: 1.25; }
     .section-desc { margin-top: 0.75rem; color: var(--slate-600); line-height: 1.75; max-width: 560px; }
@@ -110,9 +107,10 @@
     @media (max-width: 768px) {
       .menu-toggle { display: flex; }
       nav { display: none; }
-      .hero, .about-grid, .contact-grid, .value-banner { grid-template-columns: 1fr; gap: 2rem; }
+      .about-grid, .contact-grid, .value-banner { grid-template-columns: 1fr; gap: 2rem; }
       .card-grid-2, .card-grid-3 { grid-template-columns: 1fr; }
       .section { padding: 3rem 1.25rem; }
+      .hero-section .section { min-height: auto; }
       .section-bg .section { padding: 3rem 1.25rem; }
       .value-banner { padding: 2rem 1.5rem; border-radius: 1.25rem; }
       .value-banner h2 { font-size: 1.35rem; }
@@ -120,7 +118,6 @@
       .hero-sub { font-size: 0.9375rem; }
       .btn-group { flex-direction: column; }
       .btn-primary, .btn-secondary { text-align: center; padding: 0.85rem 1.5rem; font-size: 0.9375rem; }
-      .highlights-card { padding: 1.25rem; }
       .card { padding: 1.25rem; }
       .projects-media-grid { grid-template-columns: 1fr; }
       .contact-card { padding: 1.5rem; }
@@ -162,18 +159,14 @@
       <div>
         <h1>R&amp;D and Technical Product Leadership for Medical Devices and Advanced Engineering Systems</h1>
         <div class="hero-sub">
-          <p>I&apos;m Amir Sajjadi, Ph.D., a technical product and R&amp;D leader with experience across medical devices, optical systems, aerospace and advanced engineering platforms.</p>
-          <p>I&apos;ve led multi-million-dollar development programs, built complex technologies, and supported cross-functional teams from concept through validation and production.</p>
+          <p>Utmost Connect provides technical product and R&amp;D leadership across medical devices, optical systems, aerospace, and advanced technology, bridging engineering, product, and execution.</p>
+          <p>We support complex development programs, advanced technologies, and cross-functional teams from concept through validation and production.</p>
           <p>Our focus is helping organizations navigate complex technical challenges while maintaining speed, clarity, and execution discipline.</p>
         </div>
         <div class="btn-group">
           <a href="https://calendly.com/utmost-connect" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Consultation</a>
           <a href="#services" class="btn-secondary">Explore Services</a>
         </div>
-      </div>
-      <div class="highlights-card">
-        <div class="highlights-label">Focus Areas</div>
-        <div class="highlight-item">Medical device, aerospace, and advanced technology — bridging engineering, product, and execution</div>
       </div>
     </div>
   </div>
