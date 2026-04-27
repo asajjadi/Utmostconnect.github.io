@@ -38,6 +38,7 @@
     .hero-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; margin-right: 0.5rem; }
     h1 { font-size: clamp(1.35rem, 2.7vw, 2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; color: var(--slate-900); }
     .hero-sub { margin-top: 1.25rem; font-size: 1.0625rem; color: var(--slate-600); line-height: 1.75; max-width: 520px; }
+    .hero-sub p + p { margin-top: 1rem; }
     .btn-group { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
     .btn-primary { background: var(--slate-900); color: var(--white); font-size: 0.875rem; font-weight: 500; padding: 0.7rem 1.5rem; border-radius: 999px; transition: opacity 0.15s; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
     .btn-primary:hover { opacity: 0.85; }
@@ -157,7 +158,11 @@
     <div class="hero">
       <div>
         <h1>R&amp;D and Technical Product Leadership for Medical Devices and Advanced Engineering Systems</h1>
-        <p class="hero-sub">Helping teams reduce technical risk, accelerate development, and deliver high-impact products through deep engineering expertise and structured execution.</p>
+        <div class="hero-sub">
+          <p>I&apos;m Amir Sajjadi, Ph.D., a technical product and R&amp;D leader with experience across medical devices, optical systems, aerospace and advanced engineering platforms.</p>
+          <p>I&apos;ve led multi-million-dollar development programs, built complex technologies, and supported cross-functional teams from concept through validation and production.</p>
+          <p>Our focus is helping organizations navigate complex technical challenges while maintaining speed, clarity, and execution discipline.</p>
+        </div>
         <div class="btn-group">
           <a href="https://calendly.com/utmost-connect" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Consultation</a>
           <a href="#services" class="btn-secondary">Explore Services</a>
