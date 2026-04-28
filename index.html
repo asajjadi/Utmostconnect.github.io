@@ -70,15 +70,22 @@
     .projects-media-caption { margin-top: 0.75rem; font-size: 0.84rem; color: var(--slate-500); text-align: center; }
     .image-lightbox { position: fixed; inset: 0; background: rgba(2,6,23,0.82); display: none; align-items: center; justify-content: center; padding: 2rem; z-index: 2000; }
     .image-lightbox.open { display: flex; }
-    .lightbox-img { max-width: min(1100px, 92vw); max-height: 86vh; width: auto; height: auto; border-radius: 0.9rem; box-shadow: 0 16px 48px rgba(0,0,0,0.35); }
+    .lightbox-img { max-width: min(1100px, 92vw); max-height: 86vh; width: auto; height: auto; border-radius: 0.9rem; box-shadow: 0 16px 48px rgba(0,0,0,0.35); cursor: zoom-in; transform-origin: center center; transition: transform 0.12s ease-out; user-select: none; -webkit-user-drag: none; touch-action: none; }
+    .lightbox-img.zoomed { cursor: grab; }
+    .lightbox-img.dragging { cursor: grabbing; }
     .lightbox-close { position: absolute; top: 1rem; right: 1rem; width: 2.25rem; height: 2.25rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); background: rgba(15,23,42,0.6); color: #fff; font-size: 1.35rem; line-height: 1; cursor: pointer; }
     .lightbox-close:hover { background: rgba(15,23,42,0.85); }
-    .value-banner { background: var(--slate-900); border-radius: 2rem; padding: 3.5rem 3rem; color: var(--white); display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 3rem; align-items: center; }
-    .value-eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #93c5fd; }
+    .value-banner { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #0f172a 100%); border-radius: 2rem; padding: 3.5rem 3rem; color: var(--white); display: grid; grid-template-columns: 1.4fr 1fr; gap: 3.5rem; align-items: center; position: relative; overflow: hidden; }
+    .value-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(99,102,241,0.18) 0%, transparent 70%); pointer-events: none; }
+    .value-eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #a5b4fc; }
     .value-banner h2 { color: var(--white); margin-top: 0.5rem; }
-    .value-banner p { color: #cbd5e1; margin-top: 0.75rem; line-height: 1.75; font-size: 0.9375rem; }
-    .value-pills { display: grid; gap: 0.625rem; }
-    .value-pill { background: rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 0.65rem 1rem; font-size: 0.875rem; color: #e2e8f0; }
+    .value-banner p { color: #94a3b8; margin-top: 0.75rem; line-height: 1.75; font-size: 0.9375rem; }
+    .value-pills { display: grid; gap: 0.875rem; position: relative; }
+    .value-pill { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.875rem; padding: 1rem 1.25rem; display: flex; gap: 0.875rem; align-items: flex-start; transition: background 0.2s, border-color 0.2s; }
+    .value-pill:hover { background: rgba(255,255,255,0.1); border-color: rgba(165,180,252,0.3); }
+    .value-pill-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: #818cf8; margin-top: 0.35rem; flex-shrink: 0; }
+    .value-pill-title { font-size: 0.875rem; font-weight: 600; color: #e2e8f0; }
+    .value-pill-desc { font-size: 0.8rem; color: #64748b; margin-top: 0.2rem; line-height: 1.55; }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
     .contact-card { background: var(--white); border: 1px solid var(--slate-300); border-radius: 1.25rem; padding: 2rem; box-shadow: 0 2px 10px rgba(15,23,42,0.08); }
     .contact-label { font-size: 0.75rem; color: var(--slate-500); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; }
@@ -249,7 +256,7 @@
         <li>Root cause analysis and performance improvement</li>
       </ul>
       <p class="card-callout">Applied to product performance, clinical datasets, and manufacturing</p>
-      <a href="ai-data-engineering.html" style="display:inline-block;margin-top:1rem;font-size:0.8125rem;font-weight:500;color:var(--accent);text-decoration:none;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">Dental Data Processing Project &rarr;</a>
+      <a href="ai-data-engineering.html" style="display:inline-block;margin-top:1rem;font-size:0.8125rem;font-weight:500;color:var(--accent);text-decoration:none;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">More info and Project Examples ;</a>
     </div>
   </div>
 </div>
@@ -258,23 +265,45 @@
 <div class="section-bg" id="projects">
   <div class="section">
     <div class="eyebrow">Projects</div>
-    <h2>Representative work</h2>
-    <p class="section-desc">Selected case studies, product programs, technical problem-solving examples, and outcomes.</p>
-    <div class="card-grid-3">
-      <div class="card">
-        <h3>Medical Device Innovation</h3>
-        <p>Examples of platform development, design optimization, and cross-functional execution in regulated environments.</p>
-      </div>
-      <div class="card">
-        <h3>Engineering Data &amp; Automation</h3>
-        <p>Python-based analysis, reporting workflows, and structured decision support for product and process development.</p>
-      </div>
-      <div class="card">
-        <h3>Optomechanical &amp; Laser Systems</h3>
-        <p>Work spanning imaging, laser processing, instrumentation, and advanced product development.</p>
-      </div>
-    </div>
+    <h2>Proven Results &amp; Case Studies</h2>
+    <p class="section-desc">Demonstrating how complex technical challenges are translated into clear outcomes and performance improvements.</p>
     <div class="projects-media-grid">
+      <div class="projects-media">
+        <img src="images/Clinical MGH Harvard.png" alt="Clinical research and translational engineering collaboration" />
+        <p class="projects-media-caption">Clinical and translational program support spanning research, engineering, and execution.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/product-development-process.png" alt="Structured product development process" />
+        <p class="projects-media-caption">Structured product development: from concept through design transfer.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/Data Analytics.png" alt="Data analytics workflow for engineering decisions" />
+        <p class="projects-media-caption">Data analytics and decision-support workflows for engineering and product performance.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/Advanced Manufacturing.png" alt="Advanced manufacturing and process engineering workflow" />
+        <p class="projects-media-caption">Advanced manufacturing strategy and process optimization for scalable product execution.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/Medical Device Innovation.png" alt="Medical device innovation and product engineering" />
+        <p class="projects-media-caption">Medical device innovation programs focused on design, validation, and clinical impact.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/Optomechanical.png" alt="Optomechanical system design and development" />
+        <p class="projects-media-caption">Optomechanical system development combining precision design, testing, and optimization.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/Laser.png" alt="Laser process engineering and system development" />
+        <p class="projects-media-caption">Laser process development and system-level engineering for high-performance applications.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/supersonic nozzle.png" alt="Supersonic nozzle simulation and engineering" />
+        <p class="projects-media-caption">Optomechanical and fluid systems: advanced engineering problem solving.</p>
+      </div>
+      <div class="projects-media">
+        <img src="images/Leadership.png" alt="Cross-functional engineering leadership and execution" />
+        <p class="projects-media-caption">Cross-functional engineering execution and technical leadership in action.</p>
+      </div>
       <div class="projects-media">
         <img src="images/PLM.png" alt="PLM-based product lifecycle and engineering workflow" />
         <p class="projects-media-caption">PLM-integrated engineering workflow: design, simulation, and lifecycle management.</p>
@@ -287,18 +316,6 @@
         <img src="images/Medical Device.png" alt="Medical device development and innovation" />
         <p class="projects-media-caption">Medical device platform development in regulated environments.</p>
       </div>
-      <div class="projects-media">
-        <img src="images/product-development-process.png" alt="Structured product development process" />
-        <p class="projects-media-caption">Structured product development: from concept through design transfer.</p>
-      </div>
-      <div class="projects-media">
-        <img src="images/supersonic nozzle.png" alt="Supersonic nozzle simulation and engineering" />
-        <p class="projects-media-caption">Optomechanical and fluid systems: advanced engineering problem solving.</p>
-      </div>
-      <div class="projects-media">
-        <img src="images/OWDqals2WcrY.jpg" alt="Engineering and technical project example" />
-        <p class="projects-media-caption">Cross-functional engineering execution and technical leadership in action.</p>
-      </div>
     </div>
   </div>
 </div>
@@ -307,15 +324,31 @@
 <div class="section">
   <div class="value-banner">
     <div>
-      <div class="value-eyebrow">Why this approach works</div>
-      <h2>Clear thinking. Strong execution. Real technical credibility.</h2>
-      <p>Utmost Connect is built for organizations that need more than generic consulting &mdash; they need someone who can understand the technical details, communicate across functions, and keep execution moving.</p>
+      <div class="value-eyebrow">Why us</div>
+      <h2>What Makes Us Different</h2>
+      <p>Utmost Connect is built for organizations that need more than generic consulting &mdash; they need someone who understands the technical details, bridges functions, and drives execution.</p>
     </div>
     <div class="value-pills">
-      <div class="value-pill">Technical strategy</div>
-      <div class="value-pill">Cross-functional leadership</div>
-      <div class="value-pill">Product development support</div>
-      <div class="value-pill">Data-informed decisions</div>
+      <div class="value-pill">
+        <div class="value-pill-dot"></div>
+        <div><div class="value-pill-title">Engineering + Clinical Hybrid</div>
+        <div class="value-pill-desc">Rare combination of deep technical expertise and real-world clinical experience</div></div>
+      </div>
+      <div class="value-pill">
+        <div class="value-pill-dot"></div>
+        <div><div class="value-pill-title">Hands-On Leadership</div>
+        <div class="value-pill-desc">Not just strategy &mdash; direct involvement in solving problems and executing</div></div>
+      </div>
+      <div class="value-pill">
+        <div class="value-pill-dot"></div>
+        <div><div class="value-pill-title">Proven in Regulated Environments</div>
+        <div class="value-pill-desc">FDA, ISO, GCP experience across the full development lifecycle</div></div>
+      </div>
+      <div class="value-pill">
+        <div class="value-pill-dot"></div>
+        <div><div class="value-pill-title">Built for Complex Problems</div>
+        <div class="value-pill-desc">Comfortable operating in ambiguity, high-risk, and early-stage innovation</div></div>
+      </div>
     </div>
   </div>
 </div>
@@ -393,12 +426,35 @@
   const lightbox = document.getElementById('imageLightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
+  const minLightboxZoom = 1;
+  const maxLightboxZoom = 4;
+  let lightboxZoom = 1;
+  let lightboxOffsetX = 0;
+  let lightboxOffsetY = 0;
+  let isLightboxDragging = false;
+  let dragStartX = 0;
+  let dragStartY = 0;
+
+  function applyLightboxTransform() {
+    lightboxImg.style.transform = 'translate(' + lightboxOffsetX + 'px, ' + lightboxOffsetY + 'px) scale(' + lightboxZoom + ')';
+    lightboxImg.classList.toggle('zoomed', lightboxZoom > 1);
+  }
+
+  function resetLightboxTransform() {
+    lightboxZoom = 1;
+    lightboxOffsetX = 0;
+    lightboxOffsetY = 0;
+    isLightboxDragging = false;
+    lightboxImg.classList.remove('dragging');
+    applyLightboxTransform();
+  }
 
   // Reuse each gallery image as the source for the fullscreen lightbox.
   document.querySelectorAll('.projects-media img').forEach(function(img) {
     img.addEventListener('click', function() {
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt || '';
+      resetLightboxTransform();
       lightbox.classList.add('open');
       lightbox.setAttribute('aria-hidden', 'false');
       setPageScrollLock(true);
@@ -408,9 +464,60 @@
   function closeLightbox() {
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
+    resetLightboxTransform();
     lightboxImg.src = '';
     setPageScrollLock(false);
   }
+
+  // Wheel to zoom in/out while the lightbox is open.
+  lightboxImg.addEventListener('wheel', function(e) {
+    if (!lightbox.classList.contains('open')) return;
+    e.preventDefault();
+    const zoomStep = e.deltaY < 0 ? 0.2 : -0.2;
+    lightboxZoom = Math.min(maxLightboxZoom, Math.max(minLightboxZoom, lightboxZoom + zoomStep));
+    if (lightboxZoom === minLightboxZoom) {
+      lightboxOffsetX = 0;
+      lightboxOffsetY = 0;
+    }
+    applyLightboxTransform();
+  }, { passive: false });
+
+  // Double-click toggles between fit and a readable zoom level.
+  lightboxImg.addEventListener('dblclick', function() {
+    if (!lightbox.classList.contains('open')) return;
+    if (lightboxZoom > 1) {
+      resetLightboxTransform();
+      return;
+    }
+    lightboxZoom = 2.2;
+    applyLightboxTransform();
+  });
+
+  // Drag to pan while zoomed.
+  lightboxImg.addEventListener('pointerdown', function(e) {
+    if (lightboxZoom <= 1) return;
+    isLightboxDragging = true;
+    dragStartX = e.clientX - lightboxOffsetX;
+    dragStartY = e.clientY - lightboxOffsetY;
+    lightboxImg.classList.add('dragging');
+    lightboxImg.setPointerCapture(e.pointerId);
+  });
+
+  lightboxImg.addEventListener('pointermove', function(e) {
+    if (!isLightboxDragging || lightboxZoom <= 1) return;
+    lightboxOffsetX = e.clientX - dragStartX;
+    lightboxOffsetY = e.clientY - dragStartY;
+    applyLightboxTransform();
+  });
+
+  function stopLightboxDrag() {
+    if (!isLightboxDragging) return;
+    isLightboxDragging = false;
+    lightboxImg.classList.remove('dragging');
+  }
+
+  lightboxImg.addEventListener('pointerup', stopLightboxDrag);
+  lightboxImg.addEventListener('pointercancel', stopLightboxDrag);
 
   lightboxClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
