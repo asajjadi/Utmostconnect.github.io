@@ -34,13 +34,14 @@
     .nav-cta:hover { opacity: 0.85; }
     .section { max-width: 1152px; margin: 0 auto; padding: 5rem 1.5rem; }
     .hero-section { background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(99,102,241,0.12) 0%, transparent 70%); }
-    .hero-section .section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+    .hero-section .section { padding-top: 3.5rem; padding-bottom: 3.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
     .section-bg { background: rgba(248,250,252,0.9); backdrop-filter: blur(4px); border-top: 1px solid var(--slate-300); border-bottom: 1px solid var(--slate-300); }
     .section-bg .section { max-width: 1152px; margin: 0 auto; padding: 5rem 1.5rem; }
-    .hero { max-width: 760px; }
+    .hero { max-width: 900px; }
+    .hero-title { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; color: var(--slate-900); margin-bottom: 1.25rem; }
     h1 { font-size: clamp(1.35rem, 2.7vw, 2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; color: var(--slate-900); }
-    .hero-sub { margin-top: 1rem; font-size: 1.0625rem; color: var(--slate-600); line-height: 1.7; max-width: 680px; }
-    .hero-sub p + p { margin-top: 0.75rem; }
+    .hero-sub { margin-top: 1rem; font-size: 1.0625rem; color: var(--slate-600); line-height: 1.7; max-width: 860px; margin-left: auto; margin-right: auto; }
+    .hero-sub p + p { margin-top: 0.35rem; }
     .btn-group { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
     .btn-primary { background: var(--slate-900); color: var(--white); font-size: 0.875rem; font-weight: 500; padding: 0.7rem 1.5rem; border-radius: 999px; transition: opacity 0.15s; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
     .btn-primary:hover { opacity: 0.85; }
@@ -140,7 +141,7 @@
   <div class="nav-inner">
     <div>
       <div class="brand-name">Utmost Connect</div>
-      <div class="brand-tagline">Engineering Depth. Clinical Insight. Product Execution.</div>
+      <div class="brand-tagline">Engineering Depth. Clinical Insight. Execution That Delivers.</div>
     </div>
     <nav>
       <a href="#about">About</a>
@@ -165,12 +166,16 @@
 <div class="hero-section">
   <div class="section">
     <div class="hero">
-      <div class="eyebrow">Technical Product &amp; R&amp;D Leadership</div>
-      <h1>R&amp;D and technical product leadership for medical devices and advanced engineering systems.</h1>
+      <h1 class="hero-title">Technical Product and R&amp;D Leadership</h1>
+      
       <div class="hero-sub">
-        <p>Utmost Connect brings deep experience across medical devices, optical systems, and complex technology platforms—bridging engineering, product strategy, and execution.</p>
-        <p>We partner with organizations to lead and accelerate complex development programs, supporting teams from early concept through clinical validation, scale-up, and production.</p>
-        <p>Our focus is simple: help teams navigate technical complexity with clarity, speed, and disciplined execution.</p>
+        <p>We help teams develop complex medical devices and advanced technologies—bridging engineering, clinical requirements, and product execution from concept to validation and scale.</p>
+        <p>Experience includes leadership roles at Edwards Lifesciences, Harvard/MGH, and Saratech, with a track record of leading multi-million-dollar R&D programs and first-in-human clinical studies.</p>
+        <p>Most product development challenges aren’t straightforward.</p>
+        <p>They involve evolving requirements, technical uncertainty, and tight coordination across engineering, clinical, and regulatory domains.</p>
+        <p><strong><em>That's where we operate.</em></strong></p>
+        <p>Utmost Connect specializes in solving technically complex, high-risk development challenges—bringing clarity to ambiguity and structure to execution.</p>
+
       </div>
     </div>
   </div>
@@ -204,54 +209,49 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="17"/><line x1="12" y1="7" x2="19" y2="17"/><line x1="5" y1="19" x2="19" y2="19"/></svg>
       </div>
       <h3>R&amp;D Strategy &amp; Technical Leadership</h3>
+      <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--slate-600);">Define product strategy, development roadmaps, and execution plans for complex systems.</p>
       <ul class="card-list">
-        <li>Define product and technology strategy aligned with business and clinical goals</li>
-        <li>Build development roadmaps and program plans</li>
-        <li>Lead cross-functional teams across engineering, clinical, and regulatory domains</li>
-        <li>Drive structured, data-informed decision-making</li>
+        <li>Align engineering, clinical, and business objectives</li>
+        <li>Lead cross-functional teams and programs</li>
+        <li>Drive structured decision-making under uncertainty</li>
       </ul>
-      <p class="card-callout">Led multi-million-dollar R&amp;D programs across medical devices and advanced systems</p>
     </div>
     <div class="card">
       <div class="card-icon" style="background:#dbeafe;">
         <svg viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
       </div>
-      <h3>Medical Device &amp; Regulated Product Development</h3>
+      <h3>Medical Device &amp; Regulated Development</h3>
+      <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--slate-600);">Support end-to-end development in FDA and ISO-regulated environments.</p>
       <ul class="card-list">
-        <li>End-to-end development from concept through clinical readiness</li>
-        <li>Design Controls (FDA, ISO&nbsp;13485), Risk Management (ISO&nbsp;14971)</li>
-        <li>Verification &amp; Validation (IQ/OQ/PQ)</li>
-        <li>Clinical study support and translational program development</li>
-        <li>Design transfer and manufacturing readiness</li>
+        <li>Design controls, risk management, and validation strategy</li>
+        <li>Clinical readiness and early-stage development</li>
+        <li>Design transfer and manufacturing scale-up</li>
       </ul>
-      <p class="card-callout">Hands-on experience in regulated environments and clinical innovation</p>
     </div>
     <div class="card">
       <div class="card-icon" style="background:#dcfce7;">
         <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4"/><line x1="12" y1="8" x2="12" y2="8.01"/></svg>
       </div>
-      <h3>Optics, Lasers &amp; Advanced Engineering</h3>
+      <h3>Optomechanical &amp; Laser Systems</h3>
+      <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--slate-600);">Specialized expertise in advanced engineering systems.</p>
       <ul class="card-list">
-        <li>Optical system design (imaging, sensing, instrumentation)</li>
-        <li>Laser-based processes and biomedical applications</li>
-        <li>Optomechanical system development</li>
-        <li>Prototyping, testing, and performance optimization</li>
+        <li>Optical system design and integration</li>
+        <li>Laser-based processing and instrumentation</li>
+        <li>Precision system development and validation</li>
       </ul>
-      <p class="card-callout">Deep specialization in photonics and laser-based technologies</p>
     </div>
     <div class="card">
       <div class="card-icon" style="background:#fef9c3;">
         <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><polyline points="6 8 10 12 14 8 18 12"/></svg>
       </div>
-      <h3>Data Analytics for Engineering Decisions</h3>
+      <h3>Data-Driven Engineering &amp; Analytics</h3>
+      <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--slate-600);">Turn complex data into actionable insight.</p>
       <ul class="card-list">
         <li>Custom analysis pipelines (Python, MATLAB)</li>
-        <li>Statistical modeling, DOE, and optimization</li>
-        <li>Visualization and dashboards for decision support</li>
-        <li>Root cause analysis and performance improvement</li>
+        <li>Statistical modeling and performance optimization</li>
+        <li>Data-driven decision support</li>
       </ul>
-      <p class="card-callout">Applied to product performance, clinical datasets, and manufacturing</p>
-      <a href="ai-data-engineering.html" style="display:inline-block;margin-top:1rem;font-size:0.8125rem;font-weight:500;color:var(--accent);text-decoration:none;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">More info and Project Examples ;</a>
+      <a href="ai-data-engineering.html" style="display:inline-block;margin-top:1rem;font-size:0.8125rem;font-weight:500;color:var(--accent);text-decoration:none;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">More info and Project Examples &rsaquo;</a>
     </div>
   </div>
 </div>
