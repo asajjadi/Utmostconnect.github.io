@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    if (window.location.hostname === 'utmostconnect.org') {
+      window.location.replace('https://www.utmostconnect.org' + window.location.pathname + window.location.search + window.location.hash);
+    }
+  </script>
   <title>AI-Driven Engineering & Product Analytics | Utmost Connect</title>
   <meta name="description" content="Amir Sajjadi, Ph.D. - AI-Driven Engineering & Product Analytics for medical device and R&D teams." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
