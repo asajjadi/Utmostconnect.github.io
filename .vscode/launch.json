@@ -1,0 +1,17 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Open Localhost (Edge - reliable)",
+			"type": "node-terminal",
+			"request": "launch",
+			"command": "powershell -ExecutionPolicy Bypass -File \"${workspaceFolder}\\.vscode\\open-localhost.ps1\" -Browser edge"
+		},
+		{
+			"name": "Open Localhost (Chrome - reliable)",
+			"type": "node-terminal",
+			"request": "launch",
+			"command": "powershell -ExecutionPolicy Bypass -File \"${workspaceFolder}\\.vscode\\open-localhost.ps1\" -Browser chrome"
+		}
+	]
+}
