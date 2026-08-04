@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Engineerig Intelligence | Utmost Connect</title>
+  <meta name="description" content="Engineerig Intelligence services by Utmost Connect: AI-powered engineering analytics, automation, and decision support." />
+  <style>
+    :root {
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-900: #0f172a;
+      --accent: #1d4ed8;
+      --white: #ffffff;
+      --bg-gradient: radial-gradient(circle at top left, #f1f5f9 0%, #ffffff 40%, #eff6ff 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--slate-900);
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.86);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--slate-200);
+    }
+    .nav-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .brand-name { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.02em; }
+    .brand-tagline { font-size: 0.75rem; color: var(--slate-500); margin-top: 1px; }
+    .nav-back {
+      font-size: 0.875rem;
+      color: var(--slate-600);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.15s;
+    }
+    .nav-back:hover { color: var(--slate-900); }
+    .nav-cta {
+      background: var(--slate-900);
+      color: var(--white) !important;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .hero-block h1 {
+      font-size: clamp(1.7rem, 3.5vw, 2.7rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-top: 0.5rem;
+    }
+    .hero-block .sub {
+      margin-top: 0.9rem;
+      font-size: 1.04rem;
+      color: var(--slate-600);
+      line-height: 1.8;
+    }
+
+    .section-block {
+      margin-top: 2rem;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--slate-200);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 1px 8px rgba(15,23,42,0.05);
+    }
+    .section-block h2 {
+      font-size: 1.16rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .section-block h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 1.1em;
+      background: var(--accent);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .section-block p {
+      color: var(--slate-600);
+      line-height: 1.8;
+    }
+
+    .pillars {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .pillars li {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: 0.8rem;
+      padding: 0.85rem 1rem;
+      font-size: 0.9rem;
+      color: var(--slate-700);
+      box-shadow: 0 1px 4px rgba(15,23,42,0.05);
+    }
+
+    .result-grid {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+    .result-item {
+      background: var(--slate-900);
+      color: var(--white);
+      border-radius: 0.9rem;
+      padding: 1rem;
+    }
+    .result-item .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+    .result-item .value {
+      margin-top: 0.4rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .cta-box {
+      margin-top: 2rem;
+      padding: 1.4rem;
+      border-radius: 1rem;
+      background: linear-gradient(120deg, #0f172a, #1e293b);
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+    .cta-box p { color: #dbeafe; }
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.1rem;
+      background: #ffffff;
+      color: var(--slate-900);
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 900px) {
+      .result-grid { grid-template-columns: 1fr; }
+      .pillars { grid-template-columns: 1fr; }
+      .cta-box { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .page-wrap { padding: 3rem 1rem 5rem; }
+      .nav-inner { padding: 0.9rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div>
+        <div class="brand-name">Utmost Connect</div>
+        <div class="brand-tagline">Engineering Depth. Clinical Insight. Execution That Delivers.</div>
+      </div>
+      <a href="index.html" class="nav-back">&larr; Back to main site</a>
+      <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+    </div>
+  </header>
+
+  <main class="page-wrap">
+    <section class="hero-block">
+      <div class="eyebrow">Engineerig Intelligence</div>
+      <h1>AI-Powered Intelligence for Engineering Decisions</h1>
+      <p class="sub">We design practical AI and analytics workflows that transform scattered engineering data into confident, faster, and repeatable decisions across product development.</p>
+    </section>
+
+    <section class="section-block">
+      <h2>What We Deliver</h2>
+      <p>Engineerig Intelligence connects design data, test results, manufacturing signals, and team knowledge into one decision layer. The goal is simple: less time searching, more time improving products.</p>
+      <ul class="pillars">
+        <li>Unified engineering data pipelines across CAD, test, and quality systems</li>
+        <li>AI-assisted root-cause analysis and trend detection</li>
+        <li>Decision dashboards for product, R&amp;D, and operations teams</li>
+        <li>Automation for repetitive technical reporting workflows</li>
+      </ul>
+    </section>
+
+    <section class="section-block">
+      <h2>Typical Outcomes</h2>
+      <p>Programs usually start with one high-value use case, then scale once teams see measurable gains.</p>
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="label">Speed</div>
+          <div class="value">Faster technical reviews and engineering handoffs</div>
+        </div>
+        <div class="result-item">
+          <div class="label">Quality</div>
+          <div class="value">Earlier detection of risk patterns and failure modes</div>
+        </div>
+        <div class="result-item">
+          <div class="label">Focus</div>
+          <div class="value">More engineering time spent on design decisions, not manual data work</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-box">
+      <div>
+        <h2 style="margin:0 0 0.45rem; font-size:1.15rem;">Ready to apply Engineerig Intelligence to your team?</h2>
+        <p>Share your current workflow and constraints, and we can scope a focused pilot.</p>
+      </div>
+      <a class="cta-link" href="index.html#contact">Start a Conversation</a>
+    </section>
+  </main>
+</body>
+</html>
