@@ -21,11 +21,31 @@
     .hero { background: linear-gradient(135deg, #0f172a, #1e293b); color: #dbeafe; border-radius: 1rem; padding: 1.4rem; }
     .hero h1 { margin: 0 0 0.45rem; color: #f8fafc; font-size: 1.6rem; }
     .hero p { margin: 0; line-height: 1.7; }
+    .blue-mark {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #60a5fa;
+      background: rgba(29, 78, 216, 0.2);
+      color: #dbeafe;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+      margin-bottom: 0.65rem;
+    }
     .actions { margin-top: 0.9rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
     .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 0.58rem 1rem; font-size: 0.88rem; text-decoration: none; }
     .btn-primary { background: #ffffff; color: #0f172a; font-weight: 700; }
     .btn-ghost { border: 1px solid rgba(255,255,255,0.45); color: #dbeafe; }
+    .hero-note { margin-top: 0.65rem; font-size: 0.84rem; color: #bfdbfe; }
     .panel { margin-top: 1rem; background: var(--panel); border: 1px solid var(--line); border-radius: 0.95rem; padding: 1rem; }
+    .panel-proprietary {
+      border-color: #bfdbfe;
+      background: linear-gradient(180deg, #eff6ff, #f8fbff);
+    }
+    .panel-proprietary p { color: #1e3a8a; }
     h2 { margin: 0 0 0.55rem; font-size: 1.06rem; }
     p, li { color: var(--muted); line-height: 1.7; }
     ol { margin: 0.4rem 0 0; padding-left: 1.2rem; }
@@ -36,37 +56,38 @@
 <body>
   <main class="wrap">
     <section class="hero">
-      <h1>Engineering Intelligence Pilot Setup</h1>
-      <p>Use one of the options below to run the pilot locally. This page is the recommended run path for external users.</p>
+      <div class="blue-mark">BlueMark Protected Build</div>
+      <h1>Engineering Intelligence Reviewer Build Access</h1>
+      <p>Use this page to download and run the approved reviewer build package. This distribution path is intended for authorized external evaluators.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="/Engineering%20Intelligence.lnk" download="Engineering Intelligence.lnk">Download Windows Launcher (.lnk)</a>
-        <a class="btn btn-ghost" href="https://github.com/asajjadi/engineering-intelligence/tree/rc2-public-case-validation" target="_blank" rel="noopener noreferrer">Open Source Repository</a>
+        <a class="btn btn-primary" href="https://github.com/asajjadi/engineering-intelligence/releases/download/reviewer-build-20260804/EngineeringIntelligence.exe" target="_blank" rel="noopener noreferrer">Download Windows App (.exe)</a>
+        <a class="btn btn-ghost" href="https://github.com/asajjadi/engineering-intelligence/releases/download/reviewer-build-20260804/EngineeringIntelligence-ReviewerBuild.zip" target="_blank" rel="noopener noreferrer">Download Reviewer Build ZIP</a>
+        <a class="btn btn-ghost" href="https://github.com/asajjadi/engineering-intelligence/releases/download/reviewer-build-20260804/EngineeringIntelligence-ReviewerBuild-AmirSajjadi.zip" target="_blank" rel="noopener noreferrer">Download Reviewer Build ZIP (AmirSajjadi)</a>
       </div>
+      <p class="hero-note">Windows users can run the downloaded <code>.exe</code> directly. ZIP downloads are provided as package backups.</p>
     </section>
 
     <section class="panel">
-      <h2>Option A: Launch from shared package</h2>
+      <h2>Launch from shared package</h2>
       <ol>
-        <li>Download and extract the shared pilot ZIP package.</li>
-        <li>Inside the extracted folder, run <code>EngineeringIntelligence.exe</code> (or your packaged launcher).</li>
+        <li>Download and run <code>EngineeringIntelligence.exe</code> directly.</li>
+        <li>If you prefer package delivery, download and extract one of the reviewer ZIP files, then run <code>EngineeringIntelligence.exe</code> inside the extracted folder.</li>
         <li>If Windows SmartScreen appears, click <code>More info</code> then <code>Run anyway</code> only if you trust the source.</li>
       </ol>
-      <p class="note">If your team received only the launcher shortcut, make sure the target application folder from the ZIP package is in place first.</p>
+      <p class="note">The direct <code>.exe</code> is the recommended Windows path for fastest startup.</p>
     </section>
 
-    <section class="panel">
-      <h2>Option B: Run from source</h2>
-      <ol>
-        <li>Clone the repository branch <code>rc2-public-case-validation</code>.</li>
-        <li>Install dependencies with <code>pip install -r requirements.txt</code>.</li>
-        <li>Run with <code>python -m streamlit run mvp/app.py</code>.</li>
-        <li>Open <code>http://localhost:8501</code> in your browser.</li>
-      </ol>
+    <section class="panel panel-proprietary">
+      <h2>Proprietary Distribution Notice</h2>
+      <p>This software package is distributed for approved evaluation only and is not open source.</p>
+      <p>Do not copy, redistribute, reverse engineer, or rehost package contents without written permission from the owner.</p>
     </section>
 
     <section class="panel">
       <h2>Troubleshooting</h2>
-      <p>If the launcher does not open, your shortcut target is likely missing on that machine. Use Option B (source run) or request a fresh packaged ZIP with the executable included.</p>
+      <p>If the downloaded app does not open, use one of the reviewer ZIP packages, extract locally, and run <code>EngineeringIntelligence.exe</code> from the extracted folder.</p>
+      <p>If your browser shows a temporary extension such as <code>.download</code> while transferring, wait until the download completes and confirms a final <code>.zip</code> filename.</p>
+      <p>Windows check: right-click the downloaded <code>.exe</code> file, select <code>Properties</code>, and if blocked, click <code>Unblock</code> before launching.</p>
       <p><a href="engineering-intelligence.html">Back to Engineering Intelligence page</a></p>
     </section>
   </main>

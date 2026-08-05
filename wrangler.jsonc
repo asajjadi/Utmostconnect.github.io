@@ -1,9 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "utmostconnect-github-io",
+  "main": "src/worker.js",
   "compatibility_date": "2026-04-22",
   "observability": {
     "enabled": true
+  },
+  "vars": {
+    "ALLOWED_ORIGINS": "https://utmostconnect.org,http://localhost:5500"
   },
   "assets": {
     "directory": "."
