@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pilot Setup | Engineering Intelligence</title>
+  <meta name="description" content="Setup steps for running the Engineering Intelligence pilot application locally.">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #dbe3ee;
+      --accent: #1d4ed8;
+      --dark: #0b1324;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--text); }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+    .hero { background: linear-gradient(135deg, #0f172a, #1e293b); color: #dbeafe; border-radius: 1rem; padding: 1.4rem; }
+    .hero h1 { margin: 0 0 0.45rem; color: #f8fafc; font-size: 1.6rem; }
+    .hero p { margin: 0; line-height: 1.7; }
+    .actions { margin-top: 0.9rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 0.58rem 1rem; font-size: 0.88rem; text-decoration: none; }
+    .btn-primary { background: #ffffff; color: #0f172a; font-weight: 700; }
+    .btn-ghost { border: 1px solid rgba(255,255,255,0.45); color: #dbeafe; }
+    .panel { margin-top: 1rem; background: var(--panel); border: 1px solid var(--line); border-radius: 0.95rem; padding: 1rem; }
+    h2 { margin: 0 0 0.55rem; font-size: 1.06rem; }
+    p, li { color: var(--muted); line-height: 1.7; }
+    ol { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+    code { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 0.1rem 0.32rem; border-radius: 0.35rem; }
+    .note { margin-top: 0.6rem; font-size: 0.88rem; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Engineering Intelligence Pilot Setup</h1>
+      <p>Use one of the options below to run the pilot locally. This page is the recommended run path for external users.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/Engineering%20Intelligence.lnk" download="Engineering Intelligence.lnk">Download Windows Launcher (.lnk)</a>
+        <a class="btn btn-ghost" href="https://github.com/asajjadi/engineering-intelligence/tree/rc2-public-case-validation" target="_blank" rel="noopener noreferrer">Open Source Repository</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Option A: Launch from shared package</h2>
+      <ol>
+        <li>Download and extract the shared pilot ZIP package.</li>
+        <li>Inside the extracted folder, run <code>EngineeringIntelligence.exe</code> (or your packaged launcher).</li>
+        <li>If Windows SmartScreen appears, click <code>More info</code> then <code>Run anyway</code> only if you trust the source.</li>
+      </ol>
+      <p class="note">If your team received only the launcher shortcut, make sure the target application folder from the ZIP package is in place first.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Option B: Run from source</h2>
+      <ol>
+        <li>Clone the repository branch <code>rc2-public-case-validation</code>.</li>
+        <li>Install dependencies with <code>pip install -r requirements.txt</code>.</li>
+        <li>Run with <code>python -m streamlit run mvp/app.py</code>.</li>
+        <li>Open <code>http://localhost:8501</code> in your browser.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <h2>Troubleshooting</h2>
+      <p>If the launcher does not open, your shortcut target is likely missing on that machine. Use Option B (source run) or request a fresh packaged ZIP with the executable included.</p>
+      <p><a href="engineering-intelligence.html">Back to Engineering Intelligence page</a></p>
+    </section>
+  </main>
+</body>
+</html>

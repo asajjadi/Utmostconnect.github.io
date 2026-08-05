@@ -1,0 +1,479 @@
+﻿<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Engineering Intelligence — Deterministic Readiness, Advisory AI</title>
+<!-- Source file for the live version at
+     https://claude.ai/code/artifact/bf1e7bce-eeae-449a-a8e7-9f234debc7c2
+     See docs/marketing/README.md. -->
+<style>
+  :root {
+    --canvas: #F5F6F3; --surface: #FFFFFF; --surface-raised: #FBFBF9;
+    --ink: #10212B; --ink-2: #263B47; --muted: #4D626D; --faint: #7C8A90;
+    --line: #CFD9DE; --line-soft: #E7ECEF;
+    --gov: #174A5B; --gov-hover: #1F6074; --gov-soft: #EEF6F7;
+    --navy: #122B35; --navy-text: #BCD0D6;
+    --ai: #5B4B8A; --ai-hover: #6C58A3; --ai-soft: #EFEBF9; --ai-line: #D9D0EF;
+    --success: #266047; --success-soft: #DDEFE5;
+    --warning: #8A6214; --warning-soft: #F6EBCB;
+    --critical: #9A3542; --critical-soft: #F6E1E4;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --shadow: 0 8px 24px rgba(16,33,43,.06);
+    --shadow-lg: 0 22px 52px rgba(16,33,43,.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --canvas: #0D1A21; --surface: #142832; --surface-raised: #17303B;
+      --ink: #EAF1F3; --ink-2: #CBD9DE; --muted: #93A8B0; --faint: #6E838B;
+      --line: #29434E; --line-soft: #1E3640;
+      --gov: #5BB4CE; --gov-hover: #78C5DC; --gov-soft: #16333D;
+      --navy: #09171D; --navy-text: #9FBAC2;
+      --ai: #B6A5E8; --ai-hover: #C7B9EE; --ai-soft: #241B3B; --ai-line: #3C2F5E;
+      --success: #6FCBA0; --success-soft: #163229;
+      --warning: #E4C065; --warning-soft: #3A2E10;
+      --critical: #F0929E; --critical-soft: #3C1A20;
+      --shadow: 0 8px 24px rgba(0,0,0,.3); --shadow-lg: 0 22px 56px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --canvas: #0D1A21; --surface: #142832; --surface-raised: #17303B;
+    --ink: #EAF1F3; --ink-2: #CBD9DE; --muted: #93A8B0; --faint: #6E838B;
+    --line: #29434E; --line-soft: #1E3640;
+    --gov: #5BB4CE; --gov-hover: #78C5DC; --gov-soft: #16333D;
+    --navy: #09171D; --navy-text: #9FBAC2;
+    --ai: #B6A5E8; --ai-hover: #C7B9EE; --ai-soft: #241B3B; --ai-line: #3C2F5E;
+    --success: #6FCBA0; --success-soft: #163229;
+    --warning: #E4C065; --warning-soft: #3A2E10;
+    --critical: #F0929E; --critical-soft: #3C1A20;
+    --shadow: 0 8px 24px rgba(0,0,0,.3); --shadow-lg: 0 22px 56px rgba(0,0,0,.45);
+  }
+  :root[data-theme="light"] {
+    --canvas: #F5F6F3; --surface: #FFFFFF; --surface-raised: #FBFBF9;
+    --ink: #10212B; --ink-2: #263B47; --muted: #4D626D; --faint: #7C8A90;
+    --line: #CFD9DE; --line-soft: #E7ECEF;
+    --gov: #174A5B; --gov-hover: #1F6074; --gov-soft: #EEF6F7;
+    --navy: #122B35; --navy-text: #BCD0D6;
+    --ai: #5B4B8A; --ai-hover: #6C58A3; --ai-soft: #EFEBF9; --ai-line: #D9D0EF;
+    --success: #266047; --success-soft: #DDEFE5;
+    --warning: #8A6214; --warning-soft: #F6EBCB;
+    --critical: #9A3542; --critical-soft: #F6E1E4;
+    --shadow: 0 8px 24px rgba(16,33,43,.06); --shadow-lg: 0 22px 52px rgba(16,33,43,.12);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--sans); line-height: 1.55; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--ai); outline-offset: 2px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; text-wrap: balance; margin: 0; }
+  code, .mono { font-family: var(--mono); }
+
+  /* ---------- Nav ---------- */
+  header.site-nav {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--canvas) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 0; }
+  .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; font-size: .98rem; letter-spacing: -.01em; }
+  .brand svg { width: 1.7rem; height: 1.7rem; flex: none; }
+  .nav-links { display: flex; gap: 1.6rem; font-size: .88rem; color: var(--muted); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    font-size: .82rem; font-weight: 650; padding: .5rem .95rem; border-radius: 999px;
+    background: var(--gov); color: #fff; white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--gov-hover); }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: radial-gradient(120% 160% at 20% -10%, #1B4553 0%, transparent 55%), linear-gradient(150deg, var(--navy) 0%, #0A181E 100%);
+    color: var(--navy-text);
+    padding: 4.5rem 0 3rem;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-family: var(--mono); font-size: .74rem; letter-spacing: .06em;
+    color: #9BC2CC; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+    border-radius: 999px; padding: .32rem .75rem; margin-bottom: 1.3rem;
+  }
+  .hero h1 {
+    color: #F4F8F7; font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.08; max-width: 20ch;
+  }
+  .hero h1 em { font-style: normal; color: var(--ai); }
+  .hero .lede { font-size: 1.14rem; color: #CBDEE2; max-width: 46rem; margin: 1.3rem 0 1.9rem; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 3rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .92rem; font-weight: 650; padding: .78rem 1.3rem; border-radius: 10px;
+    border: 1px solid transparent; transition: transform 120ms ease;
+  }
+  .btn-primary { background: #fff; color: #0F2A33; }
+  .btn-primary:hover { background: #E7F2F3; }
+  .btn-ghost { border-color: rgba(255,255,255,.28); color: #EAF3F5; }
+  .btn-ghost:hover { border-color: rgba(255,255,255,.55); }
+  @media (prefers-reduced-motion: no-preference) { .btn:hover { transform: translateY(-1px); } }
+
+  /* ---------- Chain diagram ---------- */
+  .chain-panel {
+    background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 18px; padding: 1.6rem clamp(1rem, 3vw, 2.2rem) 1.9rem;
+  }
+  .chain-label { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: #8FB3BC; margin-bottom: 1rem; }
+  .chain-row { display: flex; align-items: center; gap: .1rem; flex-wrap: wrap; row-gap: .9rem; }
+  .chain-node {
+    flex: 1 1 7.5rem; min-width: 6.5rem; text-align: center;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(91,208,232,.28);
+    border-radius: 10px; padding: .7rem .5rem; font-size: .82rem; font-weight: 650; color: #EAF6F8;
+  }
+  .chain-arrow { flex: none; width: 1.6rem; text-align: center; color: #5F8791; font-size: 1rem; }
+  .chain-advisory-link { display: flex; flex-direction: column; align-items: center; margin-top: 1.1rem; gap: .35rem; }
+  .chain-advisory-dash { width: 1px; height: 1.1rem; background: repeating-linear-gradient(to bottom, var(--ai) 0 4px, transparent 4px 8px); }
+  .chain-advisory-node {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: rgba(182,165,229,.14); border: 1px solid rgba(182,165,229,.4);
+    border-radius: 999px; padding: .45rem .9rem .45rem .6rem; font-size: .82rem; font-weight: 650; color: #E4DCF7;
+  }
+  .chain-advisory-node .dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--ai); flex: none; }
+  .chain-caption { font-size: .78rem; color: #8FA3AA; margin-top: .5rem; text-align: center; }
+  @media (max-width: 640px) { .chain-arrow { transform: rotate(90deg); } .chain-row { flex-direction: column; } .chain-node { width: 100%; } }
+
+  /* ---------- Sections ---------- */
+  section.block { padding: 4rem 0; }
+  section.block + section.block { border-top: 1px solid var(--line-soft); }
+  .eyebrow { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); font-weight: 700; margin: 0 0 .7rem; }
+  h2.title { font-size: clamp(1.6rem, 3vw, 2.15rem); color: var(--ink); margin-bottom: .8rem; }
+  p.dek { color: var(--muted); font-size: 1.04rem; max-width: 62ch; margin: 0 0 2.2rem; }
+
+  /* Problem */
+  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+  @media (max-width: 760px) { .problem-grid { grid-template-columns: 1fr; } }
+  .problem-card { border-radius: 14px; padding: 1.5rem 1.6rem; }
+  .problem-card.old { background: var(--surface-raised); border: 1px solid var(--line-soft); }
+  .problem-card.new { background: var(--gov-soft); border: 1px solid var(--line); }
+  .problem-card h3 { font-family: var(--sans); font-size: .82rem; text-transform: uppercase; letter-spacing: .07em; font-weight: 700; color: var(--faint); margin-bottom: .8rem; }
+  .problem-card.new h3 { color: var(--gov); }
+  .problem-card p { font-size: .96rem; line-height: 1.6; color: var(--ink-2); margin: 0 0 .8rem; }
+  .problem-card p:last-child { margin-bottom: 0; }
+
+  /* Two systems */
+  .system-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+  @media (max-width: 760px) { .system-grid { grid-template-columns: 1fr; } }
+  .system-card {
+    border-radius: 16px; padding: 1.8rem 1.9rem; border: 1px solid var(--line-soft);
+    background: var(--surface); box-shadow: var(--shadow);
+  }
+  .system-card.ai-card { border-color: var(--ai-line); }
+  .system-tag {
+    display: inline-flex; align-items: center; gap: .45rem; font-family: var(--mono); font-size: .74rem;
+    padding: .3rem .65rem; border-radius: 999px; margin-bottom: 1.1rem;
+  }
+  .system-card:not(.ai-card) .system-tag { background: var(--gov-soft); color: var(--gov); }
+  .system-card.ai-card .system-tag { background: var(--ai-soft); color: var(--ai); }
+  .system-card h3 { font-size: 1.28rem; margin-bottom: .6rem; color: var(--ink); }
+  .system-card p { color: var(--muted); font-size: .95rem; line-height: 1.6; margin: 0 0 1.1rem; }
+  .system-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .55rem; }
+  .system-list li { display: flex; gap: .55rem; align-items: baseline; font-size: .88rem; color: var(--ink-2); }
+  .system-list li::before { content: "—"; color: var(--faint); flex: none; }
+  .formula-strip {
+    margin-top: 1.3rem; font-family: var(--mono); font-size: .78rem; color: var(--muted);
+    background: var(--surface-raised); border: 1px solid var(--line-soft); border-radius: 8px;
+    padding: .65rem .8rem; overflow-x: auto; white-space: nowrap;
+  }
+
+  /* Proof grid */
+  .proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+  @media (max-width: 760px) { .proof-grid { grid-template-columns: 1fr; } }
+  .proof-card { border: 1px solid var(--line-soft); border-radius: 12px; padding: 1.3rem 1.4rem; background: var(--surface); }
+  .proof-card h4 { font-family: var(--sans); font-size: .98rem; font-weight: 700; color: var(--ink); margin: 0 0 .5rem; }
+  .proof-card p { font-size: .89rem; color: var(--muted); line-height: 1.55; margin: 0; }
+
+  /* Validation strip */
+  .case-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  @media (max-width: 760px) { .case-strip { grid-template-columns: 1fr; } }
+  .case-card {
+    border: 1px solid var(--line-soft); border-radius: 12px; padding: 1.2rem 1.3rem; background: var(--surface-raised);
+    border-top: 3px solid var(--case-accent, var(--gov));
+  }
+  .case-card .kind { font-family: var(--mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin-bottom: .4rem; }
+  .case-card h4 { font-family: var(--sans); font-size: 1rem; font-weight: 700; margin: 0 0 .35rem; color: var(--ink); }
+  .case-card p { font-size: .85rem; color: var(--muted); margin: 0; line-height: 1.5; }
+
+  /* Governance */
+  .adr-row { display: flex; flex-direction: column; gap: .9rem; }
+  .adr-item {
+    display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.1rem; align-items: start;
+    padding: 1rem 0; border-top: 1px solid var(--line-soft);
+  }
+  .adr-item:first-child { border-top: 0; }
+  .adr-item .id { font-family: var(--mono); font-size: .8rem; color: var(--gov); padding-top: .1rem; }
+  .adr-item h4 { font-size: .98rem; margin: 0 0 .3rem; color: var(--ink); }
+  .adr-item p { font-size: .89rem; color: var(--muted); margin: 0; line-height: 1.55; }
+
+  /* Stage callout */
+  .stage-callout {
+    display: flex; gap: 1rem; align-items: flex-start;
+    border: 1px solid var(--line); border-left: 3px solid var(--warning);
+    background: var(--warning-soft); border-radius: 10px; padding: 1.1rem 1.3rem;
+  }
+  .stage-callout .stage-badge {
+    flex: none; font-family: var(--mono); font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--warning); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: .3rem .65rem;
+    margin-top: .1rem;
+  }
+  .stage-callout p { margin: 0; font-size: .92rem; color: var(--ink-2); line-height: 1.6; }
+
+  /* Closing CTA */
+  .cta-band {
+    background: linear-gradient(135deg, var(--navy), #0A181E);
+    color: var(--navy-text); border-radius: 20px; padding: clamp(2rem, 4vw, 3.2rem);
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; align-items: center;
+  }
+  @media (max-width: 760px) { .cta-band { grid-template-columns: 1fr; } }
+  .cta-band h2 { color: #F4F8F7; font-size: clamp(1.5rem, 3vw, 2rem); }
+  .cta-band p { color: #C7DADF; font-size: .96rem; margin: .8rem 0 0; max-width: 34rem; }
+  .cta-paths { display: flex; flex-direction: column; gap: .9rem; }
+  .cta-path {
+    display: block; border: 1px solid rgba(255,255,255,.18); border-radius: 12px;
+    padding: 1.1rem 1.25rem; background: rgba(255,255,255,.04);
+  }
+  .cta-path:hover { background: rgba(255,255,255,.08); }
+  .cta-path strong { display: block; color: #fff; font-size: .98rem; margin-bottom: .3rem; }
+  .cta-path span { display: block; color: #AFC6CD; font-size: .84rem; }
+
+  footer.site-footer { padding: 2.4rem 0 3.5rem; }
+  .footer-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-brand { font-weight: 700; font-size: .92rem; color: var(--ink); }
+  .footer-disclaimer { max-width: 34rem; font-size: .8rem; color: var(--faint); line-height: 1.55; }
+
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap nav-row">
+    <div class="brand">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="3" y="3" width="34" height="34" rx="9" fill="none" stroke="currentColor" stroke-width="2.4" style="color:var(--gov)"/>
+        <circle cx="10" cy="10" r="2.1" fill="var(--gov)"/><circle cx="30" cy="10" r="2.1" fill="var(--gov)"/>
+        <circle cx="10" cy="30" r="2.1" fill="var(--gov)"/><circle cx="30" cy="30" r="2.1" fill="var(--gov)"/>
+        <rect x="16.5" y="16.5" width="7" height="7" rx="1.5" transform="rotate(45 20 20)" fill="var(--ai)"/>
+      </svg>
+      Engineering Intelligence
+    </div>
+    <nav class="nav-links">
+      <a href="#approach">Approach</a>
+      <a href="#validation">Validation</a>
+      <a href="#governance">Governance</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Request a pilot</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="hero-eyebrow">● engineering decision intelligence</span>
+    <h1>A readiness score that can't be <em>talked into</em> anything.</h1>
+    <p class="lede">Engineering Intelligence computes design readiness deterministically from your own evidence — then layers a strictly advisory, cited, local-only AI assistant on top that is architecturally incapable of changing the answer.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#contact">Request a pilot</a>
+      <a class="btn btn-ghost" href="#approach">See how it's separated →</a>
+    </div>
+
+    <div class="chain-panel">
+      <div class="chain-label">The governed decision chain — every readiness score, traced</div>
+      <div class="chain-row">
+        <div class="chain-node">Evidence</div><span class="chain-arrow">→</span>
+        <div class="chain-node">Coverage</div><span class="chain-arrow">→</span>
+        <div class="chain-node">Consistency</div><span class="chain-arrow">→</span>
+        <div class="chain-node">Validation</div><span class="chain-arrow">→</span>
+        <div class="chain-node">Confidence</div><span class="chain-arrow">→</span>
+        <div class="chain-node">Readiness</div>
+      </div>
+      <div class="chain-advisory-link">
+        <div class="chain-advisory-dash" aria-hidden="true"></div>
+        <div class="chain-advisory-node"><span class="dot"></span>AI Advisory Review</div>
+        <div class="chain-caption">reads the same evidence · cites every claim · never writes back into the chain above</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="problem">
+  <div class="wrap">
+    <p class="eyebrow">The problem</p>
+    <h2 class="title">Every design review asks one question. Answering it is still manual.</h2>
+    <p class="dek">"Is the evidence complete, consistent, and sufficient enough for a human to make an accountable decision?" Every regulated engineering team answers this by hand today — and every vendor is now racing to bolt an LLM onto that answer, which is precisely the wrong place to introduce uncertainty.</p>
+    <div class="problem-grid">
+      <div class="problem-card old">
+        <h3>What "AI-assisted" usually means</h3>
+        <p>A model summarizes your evidence, drafts a recommendation, maybe adjusts a risk score — and if it's wrong, there's no clean way to know which parts came from your data and which came from the model filling in gaps.</p>
+        <p>In a regulated design review, that's not a productivity feature. It's an audit finding waiting to happen.</p>
+      </div>
+      <div class="problem-card new">
+        <h3>What this platform does instead</h3>
+        <p>The readiness score is a fixed formula over your own structured evidence — full stop. AI is a separate, clearly-labeled advisory layer that can summarize and cite, but is technically unable to move the number.</p>
+        <p>You can show an auditor exactly where every input came from, and exactly where the model's opinion started and stopped.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="approach">
+  <div class="wrap">
+    <p class="eyebrow">The approach</p>
+    <h2 class="title">Two systems, deliberately kept apart</h2>
+    <p class="dek">Most tools blur "the score" and "what the AI thinks" into one confident-sounding output. This platform draws a hard line between them, and the line is enforced in code, not just in the UI copy.</p>
+    <div class="system-grid">
+      <div class="system-card">
+        <span class="system-tag">deterministic core</span>
+        <h3>The readiness engine</h3>
+        <p>Every score is computed from structured, human-entered evidence through a published, fixed pipeline. No model in the loop. The same inputs always produce the same result.</p>
+        <ul class="system-list">
+          <li>Evidence coverage against fixed regulatory categories</li>
+          <li>Structural consistency checks across findings and citations</li>
+          <li>Human-assigned confidence, not a model's confidence</li>
+          <li>A single documented formula for the final index</li>
+        </ul>
+        <div class="formula-strip">ECI = average(Coverage, Consistency, Validation, Confidence)</div>
+      </div>
+      <div class="system-card ai-card">
+        <span class="system-tag">advisory layer</span>
+        <h3>The AI review</h3>
+        <p>One locally-hosted model, never a cloud call, producing schema-constrained output that must cite the evidence it's drawing from — or say plainly that it couldn't.</p>
+        <ul class="system-list">
+          <li>Every claim traced to a cited evidence ID</li>
+          <li>Provenance-hashed, so the exact request is reproducible</li>
+          <li>Provider failure falls back to a deterministic template — never a guess</li>
+          <li>Fixed "advisory only" label on every output, everywhere it appears</li>
+        </ul>
+        <div class="formula-strip">human_review_required: Literal[True]  — enforced, not suggested</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">Why this is credible</p>
+    <h2 class="title">Built like a regulated tool, not a demo</h2>
+    <p class="dek">Four things that hold up under a skeptical technical read, not just a sales conversation.</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <h4>Real regulatory grounding</h4>
+        <p>IEC 62304, ISO 14971, IEC 60601, 21 CFR Part 803, and FDA design-control guidance are modeled as first-class reference data, not marketing copy.</p>
+      </div>
+      <div class="proof-card">
+        <h4>Local-first by architecture</h4>
+        <p>No external API dependency in the core workflow. The one AI integration point validates at startup that its endpoint is local-only — enforced, not promised.</p>
+      </div>
+      <div class="proof-card">
+        <h4>Validated on real cases</h4>
+        <p>Runs against actual public FDA recall cases alongside a synthetic composite, producing stable, explainable readiness scores across every one.</p>
+      </div>
+      <div class="proof-card">
+        <h4>Process discipline as a product feature</h4>
+        <p>Architecture decision records, a release-review checklist, and versioned release manifests — the kind of trail a compliance-minded buyer checks before the UI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="validation">
+  <div class="wrap">
+    <p class="eyebrow">Validation</p>
+    <h2 class="title">Tested against real regulatory history, not just synthetic data</h2>
+    <p class="dek">Three case types, same deterministic pipeline, explainable results in every one.</p>
+    <div class="case-strip">
+      <div class="case-card" style="--case-accent:var(--critical)">
+        <div class="kind">Public FDA recall case</div>
+        <h4>Tandem Mobi</h4>
+        <p>A real, publicly documented device recall used to stress-test coverage and consistency scoring against actual regulatory evidence.</p>
+      </div>
+      <div class="case-card" style="--case-accent:var(--critical)">
+        <div class="kind">Public FDA recall case</div>
+        <h4>Abiomed Impella CP</h4>
+        <p>A second independent public case, confirming the scoring pipeline generalizes rather than being tuned to one dataset.</p>
+      </div>
+      <div class="case-card" style="--case-accent:var(--gov)">
+        <div class="kind">Synthetic composite</div>
+        <h4>NovaPump</h4>
+        <p>A controlled fixture case used as the platform's regression anchor — same formulas, fully reproducible, used in every automated test.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="governance">
+  <div class="wrap">
+    <p class="eyebrow">Governance</p>
+    <h2 class="title">The rules aren't a policy page — they're architecture decisions</h2>
+    <p class="dek">Two decisions, on the record, that any technical evaluator can go read.</p>
+    <div class="adr-row">
+      <div class="adr-item">
+        <div class="id">ADR-002</div>
+        <div>
+          <h4>AI is advisory</h4>
+          <p>AI output must be structured, cited, limited, and visibly distinct from governed facts. It cannot create evidence, alter results, approve records, or declare compliance.</p>
+        </div>
+      </div>
+      <div class="adr-item">
+        <div class="id">ADR-009</div>
+        <div>
+          <h4>Local AI gateway</h4>
+          <p>Provider-independent, schema-constrained, local-only by validated configuration. Provider failures reject execution — they never silently fall back to a guess.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">Where it stands today</p>
+    <h2 class="title">Stated plainly, not oversold</h2>
+    <div class="stage-callout">
+      <span class="stage-badge">Pre-revenue · MVP</span>
+      <p>This is a single-user, local-only platform today — no authentication, no multi-tenant deployment yet, and it has been validated on public case data but not yet piloted inside a live design team. The durable audit-ledger and multi-specialist AI review layers already exist as designed interfaces, deliberately held back from the live product until the current single-specialist experiment is reviewed and accepted. That sequencing is a considered roadmap, not a missing feature. The raise stays deliberately lean: the AI runs locally, so there's no metered inference cost to fund — the ask covers design-team pilots, not a full go-to-market build-out.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h2>Bring one real design review.</h2>
+        <p>Run it against your own evidence and compare the output to what your review board would have concluded independently — or talk through where this fits as an investment or partnership.</p>
+      </div>
+      <div class="cta-paths">
+        <a class="cta-path" href="pilot-setup.html">
+          <strong>Open pilot setup guide →</strong>
+          <span>Choose the shared ZIP path or source-run path with step-by-step instructions</span>
+        </a>
+        <a class="cta-path" href="mailto:amir.yousef.sajjadi@gmail.com?subject=Engineering%20Intelligence%20—%20Investor%20/%20partner%20inquiry">
+          <strong>Investor &amp; partner inquiry →</strong>
+          <span>Raising pre-seed funding — or talk distribution, integration</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div class="footer-brand">Engineering Intelligence</div>
+    <p class="footer-disclaimer">This platform supports engineering judgment — it does not independently determine product safety, regulatory compliance, root cause, or corrective-action effectiveness, and does not itself constitute engineering approval.</p>
+  </div>
+</footer>
+
+</body>
+</html>
+
