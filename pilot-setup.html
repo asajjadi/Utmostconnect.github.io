@@ -60,21 +60,22 @@
       <h1>Engineering Intelligence Reviewer Build Access</h1>
       <p>Use this page to download and run the approved reviewer build package. This distribution path is intended for authorized external evaluators.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="https://github.com/asajjadi/engineering-intelligence/releases/download/reviewer-build-20260804/EngineeringIntelligence.exe" target="_blank" rel="noopener noreferrer">Download Windows App (.exe)</a>
-        <a class="btn btn-ghost" href="https://github.com/asajjadi/engineering-intelligence/releases/download/reviewer-build-20260804/EngineeringIntelligence-ReviewerBuild.zip" target="_blank" rel="noopener noreferrer">Download Reviewer Build ZIP</a>
+        <a class="btn btn-primary" href="https://github.com/asajjadi/engineering-intelligence/releases/download/reviewer-build-20260804/EngineeringIntelligence-ReviewerBuild.zip" target="_blank" rel="noopener noreferrer">Download Reviewer Build ZIP</a>
+        <a class="btn btn-ghost" href="/EngineeringIntelligence-Launcher.bat" download="EngineeringIntelligence-Launcher.bat">Download Windows Launcher (.bat)</a>
         <a class="btn btn-ghost" href="https://github.com/asajjadi/engineering-intelligence/releases/download/reviewer-build-20260804/EngineeringIntelligence-ReviewerBuild-AmirSajjadi.zip" target="_blank" rel="noopener noreferrer">Download Reviewer Build ZIP (AmirSajjadi)</a>
       </div>
-      <p class="hero-note">Windows users can run the downloaded <code>.exe</code> directly. ZIP downloads are provided as package backups.</p>
+      <p class="hero-note">Extract the ZIP first, then run <code>EngineeringIntelligence.exe</code> from the extracted folder so the required <code>_internal</code> runtime files are available.</p>
     </section>
 
     <section class="panel">
       <h2>Launch from shared package</h2>
       <ol>
-        <li>Download and run <code>EngineeringIntelligence.exe</code> directly.</li>
-        <li>If you prefer package delivery, download and extract one of the reviewer ZIP files, then run <code>EngineeringIntelligence.exe</code> inside the extracted folder.</li>
+        <li>Download and extract one of the reviewer ZIP files.</li>
+        <li>Open the extracted folder and run <code>EngineeringIntelligence.exe</code>.</li>
+        <li>Optional: place <code>EngineeringIntelligence-Launcher.bat</code> in the extracted folder and run it.</li>
         <li>If Windows SmartScreen appears, click <code>More info</code> then <code>Run anyway</code> only if you trust the source.</li>
       </ol>
-      <p class="note">The direct <code>.exe</code> is the recommended Windows path for fastest startup.</p>
+      <p class="note">Do not run a copied standalone <code>.exe</code> outside the extracted package folder.</p>
     </section>
 
     <section class="panel panel-proprietary">
@@ -85,9 +86,9 @@
 
     <section class="panel">
       <h2>Troubleshooting</h2>
-      <p>If the downloaded app does not open, use one of the reviewer ZIP packages, extract locally, and run <code>EngineeringIntelligence.exe</code> from the extracted folder.</p>
+      <p>If you see a <code>python313.dll</code> or <code>_internal</code> error, the executable is being run without its bundled runtime folder. Re-extract the ZIP and run from inside that extracted folder.</p>
       <p>If your browser shows a temporary extension such as <code>.download</code> while transferring, wait until the download completes and confirms a final <code>.zip</code> filename.</p>
-      <p>Windows check: right-click the downloaded <code>.exe</code> file, select <code>Properties</code>, and if blocked, click <code>Unblock</code> before launching.</p>
+      <p>Windows check: right-click <code>EngineeringIntelligence.exe</code>, select <code>Properties</code>, and if blocked, click <code>Unblock</code> before launching.</p>
       <p><a href="engineering-intelligence.html">Back to Engineering Intelligence page</a></p>
     </section>
   </main>
