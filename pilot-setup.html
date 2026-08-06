@@ -60,7 +60,7 @@
       <h1>Engineering Intelligence Reviewer Build Access</h1>
       <p>Use this page to download and run the approved reviewer build package. This distribution path is intended for authorized external evaluators.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="https://github.com/asajjadi/Utmostconnect.github.io/releases/download/ei-reviewer-build-20260804/EngineeringIntelligence-ReviewerBuild.zip">Download Reviewer Build ZIP (~108MB)</a>
+        <a class="btn btn-primary" href="https://github.com/asajjadi/Utmostconnect.github.io/releases/download/ei-reviewer-build-20260806/EngineeringIntelligence-ReviewerBuild.zip">Download Reviewer Build ZIP (~108MB)</a>
       </div>
       <p class="hero-note">Extract the ZIP first, then run <code>EngineeringIntelligence.exe</code> from the extracted folder so the required <code>_internal</code> runtime files are available.</p>
       <p class="hero-note">It's a large file (~108MB) — the download starts in this tab, so watch your browser's download bar/tray rather than waiting for a new tab to appear.</p>
@@ -69,7 +69,6 @@
     <section class="panel">
       <h2>Launch from shared package</h2>
       <ol>
-        <li><strong>Before extracting</strong>, right-click the downloaded ZIP → <code>Properties</code> → check <code>Unblock</code> → <code>OK</code>. Windows marks browser downloads as "from the internet," and if you skip this the app can crash on launch (see Troubleshooting below).</li>
         <li>Extract the reviewer ZIP file.</li>
         <li>Open the extracted folder and run <code>EngineeringIntelligence.exe</code>.</li>
         <li>If Windows SmartScreen appears, click <code>More info</code> then <code>Run anyway</code> only if you trust the source.</li>
@@ -87,8 +86,7 @@
       <h2>Troubleshooting</h2>
       <p>If you see a <code>python313.dll</code> or <code>_internal</code> error, the executable is being run without its bundled runtime folder. Re-extract the ZIP and run from inside that extracted folder.</p>
       <p>If your browser shows a temporary extension such as <code>.download</code> while transferring, wait until the download completes and confirms a final <code>.zip</code> filename.</p>
-      <p><strong>"Unhandled exception... Failed to resolve Python.Runtime.Loader.Initialize"</strong> or any error mentioning <code>pythonnet</code> / <code>Python.Runtime.dll</code>: this means the ZIP was extracted before being unblocked, so Windows is still treating files deep inside <code>_internal\</code> as downloaded from the internet and refusing to load them. Unblocking just <code>EngineeringIntelligence.exe</code> does <strong>not</strong> fix this — delete the extracted folder, right-click the original <code>.zip</code> → <code>Properties</code> → <code>Unblock</code> → <code>OK</code>, then extract again.</p>
-      <p>Windows check: right-click <code>EngineeringIntelligence.exe</code>, select <code>Properties</code>, and if blocked, click <code>Unblock</code> before launching.</p>
+      <p>Builds from 2026-08-06 onward fix the <strong>"Unhandled exception... Failed to resolve Python.Runtime.Loader.Initialize"</strong> crash automatically — the app now strips Windows' "downloaded from the internet" flag from its own files on launch, so no manual unblock step is needed. If you're still seeing this error, you're likely running an older extracted copy; delete it and re-download from the link above.</p>
       <p><a href="engineering-intelligence.html">Back to Engineering Intelligence page</a></p>
     </section>
   </main>
