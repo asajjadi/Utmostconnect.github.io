@@ -1,0 +1,135 @@
+---
+---
+<!doctype html>
+<html lang="en"{% if page.theme %} data-theme="{{ page.theme }}"{% endif %}>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title | default: site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://utmostconnect.org{{ page.url }}">
+{% if page.og_image %}<meta property="og:image" content="https://utmostconnect.org{{ page.og_image }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     Shared foundation -- same token vocabulary and values used on
+     the Engineering Intelligence pages (engineering-intelligence.html,
+     Investor_Deck/), so the whole domain shares one neutral palette
+     and type system. --accent is Utmost Connect's own (the EI
+     teal/violet pair means something specific there -- deterministic
+     core vs. advisory AI -- and isn't reused here as decoration).
+     Edit tokens/nav/footer ONLY here; every page picks them up. ==== */
+  :root {
+    --canvas: #F5F6F3; --surface: #FFFFFF; --surface-raised: #FBFBF9;
+    --ink: #10212B; --ink-2: #263B47; --muted: #4D626D; --faint: #7C8A90;
+    --line: #CFD9DE; --line-soft: #E7ECEF;
+    --navy: #122B35; --navy-text: #BCD0D6;
+    --accent: #B5651D; --accent-hover: #9C5217; --accent-soft: #FBF0E6; --accent-line: #E8D2BC;
+    --success: #266047; --success-soft: #DDEFE5;
+    --tint-a: rgba(91,75,138,.12); --tint-a-ink: #5B4B8A;
+    --tint-b: rgba(23,74,91,.12); --tint-b-ink: #174A5B;
+    --tint-c: rgba(38,96,71,.12); --tint-c-ink: #266047;
+    --tint-d: rgba(181,101,29,.14); --tint-d-ink: #B5651D;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --shadow: 0 8px 24px rgba(16,33,43,.06);
+    --shadow-lg: 0 22px 52px rgba(16,33,43,.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --canvas: #0D1A21; --surface: #142832; --surface-raised: #17303B;
+      --ink: #EAF1F3; --ink-2: #CBD9DE; --muted: #93A8B0; --faint: #6E838B;
+      --line: #29434E; --line-soft: #1E3640;
+      --navy: #09171D; --navy-text: #9FBAC2;
+      --accent: #E0954B; --accent-hover: #ECA968; --accent-soft: #3A2A18; --accent-line: #4A3520;
+      --success: #6FCBA0; --success-soft: #163229;
+      --shadow: 0 8px 24px rgba(0,0,0,.3); --shadow-lg: 0 22px 56px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --canvas: #0D1A21; --surface: #142832; --surface-raised: #17303B;
+    --ink: #EAF1F3; --ink-2: #CBD9DE; --muted: #93A8B0; --faint: #6E838B;
+    --line: #29434E; --line-soft: #1E3640;
+    --navy: #09171D; --navy-text: #9FBAC2;
+    --accent: #E0954B; --accent-hover: #ECA968; --accent-soft: #3A2A18; --accent-line: #4A3520;
+    --success: #6FCBA0; --success-soft: #163229;
+    --shadow: 0 8px 24px rgba(0,0,0,.3); --shadow-lg: 0 22px 56px rgba(0,0,0,.45);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; text-wrap: balance; margin: 0; }
+  code, .mono { font-family: var(--mono); }
+  .section { max-width: 1200px; margin: 0 auto; padding: 5rem 3rem; }
+  .section-bg { background: var(--surface-raised); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  .eyebrow { font-family: var(--mono); font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  h2 { font-size: clamp(1.55rem, 2.6vw, 2.15rem); letter-spacing: -.01em; margin-top: .5rem; line-height: 1.2; color: var(--ink); }
+  .section-desc { margin-top: .75rem; color: var(--muted); line-height: 1.7; max-width: 58ch; font-size: 1rem; }
+  @media (max-width: 768px) { .section, .section-bg .section { padding: 3rem 1.25rem; } }
+
+  /* ---------- Shared nav chrome ---------- */
+  header.site-nav { position: sticky; top: 0; z-index: 100; background: color-mix(in srgb, var(--canvas) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-soft); }
+  .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 3rem; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .brand-name { font-family: var(--sans); font-size: 1.02rem; font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
+  .brand-tagline { font-family: var(--mono); font-size: .68rem; color: var(--faint); margin-top: 1px; letter-spacing: .01em; }
+  nav.nav-links { display: flex; align-items: center; gap: 2rem; }
+  nav.nav-links a:not(.nav-cta) { font-size: .88rem; color: var(--muted); transition: color .15s; }
+  nav.nav-links a:not(.nav-cta):hover { color: var(--ink); }
+  .nav-cta { font-size: .82rem; font-weight: 650; padding: .5rem 1rem; border-radius: 999px; background: var(--accent); color: #fff !important; white-space: nowrap; transition: background .15s; }
+  .nav-cta:hover { background: var(--accent-hover); }
+  .menu-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: 8px; }
+  .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--ink-2); border-radius: 2px; transition: transform .25s, opacity .25s; }
+  .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2) { opacity: 0; }
+  .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-nav { display: none; position: fixed; inset: 68px 0 0 0; background: color-mix(in srgb, var(--canvas) 97%, transparent); backdrop-filter: blur(16px); z-index: 99; flex-direction: column; padding: 1.5rem; border-top: 1px solid var(--line-soft); }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-size: 1.1rem; font-weight: 500; color: var(--ink-2); padding: 1rem 0; border-bottom: 1px solid var(--line-soft); }
+  .mobile-nav a:last-child { border-bottom: none; }
+  .mobile-nav .nav-cta { margin-top: 1rem; text-align: center; padding: .9rem; font-size: 1rem; }
+  @media (max-width: 768px) { .menu-toggle { display: flex; } nav.nav-links { display: none; } }
+
+  /* ---------- Shared footer chrome ---------- */
+  footer.site-footer { border-top: 1px solid var(--line-soft); padding: 2rem 1.5rem; text-align: center; font-size: .8rem; color: var(--faint); }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+{% include nav.html %}
+
+{{ content }}
+
+{% include footer.html %}
+
+<script>
+  function setPageScrollLock(isLocked) { document.body.style.overflow = isLocked ? 'hidden' : ''; }
+  const toggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  if (toggle && mobileNav) {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+      setPageScrollLock(mobileNav.classList.contains('open'));
+    });
+  }
+  function closeMobileNav() {
+    if (!toggle || !mobileNav) return;
+    toggle.classList.remove('open');
+    mobileNav.classList.remove('open');
+    setPageScrollLock(false);
+  }
+</script>
+</body>
+</html>

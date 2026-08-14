@@ -4,3 +4,8 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# local Jekyll build output / local preview render
+_site/
+_preview/
+__pycache__/
