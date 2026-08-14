@@ -18,19 +18,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* ============================================================
-     Shared foundation -- same token vocabulary and values used on
-     the Engineering Intelligence pages (engineering-intelligence.html,
-     Investor_Deck/), so the whole domain shares one neutral palette
-     and type system. --accent is Utmost Connect's own (the EI
-     teal/violet pair means something specific there -- deterministic
-     core vs. advisory AI -- and isn't reused here as decoration).
+     Shared foundation -- same token vocabulary, values, AND accent
+     (the Engineering Intelligence teal) used on the EI pages and
+     Investor_Deck/, so the whole domain -- company and product pages
+     alike -- reads as one consistent color scheme. EI's second accent
+     (--ai, violet) stays scoped to EI's own pages, since that one
+     carries real product meaning (deterministic core vs. advisory AI)
+     rather than being decorative.
      Edit tokens/nav/footer ONLY here; every page picks them up. ==== */
   :root {
     --canvas: #F5F6F3; --surface: #FFFFFF; --surface-raised: #FBFBF9;
     --ink: #10212B; --ink-2: #263B47; --muted: #4D626D; --faint: #7C8A90;
     --line: #CFD9DE; --line-soft: #E7ECEF;
     --navy: #122B35; --navy-text: #BCD0D6;
-    --accent: #B5651D; --accent-hover: #9C5217; --accent-soft: #FBF0E6; --accent-line: #E8D2BC;
+    --accent: #174A5B; --accent-hover: #1F6074; --accent-soft: #EEF6F7; --accent-line: #CFE3E8;
     --success: #266047; --success-soft: #DDEFE5;
     --tint-a: rgba(91,75,138,.12); --tint-a-ink: #5B4B8A;
     --tint-b: rgba(23,74,91,.12); --tint-b-ink: #174A5B;
@@ -48,7 +49,7 @@
       --ink: #EAF1F3; --ink-2: #CBD9DE; --muted: #93A8B0; --faint: #6E838B;
       --line: #29434E; --line-soft: #1E3640;
       --navy: #09171D; --navy-text: #9FBAC2;
-      --accent: #E0954B; --accent-hover: #ECA968; --accent-soft: #3A2A18; --accent-line: #4A3520;
+      --accent: #5BB4CE; --accent-hover: #78C5DC; --accent-soft: #16333D; --accent-line: #234450;
       --success: #6FCBA0; --success-soft: #163229;
       --shadow: 0 8px 24px rgba(0,0,0,.3); --shadow-lg: 0 22px 56px rgba(0,0,0,.45);
     }
@@ -79,10 +80,11 @@
 
   /* ---------- Shared nav chrome ---------- */
   header.site-nav { position: sticky; top: 0; z-index: 100; background: color-mix(in srgb, var(--canvas) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-soft); }
-  .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 3rem; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 3rem; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .brand { min-width: 0; }
   .brand-name { font-family: var(--sans); font-size: 1.02rem; font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
-  .brand-tagline { font-family: var(--mono); font-size: .68rem; color: var(--faint); margin-top: 1px; letter-spacing: .01em; }
-  nav.nav-links { display: flex; align-items: center; gap: 2rem; }
+  .brand-tagline { font-family: var(--mono); font-size: .68rem; color: var(--faint); margin-top: 1px; letter-spacing: .01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  nav.nav-links { display: flex; align-items: center; gap: 2rem; flex: none; }
   nav.nav-links a:not(.nav-cta) { font-size: .88rem; color: var(--muted); transition: color .15s; }
   nav.nav-links a:not(.nav-cta):hover { color: var(--ink); }
   .nav-cta { font-size: .82rem; font-weight: 650; padding: .5rem 1rem; border-radius: 999px; background: var(--accent); color: #fff !important; white-space: nowrap; transition: background .15s; }
@@ -97,7 +99,12 @@
   .mobile-nav a { font-size: 1.1rem; font-weight: 500; color: var(--ink-2); padding: 1rem 0; border-bottom: 1px solid var(--line-soft); }
   .mobile-nav a:last-child { border-bottom: none; }
   .mobile-nav .nav-cta { margin-top: 1rem; text-align: center; padding: .9rem; font-size: 1rem; }
-  @media (max-width: 768px) { .menu-toggle { display: flex; } nav.nav-links { display: none; } }
+  @media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    nav.nav-links { display: none; }
+    .nav-inner { padding: 0 1.25rem; }
+  }
+  @media (max-width: 480px) { .brand-tagline { display: none; } }
 
   /* ---------- Shared footer chrome ---------- */
   footer.site-footer { border-top: 1px solid var(--line-soft); padding: 2rem 1.5rem; text-align: center; font-size: .8rem; color: var(--faint); }
