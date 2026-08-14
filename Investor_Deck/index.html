@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Investor Overview | Engineering Intelligence</title>
+<meta name="description" content="Investor overview for Engineering Intelligence: a deterministic readiness engine for regulated engineering, with AI that stays strictly advisory.">
+<!-- Mirrored from docs/marketing/Investor_Deck.html in the engineering-intelligence
+     repo (source of record) -- re-copy here after editing that file. Also live at
+     https://claude.ai/code/artifact/a8ede70d-5ebb-4db4-a729-be8b8dc16695
+     See docs/marketing/README.md, docs/marketing/Market_Research.md, and
+     docs/marketing/Citations.md (claim-by-claim sourcing with exact quotes
+     for every external fact in slides 09/10/11/15, summarized on the new
+     slide 16 appendix). Pricing and the funding ask are comp-grounded
+     proposals, explicitly flagged as such -- not verified against Amir's
+     own actual runway/cost needs. Includes an @media print block
+     (page-per-slide, 16:9) so this file itself is the source for
+     Investor_Deck.pdf -- see README. -->
+<style>
+  :root {
+    --canvas: #F5F6F3; --surface: #FFFFFF; --surface-raised: #FBFBF9;
+    --ink: #10212B; --ink-2: #263B47; --muted: #4D626D; --faint: #7C8A90;
+    --line: #CFD9DE; --line-soft: #E7ECEF;
+    --gov: #174A5B; --gov-hover: #1F6074; --gov-soft: #EEF6F7;
+    --navy: #122B35; --navy-text: #BCD0D6;
+    --ai: #5B4B8A; --ai-hover: #6C58A3; --ai-soft: #EFEBF9; --ai-line: #D9D0EF;
+    --success: #266047; --success-soft: #DDEFE5;
+    --warning: #8A6214; --warning-soft: #F6EBCB;
+    --critical: #9A3542; --critical-soft: #F6E1E4;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --shadow: 0 8px 24px rgba(16,33,43,.06);
+    --shadow-lg: 0 22px 52px rgba(16,33,43,.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --canvas: #0D1A21; --surface: #142832; --surface-raised: #17303B;
+      --ink: #EAF1F3; --ink-2: #CBD9DE; --muted: #93A8B0; --faint: #6E838B;
+      --line: #29434E; --line-soft: #1E3640;
+      --gov: #5BB4CE; --gov-hover: #78C5DC; --gov-soft: #16333D;
+      --navy: #09171D; --navy-text: #9FBAC2;
+      --ai: #B6A5E8; --ai-hover: #C7B9EE; --ai-soft: #241B3B; --ai-line: #3C2F5E;
+      --success: #6FCBA0; --success-soft: #163229;
+      --warning: #E4C065; --warning-soft: #3A2E10;
+      --critical: #F0929E; --critical-soft: #3C1A20;
+      --shadow: 0 8px 24px rgba(0,0,0,.3); --shadow-lg: 0 22px 56px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --canvas: #0D1A21; --surface: #142832; --surface-raised: #17303B;
+    --ink: #EAF1F3; --ink-2: #CBD9DE; --muted: #93A8B0; --faint: #6E838B;
+    --line: #29434E; --line-soft: #1E3640;
+    --gov: #5BB4CE; --gov-hover: #78C5DC; --gov-soft: #16333D;
+    --navy: #09171D; --navy-text: #9FBAC2;
+    --ai: #B6A5E8; --ai-hover: #C7B9EE; --ai-soft: #241B3B; --ai-line: #3C2F5E;
+    --success: #6FCBA0; --success-soft: #163229;
+    --warning: #E4C065; --warning-soft: #3A2E10;
+    --critical: #F0929E; --critical-soft: #3C1A20;
+    --shadow: 0 8px 24px rgba(0,0,0,.3); --shadow-lg: 0 22px 56px rgba(0,0,0,.45);
+  }
+  :root[data-theme="light"] {
+    --canvas: #F5F6F3; --surface: #FFFFFF; --surface-raised: #FBFBF9;
+    --ink: #10212B; --ink-2: #263B47; --muted: #4D626D; --faint: #7C8A90;
+    --line: #CFD9DE; --line-soft: #E7ECEF;
+    --gov: #174A5B; --gov-hover: #1F6074; --gov-soft: #EEF6F7;
+    --navy: #122B35; --navy-text: #BCD0D6;
+    --ai: #5B4B8A; --ai-hover: #6C58A3; --ai-soft: #EFEBF9; --ai-line: #D9D0EF;
+    --success: #266047; --success-soft: #DDEFE5;
+    --warning: #8A6214; --warning-soft: #F6EBCB;
+    --critical: #9A3542; --critical-soft: #F6E1E4;
+    --shadow: 0 8px 24px rgba(16,33,43,.06); --shadow-lg: 0 22px 52px rgba(16,33,43,.12);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-snap-type: y proximity; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--canvas); color: var(--ink); font-family: var(--sans); line-height: 1.5; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--ai); outline-offset: 2px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; text-wrap: balance; margin: 0; }
+  code, .mono { font-family: var(--mono); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; scroll-snap-type: none; } }
+
+  /* ---------- Chrome: progress + brand, fixed across slides ---------- */
+  .deck-chrome {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.4rem; pointer-events: none; font-family: var(--mono); font-size: .74rem;
+  }
+  .deck-chrome .brand { display: flex; align-items: center; gap: .5rem; color: var(--faint); pointer-events: auto; }
+  .deck-chrome .brand svg { width: 1.15rem; height: 1.15rem; }
+  .deck-progress { color: var(--faint); background: color-mix(in srgb, var(--surface) 80%, transparent); backdrop-filter: blur(6px); padding: .3rem .65rem; border-radius: 999px; border: 1px solid var(--line-soft); }
+
+  /* ---------- Slide scaffolding ---------- */
+  .slide {
+    min-height: 100dvh; scroll-snap-align: start; scroll-snap-stop: always;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem clamp(1.4rem, 5vw, 5rem);
+    position: relative; border-bottom: 1px solid var(--line-soft);
+  }
+  .slide-inner { max-width: 920px; margin: 0 auto; width: 100%; }
+  .slide-eyebrow { font-family: var(--mono); font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); margin-bottom: 1rem; }
+  .slide h2 { font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.12; margin-bottom: 1.1rem; color: var(--ink); }
+  .slide .lede { font-size: 1.08rem; color: var(--muted); max-width: 58ch; line-height: 1.6; }
+  .slide-num { position: absolute; bottom: 1.4rem; right: 1.6rem; font-family: var(--mono); font-size: .72rem; color: var(--faint); }
+  .next-hint { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: .7rem; color: var(--faint); display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+
+  /* Title slide */
+  .slide.title-slide {
+    background: radial-gradient(120% 160% at 20% -10%, #1B4553 0%, transparent 55%), linear-gradient(150deg, var(--navy) 0%, #0A181E 100%);
+    color: var(--navy-text); align-items: center; text-align: center;
+  }
+  .title-slide .mark { width: 3.2rem; height: 3.2rem; margin: 0 auto 1.6rem; }
+  .title-slide h1 { color: #F4F8F7; font-size: clamp(2.3rem, 6vw, 3.8rem); line-height: 1.06; }
+  .title-slide .tag { color: #CBDEE2; font-size: 1.1rem; max-width: 40ch; margin: 1.2rem auto 0; }
+  .title-slide .meta { margin-top: 2.8rem; font-family: var(--mono); font-size: .78rem; color: #8FB3BC; }
+  .title-slide .confidential { display: inline-block; margin-top: .6rem; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: #6E939C; border: 1px solid rgba(255,255,255,.18); padding: .25rem .6rem; border-radius: 999px; }
+
+  /* Two-col */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+  @media (max-width: 760px) { .two-col { grid-template-columns: 1fr; } }
+  .stat-list { list-style: none; margin: 1.6rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+  .stat-list li { display: flex; gap: .8rem; align-items: flex-start; font-size: .96rem; color: var(--ink-2); }
+  .stat-list li .mark-dot { flex: none; width: .5rem; height: .5rem; border-radius: 50%; background: var(--gov); margin-top: .5rem; }
+
+  /* System cards (reused pattern) */
+  .system-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; margin-top: 1.8rem; }
+  @media (max-width: 760px) { .system-grid { grid-template-columns: 1fr; } }
+  .system-card { border-radius: 14px; padding: 1.5rem 1.6rem; border: 1px solid var(--line-soft); background: var(--surface); box-shadow: var(--shadow); }
+  .system-card.ai-card { border-color: var(--ai-line); }
+  .system-tag { display: inline-flex; font-family: var(--mono); font-size: .72rem; padding: .28rem .6rem; border-radius: 999px; margin-bottom: .8rem; }
+  .system-card:not(.ai-card) .system-tag { background: var(--gov-soft); color: var(--gov); }
+  .system-card.ai-card .system-tag { background: var(--ai-soft); color: var(--ai); }
+  .system-card h3 { font-size: 1.1rem; color: var(--ink); margin-bottom: .5rem; }
+  .system-card p { font-size: .88rem; color: var(--muted); line-height: 1.55; margin: 0; }
+
+  /* Chain mini-diagram */
+  .chain-panel { margin-top: 1.8rem; background: var(--navy); border-radius: 16px; padding: 1.5rem clamp(1rem,3vw,2rem) 1.8rem; }
+  .chain-row { display: flex; align-items: center; gap: .1rem; flex-wrap: wrap; row-gap: .7rem; }
+  .chain-node { flex: 1 1 6.5rem; min-width: 5.5rem; text-align: center; background: rgba(255,255,255,.05); border: 1px solid rgba(91,208,232,.28); border-radius: 9px; padding: .55rem .4rem; font-size: .76rem; font-weight: 650; color: #EAF6F8; }
+  .chain-arrow { flex: none; width: 1.3rem; text-align: center; color: #5F8791; font-size: .9rem; }
+  .chain-advisory-link { display: flex; flex-direction: column; align-items: center; margin-top: 1rem; gap: .3rem; }
+  .chain-advisory-dash { width: 1px; height: 1rem; background: repeating-linear-gradient(to bottom, var(--ai) 0 4px, transparent 4px 8px); }
+  .chain-advisory-node { display: inline-flex; align-items: center; gap: .45rem; background: rgba(182,165,229,.14); border: 1px solid rgba(182,165,229,.4); border-radius: 999px; padding: .38rem .8rem .38rem .55rem; font-size: .76rem; font-weight: 650; color: #E4DCF7; }
+  .chain-advisory-node .dot { width: .45rem; height: .45rem; border-radius: 50%; background: var(--ai); }
+  @media (max-width: 640px) { .chain-arrow { transform: rotate(90deg); } .chain-row { flex-direction: column; } .chain-node { width: 100%; } }
+
+  /* Proof grid */
+  .proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.6rem; }
+  @media (max-width: 760px) { .proof-grid { grid-template-columns: 1fr; } }
+  .proof-card { border: 1px solid var(--line-soft); border-radius: 12px; padding: 1.1rem 1.25rem; background: var(--surface); }
+  .proof-card h4 { font-family: var(--sans); font-size: .94rem; font-weight: 700; color: var(--ink); margin: 0 0 .4rem; }
+  .proof-card p { font-size: .85rem; color: var(--muted); line-height: 1.5; margin: 0; }
+
+  /* Case strip */
+  .case-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: .9rem; margin-top: 1.6rem; }
+  @media (max-width: 760px) { .case-strip { grid-template-columns: 1fr; } }
+  .case-card { border: 1px solid var(--line-soft); border-radius: 12px; padding: 1.1rem 1.2rem; background: var(--surface-raised); border-top: 3px solid var(--case-accent, var(--gov)); }
+  .case-card .kind { font-family: var(--mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .05em; color: var(--faint); margin-bottom: .35rem; }
+  .case-card h4 { font-size: .96rem; font-family: var(--sans); font-weight: 700; margin: 0 0 .3rem; color: var(--ink); }
+  .case-card p { font-size: .82rem; color: var(--muted); margin: 0 0 .5rem; line-height: 1.45; }
+  .case-card .case-score { font-family: var(--mono); font-size: .74rem; font-weight: 700; color: var(--case-accent, var(--gov)); }
+
+  /* ADR row */
+  .adr-row { display: flex; flex-direction: column; gap: .8rem; margin-top: 1.6rem; }
+  .adr-item { display: grid; grid-template-columns: 6rem 1fr; gap: 1rem; padding: .9rem 0; border-top: 1px solid var(--line-soft); }
+  .adr-item:first-child { border-top: 0; }
+  .adr-item .id { font-family: var(--mono); font-size: .78rem; color: var(--gov); padding-top: .1rem; }
+  .adr-item h4 { font-size: .95rem; margin: 0 0 .25rem; color: var(--ink); }
+  .adr-item p { font-size: .86rem; color: var(--muted); margin: 0; line-height: 1.5; }
+  .moat-line { margin-top: 1.4rem; padding: 1rem 1.2rem; background: var(--gov-soft); border-radius: 10px; font-size: .92rem; color: var(--ink-2); border-left: 3px solid var(--gov); }
+
+  /* Competitive landscape */
+  .compete-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; margin-top: 1.8rem; }
+  @media (max-width: 760px) { .compete-grid { grid-template-columns: 1fr; } }
+  .compete-card { border: 1px solid var(--line-soft); border-radius: 14px; padding: 1.4rem 1.5rem; background: var(--surface); }
+  .compete-card.us { border-color: var(--gov); box-shadow: 0 0 0 1px var(--gov) inset; }
+  .compete-card .compete-label { font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); margin-bottom: .6rem; }
+  .compete-card.us .compete-label { color: var(--gov); }
+  .compete-card h4 { font-size: 1.1rem; margin: 0 0 .5rem; color: var(--ink); font-family: var(--sans); font-weight: 700; }
+  .compete-card .compete-stat { font-family: var(--mono); font-size: .76rem; color: var(--muted); margin-bottom: .7rem; }
+  .compete-card p { font-size: .87rem; color: var(--muted); line-height: 1.55; margin: 0; }
+
+  /* Draft/placeholder ribbon */
+  .draft-flag {
+    display: inline-flex; align-items: center; gap: .5rem; font-family: var(--mono); font-size: .72rem;
+    color: var(--warning); background: var(--warning-soft); border: 1px solid color-mix(in srgb, var(--warning) 35%, transparent);
+    border-radius: 999px; padding: .35rem .8rem; margin-bottom: 1.2rem;
+  }
+  .draft-flag::before { content: "✎"; }
+  .draft-box { border: 1.5px dashed color-mix(in srgb, var(--warning) 55%, var(--line)); border-radius: 12px; padding: 1.3rem 1.5rem; background: var(--surface-raised); }
+  .draft-box p { font-size: .92rem; color: var(--ink-2); margin: 0 0 .6rem; }
+  .draft-box p:last-child { margin-bottom: 0; }
+  .placeholder-field { font-family: var(--mono); font-size: .88rem; color: var(--faint); background: var(--surface); border: 1px dashed var(--line); border-radius: 6px; padding: .3rem .55rem; display: inline-block; }
+
+  /* Stage callout */
+  .stage-badges { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .stage-badge { font-family: var(--mono); font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: .32rem .7rem; border-radius: 999px; }
+  .stage-badge.on { background: var(--success-soft); color: var(--success); }
+  .stage-badge.off { background: var(--critical-soft); color: var(--critical); }
+  .stage-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; }
+  .stage-list li { display: flex; gap: .7rem; font-size: .92rem; color: var(--ink-2); }
+
+  /* Roadmap */
+  .roadmap-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.6rem; }
+  @media (max-width: 760px) { .roadmap-row { grid-template-columns: 1fr; } }
+  .roadmap-card { border: 1px solid var(--line-soft); border-radius: 12px; padding: 1.1rem 1.2rem; background: var(--surface); }
+  .roadmap-card .phase { font-family: var(--mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; color: var(--gov); margin-bottom: .5rem; }
+  .roadmap-card ul { margin: 0; padding-left: 1.1rem; font-size: .85rem; color: var(--muted); line-height: 1.55; }
+
+  /* Closing slide */
+  .slide.closing-slide { background: linear-gradient(135deg, var(--navy), #0A181E); color: var(--navy-text); }
+  .closing-slide h2 { color: #F4F8F7; }
+  .closing-slide .lede { color: #CBDEE2; }
+  .contact-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+  .contact-btn { display: inline-flex; align-items: center; gap: .5rem; font-size: .92rem; font-weight: 650; padding: .78rem 1.3rem; border-radius: 10px; background: #fff; color: #0F2A33; }
+  .contact-btn:hover { background: #E7F2F3; }
+  .contact-btn.ghost { background: transparent; border: 1px solid rgba(255,255,255,.3); color: #EAF3F5; }
+  .contact-btn.ghost:hover { border-color: rgba(255,255,255,.6); }
+  .use-of-funds { display: flex; flex-direction: column; gap: .55rem; margin-top: 1.6rem; max-width: 30rem; }
+  .use-row { display: grid; grid-template-columns: 3.2rem 1fr auto; gap: .8rem; align-items: center; }
+  .use-row .pct { font-family: var(--mono); font-size: .8rem; color: #8FB3BC; }
+  .use-row .bar { height: .4rem; border-radius: 999px; background: rgba(255,255,255,.1); overflow: hidden; }
+  .use-row .bar > i { display: block; height: 100%; background: var(--ai); border-radius: inherit; }
+  .use-row .label { font-size: .82rem; color: #CBDEE2; white-space: nowrap; }
+
+  /* Charts */
+  .chart-panel { margin-top: 1.3rem; background: var(--surface); border: 1px solid var(--line-soft); border-radius: 16px; padding: 1.1rem 1.4rem 1rem; box-shadow: var(--shadow); }
+  .chart-panel-title { font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); margin-bottom: .3rem; }
+  .chart-svg { width: 100%; height: auto; display: block; }
+  .chart-caption { font-size: .74rem; color: var(--faint); margin-top: .3rem; }
+  .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin-top: 1rem; }
+  @media (max-width: 760px) { .mini-grid { grid-template-columns: 1fr; } }
+  .mini-card { border: 1px solid var(--line-soft); border-radius: 10px; padding: .8rem .95rem; background: var(--surface-raised); }
+  .mini-card h5 { font-size: .86rem; margin: 0 0 .3rem; color: var(--ink); font-family: var(--sans); font-weight: 700; }
+  .mini-card p { font-size: .79rem; color: var(--muted); margin: 0; line-height: 1.4; }
+
+  /* Print / PDF export: one slide per landscape page, 16:9. Purely
+     @media print -- has zero effect on the interactive on-screen deck. */
+  @media print {
+    @page { size: 13.333in 7.5in; margin: 0; }
+    html, body { width: 13.333in; height: 7.5in; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .deck-chrome { display: none !important; }
+    .next-hint { display: none !important; }
+    html { scroll-snap-type: none !important; }
+    .slide {
+      width: 13.333in; height: 7.5in; min-height: 0;
+      padding: .55in 1in; box-sizing: border-box;
+      break-after: page; page-break-after: always;
+      break-inside: avoid; page-break-inside: avoid;
+      border-bottom: none;
+    }
+    .slide:last-child { break-after: auto; page-break-after: auto; }
+    .slide h2 { font-size: 1.7rem; }
+    .slide .lede { font-size: .82rem; }
+    .title-slide h1 { font-size: 2.6rem; }
+    .chart-panel { padding: .8rem 1rem .7rem; margin-top: .8rem; }
+    .chart-panel-title { font-size: .62rem; margin-bottom: .2rem; }
+    .chart-caption { font-size: .62rem; }
+    .mini-grid { margin-top: .6rem; gap: .6rem; }
+    .mini-card { padding: .55rem .7rem; }
+    .mini-card h5 { font-size: .76rem; }
+    .mini-card p { font-size: .68rem; }
+    /* Headless Chrome's print pipeline evaluates max-width media queries
+       against a viewport narrower than the actual @page size, incorrectly
+       triggering the mobile single-column breakpoints below -- force the
+       intended multi-column layouts back for print explicitly. */
+    .two-col { grid-template-columns: 1fr 1fr !important; }
+    .system-grid { grid-template-columns: 1fr 1fr !important; }
+    .proof-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .case-strip { grid-template-columns: repeat(2, 1fr) !important; }
+    .compete-grid { grid-template-columns: 1fr 1fr !important; }
+    .roadmap-row { grid-template-columns: repeat(3, 1fr) !important; }
+    .mini-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="deck-chrome">
+  <div class="brand">
+    <svg viewBox="0 0 40 40" aria-hidden="true">
+      <rect x="3" y="3" width="34" height="34" rx="9" fill="none" stroke="currentColor" stroke-width="2.6"/>
+      <circle cx="10" cy="10" r="2.1" fill="currentColor"/><circle cx="30" cy="10" r="2.1" fill="currentColor"/>
+      <circle cx="10" cy="30" r="2.1" fill="currentColor"/><circle cx="30" cy="30" r="2.1" fill="currentColor"/>
+      <rect x="16.5" y="16.5" width="7" height="7" rx="1.5" transform="rotate(45 20 20)" fill="var(--ai)"/>
+    </svg>
+    Engineering Intelligence
+  </div>
+  <div class="deck-progress">Investor overview · 16 slides · scroll to advance</div>
+</div>
+
+<!-- 01 — Title -->
+<section class="slide title-slide">
+  <div class="slide-inner">
+    <svg class="mark" viewBox="0 0 40 40" aria-hidden="true">
+      <rect x="3" y="3" width="34" height="34" rx="9" fill="none" stroke="#5BB4CE" stroke-width="2.4"/>
+      <circle cx="10" cy="10" r="2.1" fill="#5BB4CE"/><circle cx="30" cy="10" r="2.1" fill="#5BB4CE"/>
+      <circle cx="10" cy="30" r="2.1" fill="#5BB4CE"/><circle cx="30" cy="30" r="2.1" fill="#5BB4CE"/>
+      <rect x="16.5" y="16.5" width="7" height="7" rx="1.5" transform="rotate(45 20 20)" fill="#B6A5E8"/>
+    </svg>
+    <h1>Engineering Intelligence</h1>
+    <p class="tag">A deterministic readiness engine for regulated engineering — with AI that is structurally incapable of fabricating a compliance claim.</p>
+    <div class="meta">Amir Sajjadi · Investor Overview</div>
+    <span class="confidential">For discussion purposes only</span>
+  </div>
+  <div class="next-hint">scroll ↓</div>
+</section>
+
+<!-- 02 — Problem -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">01 · The problem</div>
+    <h2>Every design review asks the same question. Answering it doesn't scale.</h2>
+    <p class="lede">"Is the evidence complete, consistent, and sufficient enough for a human to make an accountable decision?" Regulated engineering teams answer this by hand today — and the manual version doesn't get faster as headcount stays flat and review cycles compress.</p>
+    <ul class="stat-list">
+      <li><span class="mark-dot"></span>Evidence assembly, coverage checks, and readiness judgment are manual, reviewer-dependent, and hard to reconstruct for an audit after the fact.</li>
+      <li><span class="mark-dot"></span>Every major vendor is now racing to bolt an LLM onto this exact workflow — the highest-liability place to introduce a hallucination.</li>
+      <li><span class="mark-dot"></span>A wrong citation in a readiness assessment isn't a UX bug. It's a finding in an FDA audit.</li>
+    </ul>
+  </div>
+  <div class="slide-num">02 / 16</div>
+</section>
+
+<!-- 03 — Why now -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">02 · Why now</div>
+    <h2>Two forces are colliding, and nobody has resolved the tension cleanly.</h2>
+    <p class="lede">Regulated engineering teams are under real pressure to move faster — and under real, justified fear of what an ungoverned AI copilot does to a safety-critical evidence trail. Most AI-in-compliance products today pick a side: move fast and hope, or stay manual and safe. This platform is built specifically to not have to choose.</p>
+  </div>
+  <div class="slide-num">03 / 16</div>
+</section>
+
+<!-- 04 — Solution -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">03 · The solution</div>
+    <h2>Two systems, deliberately kept apart.</h2>
+    <p class="lede">The readiness score and the AI's opinion are never allowed to be the same thing. The separation is enforced in code, not just explained in a policy doc.</p>
+    <div class="system-grid">
+      <div class="system-card">
+        <span class="system-tag">deterministic core</span>
+        <h3>The readiness engine</h3>
+        <p>A fixed, published formula over structured, human-entered evidence. No model in the loop. Same inputs, same result, every time.</p>
+      </div>
+      <div class="system-card ai-card">
+        <span class="system-tag">advisory layer</span>
+        <h3>The AI review</h3>
+        <p>One local model, schema-constrained, every claim cited to an evidence ID, provenance-hashed, and technically unable to change the score.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">04 / 16</div>
+</section>
+
+<!-- 05 — How it works -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">04 · How it works</div>
+    <h2>The governed decision chain</h2>
+    <p class="lede">Every readiness score traces back through a fixed pipeline. AI reads the same evidence and can advise alongside it — but never writes back into the chain.</p>
+    <div class="chain-panel">
+      <div class="chain-row">
+        <div class="chain-node">Evidence</div><span class="chain-arrow">→</span>
+        <div class="chain-node">Coverage</div><span class="chain-arrow">→</span>
+        <div class="chain-node">Consistency</div><span class="chain-arrow">→</span>
+        <div class="chain-node">Validation</div><span class="chain-arrow">→</span>
+        <div class="chain-node">Confidence</div><span class="chain-arrow">→</span>
+        <div class="chain-node">Readiness</div>
+      </div>
+      <div class="chain-advisory-link">
+        <div class="chain-advisory-dash" aria-hidden="true"></div>
+        <div class="chain-advisory-node"><span class="dot"></span>AI Advisory Review — cites, never overrides</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">05 / 16</div>
+</section>
+
+<!-- 06 — Proof points -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">05 · Why this holds up</div>
+    <h2>Built like a regulated tool, not a demo.</h2>
+    <div class="proof-grid">
+      <div class="proof-card"><h4>Real regulatory grounding</h4><p>IEC 62304, ISO 14971, IEC 60601, 21 CFR Part 803, and FDA design-control guidance modeled as reference data, not marketing copy.</p></div>
+      <div class="proof-card"><h4>Local-first by architecture</h4><p>No external API dependency in the core workflow. The AI integration validates at startup that its endpoint is local-only.</p></div>
+      <div class="proof-card"><h4>Validated on real cases</h4><p>Four scenarios across three evidence-provenance categories — two public FDA recalls, a synthetic composite, and a synthetic regulatory reference — each returns a distinct, non-uniform score (82%, 70%, 74%, 69%), not one tuned demo number.</p></div>
+      <div class="proof-card"><h4>Process discipline, not just code</h4><p>Architecture decision records, a release-review checklist, versioned release manifests, and 419 passing automated tests behind every change.</p></div>
+    </div>
+  </div>
+  <div class="slide-num">06 / 16</div>
+</section>
+
+<!-- 07 — Validation -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">06 · Validation</div>
+    <h2>Tested against regulatory history, not just synthetic data.</h2>
+    <p class="lede">Four scenarios, three evidence-provenance categories, one unmodified algorithm. No case-specific scoring logic exists — the fact that every case lands on a different number is itself the proof.</p>
+    <div class="case-strip">
+      <div class="case-card" style="--case-accent:var(--critical)"><div class="kind">Public FDA recall</div><h4>Tandem Mobi</h4><p>Class I software-related recall (FDA record 212817). Stress-tests coverage and consistency scoring against real regulatory evidence.</p><div class="case-score">70% · NOT READY</div></div>
+      <div class="case-card" style="--case-accent:var(--critical)"><div class="kind">Public FDA recall</div><h4>Abiomed Impella CP</h4><p>Specification-conformance recall (FDA record 220257). A second independent case, confirming the pipeline generalizes.</p><div class="case-score">74% · NOT READY</div></div>
+      <div class="case-card" style="--case-accent:var(--gov)"><div class="kind">Synthetic composite</div><h4>NovaPump</h4><p>The platform's regression anchor — reproducible, used in every automated test.</p><div class="case-score">82% · NOT READY</div></div>
+      <div class="case-card" style="--case-accent:var(--ai)"><div class="kind">Regulatory reference</div><h4>FDA Design Controls</h4><p>Synthetic case built around FDA design-control guidance, independent of any real product — tests evidence-completeness detection on its own.</p><div class="case-score">69% · NOT READY</div></div>
+    </div>
+  </div>
+  <div class="slide-num">07 / 16</div>
+</section>
+
+<!-- 08 — Governance / moat -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">07 · Governance as moat</div>
+    <h2>The constraint that earns trust is the constraint that's hard to copy fast.</h2>
+    <div class="adr-row">
+      <div class="adr-item"><div class="id">ADR-002</div><div><h4>AI is advisory</h4><p>Cannot create evidence, alter results, approve records, or declare compliance — by design, not by prompt.</p></div></div>
+      <div class="adr-item"><div class="id">ADR-009</div><div><h4>Local AI gateway</h4><p>Provider failures reject execution; they never silently fall back to a guess.</p></div></div>
+    </div>
+    <div class="moat-line">A competitor can ship an AI copilot fast. Shipping one that a regulatory-minded buyer can actually trust takes the same architectural discipline this platform already has built in.</div>
+  </div>
+  <div class="slide-num">08 / 16</div>
+</section>
+
+<!-- 09 — Competitive landscape -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">08 · Competitive landscape</div>
+    <h2>Ketryx is real, well-funded, and worth naming first.</h2>
+    <p class="lede">The nearest direct comparison — and the question any investor who knows this space will ask before we get the chance to explain it ourselves.</p>
+    <div class="compete-grid">
+      <div class="compete-card">
+        <div class="compete-label">Nearest comparable</div>
+        <h4>Ketryx</h4>
+        <div class="compete-stat">$39M Series B (2025) · $55M+ total · Transformation Capital, Lightspeed, MIT E14 Fund</div>
+        <p>AI agents that automate validation, traceability, and FDA/EU MDR documentation directly. Already used by 3 of the world's top 5 medtech companies.</p>
+      </div>
+      <div class="compete-card us">
+        <div class="compete-label">This platform</div>
+        <h4>Engineering Intelligence</h4>
+        <div class="compete-stat">Pre-seed · deterministic core, AI strictly advisory</div>
+        <p>The readiness score is never AI-generated. AI cites, summarizes, and drafts — and is architecturally unable to write back into the score a reviewer relies on.</p>
+      </div>
+    </div>
+    <div class="moat-line">Same buyer, adjacent bet: agentic automation (Ketryx) vs. a deterministic core AI can never touch (us). Both could turn out to be right — the point isn't that Ketryx is wrong, it's that this is the more conservative position for the most audit-skeptical QA/RA buyers, and it's a real architectural claim, not a slogan.</div>
+  </div>
+  <div class="slide-num">09 / 16</div>
+</section>
+
+<!-- 10 — Market -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">09 · Market</div>
+    <h2>A wedge into an existing, growing category.</h2>
+    <p class="lede">This sits inside the eQMS / design-controls category already occupied by Greenlight Guru, MasterControl, Arena, and Qualio — buyers who already budget for exactly this kind of tooling.</p>
+    <div class="chart-panel">
+      <div class="chart-panel-title">Global eQMS market size, 2025 → 2033</div>
+      <svg class="chart-svg" viewBox="0 0 760 220" role="img" aria-label="Line and area chart: global quality management software market growing from 12.3 billion dollars in 2025 to an estimated 28.8 billion dollars by 2033, roughly 11 percent compound annual growth">
+        <line x1="60" y1="190" x2="700" y2="190" style="stroke:var(--line-soft);stroke-width:1"/>
+        <line x1="60" y1="130" x2="700" y2="130" style="stroke:var(--line-soft);stroke-width:1" stroke-dasharray="2 4"/>
+        <line x1="60" y1="70" x2="700" y2="70" style="stroke:var(--line-soft);stroke-width:1" stroke-dasharray="2 4"/>
+        <text x="52" y="194" text-anchor="end" style="font-family:var(--mono);font-size:10px;fill:var(--faint)">$0</text>
+        <text x="52" y="134" text-anchor="end" style="font-family:var(--mono);font-size:10px;fill:var(--faint)">$10B</text>
+        <text x="52" y="74" text-anchor="end" style="font-family:var(--mono);font-size:10px;fill:var(--faint)">$20B</text>
+        <defs>
+          <linearGradient id="marketFade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" style="stop-color:var(--gov);stop-opacity:0.22"/>
+            <stop offset="100%" style="stop-color:var(--gov);stop-opacity:0"/>
+          </linearGradient>
+        </defs>
+        <path d="M60,190 L60,117.1 L220,99.1 L380,78.5 L540,53.9 L700,23.5 L700,190 Z" style="fill:url(#marketFade)"/>
+        <polyline points="60,117.1 220,99.1 380,78.5 540,53.9 700,23.5" style="fill:none;stroke:var(--gov);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+        <circle cx="60" cy="117.1" r="4" style="fill:var(--surface);stroke:var(--gov);stroke-width:2"/>
+        <circle cx="700" cy="23.5" r="6" style="fill:var(--gov);stroke:var(--surface);stroke-width:2.5"/>
+        <text x="60" y="103" style="font-family:var(--sans);font-size:12px;font-weight:700;fill:var(--ink-2)">$12.3B</text>
+        <text x="700" y="14" text-anchor="end" style="font-family:var(--sans);font-size:16px;font-weight:700;fill:var(--gov)">$28.8B</text>
+        <text x="60" y="210" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--faint)">2025</text>
+        <text x="220" y="210" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--faint)">2027</text>
+        <text x="380" y="210" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--faint)">2029</text>
+        <text x="540" y="210" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--faint)">2031</text>
+        <text x="700" y="210" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--faint)">2033</text>
+      </svg>
+      <div class="chart-caption">Quality management software (eQMS) market size — Grand View Research, Fortune Business Insights. ~10–11.5% CAGR across sources; chart uses the Fortune Business Insights trajectory ($12.3B → $28.8B).</div>
+    </div>
+    <div class="mini-grid">
+      <div class="mini-card"><h5>$14.2B into digital health in 2025</h5><p>Up 35% year-over-year, the highest annual total since 2022. MedTech alone raised $3.7B in Q1 2025.</p></div>
+      <div class="mini-card"><h5>The category has real exits</h5><p>PTC acquired Arena Solutions for $715M (2021). MasterControl reached unicorn status on a $150M investment from Sixth Street Growth (2022).</p></div>
+    </div>
+    <p class="chart-caption" style="margin-top:.7rem;">No research firm independently sizes "design-controls software" on its own — sizing this exact wedge within the category above is a rigorous exercise still ahead, not asserted here.</p>
+  </div>
+  <div class="slide-num">10 / 16</div>
+</section>
+
+<!-- 11 — Business model -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">10 · Business model</div>
+    <span class="draft-flag">Proposed, comp-grounded — sanity-check before sending</span>
+    <h2>Priced per active design program, not per seat.</h2>
+    <p class="lede">Category comps price per-seat, sold annually. Per-seat pricing fits a QMS used by everyone, every day — it fits this product's actual usage pattern less well, so pricing is proposed per active design program instead.</p>
+    <div class="chart-panel">
+      <div class="chart-panel-title">Annual entry pricing, most-comparable tier</div>
+      <svg class="chart-svg" viewBox="0 0 700 195" role="img" aria-label="Bar chart: Engineering Intelligence 21,600 dollars per year, MasterControl 25,000 dollars, Greenlight Guru 30,000 dollars, Qualio 36,000 dollars">
+        <line x1="170" y1="4" x2="170" y2="184" style="stroke:var(--line-soft);stroke-width:1"/>
+        <text x="160" y="28" text-anchor="end" style="font-family:var(--sans);font-size:13px;font-weight:700;fill:var(--gov)">Engineering Intelligence</text>
+        <rect x="170" y="10" width="252" height="26" rx="4" style="fill:var(--gov)"/>
+        <text x="432" y="28" style="font-family:var(--sans);font-size:13px;font-weight:700;fill:var(--gov)">$21,600</text>
+        <text x="160" y="73" text-anchor="end" style="font-family:var(--sans);font-size:13px;fill:var(--muted)">MasterControl</text>
+        <rect x="170" y="55" width="292" height="26" rx="4" style="fill:var(--line-soft)"/>
+        <text x="472" y="73" style="font-family:var(--sans);font-size:13px;fill:var(--muted)">$25,000</text>
+        <text x="160" y="118" text-anchor="end" style="font-family:var(--sans);font-size:13px;fill:var(--muted)">Greenlight Guru</text>
+        <rect x="170" y="100" width="350" height="26" rx="4" style="fill:var(--line-soft)"/>
+        <text x="530" y="118" style="font-family:var(--sans);font-size:13px;fill:var(--muted)">$30,000</text>
+        <text x="160" y="163" text-anchor="end" style="font-family:var(--sans);font-size:13px;fill:var(--muted)">Qualio</text>
+        <rect x="170" y="145" width="420" height="26" rx="4" style="fill:var(--line-soft)"/>
+        <text x="600" y="163" style="font-family:var(--sans);font-size:13px;fill:var(--muted)">$36,000</text>
+      </svg>
+      <div class="chart-caption">MasterControl: $25K/year starting (Basic). Greenlight Guru: ~$30K/year, customer-reported midpoint. Qualio: ~$12K base + ~$3K/seat/year, shown at 10 seats ($36K/year). See Market_Research.md for sources — all three are custom/quote-based, not published rate cards.</div>
+    </div>
+    <div class="mini-grid">
+      <div class="mini-card"><h5>+40% for local/on-prem deployment</h5><p>A real premium for a real preference: regulated buyers already want their evidence to never leave the building — this platform is built that way by default.</p></div>
+      <div class="mini-card"><h5>No per-token AI cost to pass through</h5><p>The AI layer runs locally via Ollama, not a metered cloud API — marginal cost per customer doesn't climb with usage.</p></div>
+    </div>
+  </div>
+  <div class="slide-num">11 / 16</div>
+</section>
+
+<!-- 12 — Stage -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">11 · Where this stands today</div>
+    <h2>Stated plainly, not oversold.</h2>
+    <div class="stage-badges">
+      <span class="stage-badge off">Pre-revenue</span>
+      <span class="stage-badge off">No live pilot yet</span>
+      <span class="stage-badge on">Working MVP</span>
+      <span class="stage-badge on">Validated on public case data</span>
+      <span class="stage-badge on">Packaged reviewer build available</span>
+    </div>
+    <ul class="stage-list">
+      <li>— Single-user, local-only today. No authentication or multi-tenant deployment yet.</li>
+      <li>— The four-case validation is written up as a full technical paper — every claim independently re-verified against the live codebase before being adopted into it, not asserted from memory.</li>
+      <li>— The durable audit-ledger and multi-specialist AI review layers already exist as designed interfaces, deliberately not wired into the live product until the current single-specialist experiment is reviewed and accepted.</li>
+      <li>— That sequencing is a considered roadmap, not a missing feature — and it's exactly what a technical diligence process will want to see.</li>
+    </ul>
+  </div>
+  <div class="slide-num">12 / 16</div>
+</section>
+
+<!-- 13 — Roadmap -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">12 · Roadmap</div>
+    <h2>From validated MVP to a fundable pilot.</h2>
+    <div class="roadmap-row">
+      <div class="roadmap-card"><div class="phase">Near term</div><ul><li>Pilot with 1–2 real design programs</li><li>Wire the durable, hash-chained audit ledger into the live UI</li><li>Authentication and multi-tenant deployment</li></ul></div>
+      <div class="roadmap-card"><div class="phase">Mid term</div><ul><li>Expand beyond medical device via the existing domain-plugin architecture (aerospace, automotive)</li><li>Formal pilot outcome data: reviewer time saved, discrepancy catch rate</li></ul></div>
+      <div class="roadmap-card"><div class="phase">Longer term</div><ul><li>Additional AI specialists — gated on validating the current single-specialist experiment first, per the project's own review discipline</li></ul></div>
+    </div>
+  </div>
+  <div class="slide-num">13 / 16</div>
+</section>
+
+<!-- 14 — Team -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">13 · Team</div>
+    <h2>Amir Sajjadi, Ph.D. — building this end to end.</h2>
+    <div class="proof-card" style="padding:1.4rem 1.6rem;">
+      <p style="font-size:.94rem;color:var(--ink-2);line-height:1.55;margin:0 0 .8rem;">Sole builder of the platform to date: product architecture, the deterministic scoring engine, the governed AI gateway, and the regulatory domain modeling.</p>
+      <p style="font-size:.94rem;color:var(--ink-2);line-height:1.55;margin:0;">20+ years of R&amp;D leadership in regulated medtech and aerospace, with a Ph.D. in Mechanical Engineering (Biomedical Optics). Most recently Senior Principal Engineer at Edwards Lifesciences, running the exact evidence workflow this platform organizes — IQ/OQ/PQ, CAPA, DFMEA, and ISO 14971 risk assessment under 21 CFR 820 — on $4M+ cardiac-device R&amp;D programs. 27+ peer-reviewed publications, 9 patents, PMP.</p>
+    </div>
+  </div>
+  <div class="slide-num">14 / 16</div>
+</section>
+
+<!-- 15 — Ask + contact -->
+<section class="slide closing-slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow" style="color:#8FB3BC;">14 · The ask</div>
+    <span class="draft-flag" style="background:rgba(228,192,101,.14);border-color:rgba(228,192,101,.4);color:#E4C065;">Proposed, comp-grounded — confirm against your own runway needs</span>
+    <h2>Raising <span class="placeholder-field" style="color:#CBDEE2;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.04);">$750,000 pre-seed</span></h2>
+    <p class="lede">Pre-seed, deliberately lean: the AI runs locally and stays strictly advisory, so there's no metered inference cost to fund and no case to make for AI holding decision authority — the ask covers a founder/first hire, two design-team pilots, and the infrastructure to support them, not a full go-to-market build-out. 2026 pre-seed rounds for AI startups typically run $500K–$2M, median around $1.2M; this sits at the lower-middle of that range. 12–18 months runway.</p>
+    <div class="use-of-funds">
+      <div class="use-row"><span class="pct">45%</span><span class="bar"><i style="width:45%"></i></span><span class="label">Founder + first hire (engineering or GTM)</span></div>
+      <div class="use-row"><span class="pct">25%</span><span class="bar"><i style="width:25%"></i></span><span class="label">Pilot deployment &amp; onboarding, 2 design teams</span></div>
+      <div class="use-row"><span class="pct">15%</span><span class="bar"><i style="width:15%"></i></span><span class="label">Auth &amp; multi-tenant infrastructure build-out</span></div>
+      <div class="use-row"><span class="pct">15%</span><span class="bar"><i style="width:15%"></i></span><span class="label">Legal, compliance overhead, reserve</span></div>
+    </div>
+    <p style="font-size:.78rem;color:#8FA3AA;margin-top:1rem;">Proposed split, not decided — this is where your own knowledge of cost of living, hiring plans, and target runway should override the default above.</p>
+    <div class="contact-row">
+      <a class="contact-btn" href="mailto:amir.yousef.sajjadi@gmail.com?subject=Engineering%20Intelligence%20—%20Investor%20conversation">Start a conversation →</a>
+      <a class="contact-btn ghost" href="/engineering-intelligence.html">View the product page</a>
+    </div>
+  </div>
+  <div class="slide-num" style="color:#8FB3BC;">15 / 16</div>
+</section>
+
+<!-- 16 — Appendix: Sources -->
+<section class="slide">
+  <div class="slide-inner">
+    <div class="slide-eyebrow">Appendix</div>
+    <h2>Every number in this deck, sourced.</h2>
+    <p class="lede">Full citations with exact supporting quotes: <code class="mono">docs/marketing/Citations.md</code> in the product repository. Summarized here for the room.</p>
+    <div class="adr-row" style="margin-top:1.4rem;">
+      <div class="adr-item">
+        <div class="id" style="font-size:.72rem;">SLIDE&nbsp;09</div>
+        <div><h4>Competitive landscape</h4><p>Ketryx $39M Series B (2025), $55M+ total — Ketryx press release; MedTech Dive; R&amp;D World.</p></div>
+      </div>
+      <div class="adr-item">
+        <div class="id" style="font-size:.72rem;">SLIDE&nbsp;10</div>
+        <div><h4>Market</h4><p>eQMS market size — Fortune Business Insights, Grand View Research. Digital-health/MedTech VC trends — HTD Health. Arena→PTC $715M — PTC's own SEC 10-Q filing. MasterControl $150M — MasterControl's own announcement.</p></div>
+      </div>
+      <div class="adr-item">
+        <div class="id" style="font-size:.72rem;">SLIDE&nbsp;11</div>
+        <div><h4>Pricing comps</h4><p>MasterControl, Greenlight Guru, Qualio annual pricing — OpenRegulatory pricing analyses (three separate articles; none of the three vendors publishes a rate card).</p></div>
+      </div>
+      <div class="adr-item">
+        <div class="id" style="font-size:.72rem;">SLIDE&nbsp;15</div>
+        <div><h4>Funding ask sizing</h4><p>2026 pre-seed round benchmarks — ValueAdd VC; AI-specific pre-seed guidance — Boilerplate Hub.</p></div>
+      </div>
+    </div>
+    <p class="chart-caption" style="margin-top:1.1rem;">Slides 02–08 and 12–14 make claims about this platform's own architecture, current state, and roadmap — verifiable by reading the product repository (ADR-002, ADR-009, <code class="mono">mvp/backend/ai_gateway/</code>), not by citing a third party.</p>
+  </div>
+  <div class="slide-num">16 / 16</div>
+</section>
+</body>
+</html>
