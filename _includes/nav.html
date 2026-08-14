@@ -1,0 +1,38 @@
+<header class="site-nav">
+  <div class="nav-inner">
+    <div>
+      <div class="brand-name">Utmost Connect</div>
+      <div class="brand-tagline">Engineering Depth · Clinical Insight · Execution That Delivers</div>
+    </div>
+    {% if page.hide_nav_links %}
+    <a href="{{ page.nav_cta.href | default: "/#contact" }}" class="nav-cta">{{ page.nav_cta.label | default: "Contact" }}</a>
+    {% else %}
+    <nav class="nav-links">
+      {% if page.nav %}
+        {% for item in page.nav %}<a href="{{ item.href }}">{{ item.label }}</a>{% endfor %}
+      {% else %}
+        <a href="/#about">About</a>
+        <a href="/#services">Services</a>
+        <a href="/#projects">Projects</a>
+      {% endif %}
+      <a href="{{ page.nav_cta.href | default: "/#contact" }}" class="nav-cta">{{ page.nav_cta.label | default: "Contact" }}</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    {% endif %}
+  </div>
+</header>
+
+{% unless page.hide_nav_links %}
+<div class="mobile-nav" id="mobileNav">
+  {% if page.nav %}
+    {% for item in page.nav %}<a href="{{ item.href }}" onclick="closeMobileNav()">{{ item.label }}</a>{% endfor %}
+  {% else %}
+    <a href="/#about" onclick="closeMobileNav()">About</a>
+    <a href="/#services" onclick="closeMobileNav()">Services</a>
+    <a href="/#projects" onclick="closeMobileNav()">Projects</a>
+  {% endif %}
+  <a href="{{ page.nav_cta.href | default: "/#contact" }}" class="nav-cta" onclick="closeMobileNav()">{{ page.nav_cta.label | default: "Contact" }}</a>
+</div>
+{% endunless %}

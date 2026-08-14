@@ -1,94 +1,82 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pilot Setup | Engineering Intelligence</title>
-  <meta name="description" content="Setup steps for running the Engineering Intelligence pilot application locally.">
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --panel: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: #dbe3ee;
-      --accent: #1d4ed8;
-      --dark: #0b1324;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--text); }
-    .wrap { max-width: 920px; margin: 0 auto; padding: 2rem 1rem 3rem; }
-    .hero { background: linear-gradient(135deg, #0f172a, #1e293b); color: #dbeafe; border-radius: 1rem; padding: 1.4rem; }
-    .hero h1 { margin: 0 0 0.45rem; color: #f8fafc; font-size: 1.6rem; }
-    .hero p { margin: 0; line-height: 1.7; }
-    .blue-mark {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid #60a5fa;
-      background: rgba(29, 78, 216, 0.2);
-      color: #dbeafe;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.65rem;
-      margin-bottom: 0.65rem;
-    }
-    .actions { margin-top: 0.9rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 0.58rem 1rem; font-size: 0.88rem; text-decoration: none; }
-    .btn-primary { background: #ffffff; color: #0f172a; font-weight: 700; }
-    .btn-ghost { border: 1px solid rgba(255,255,255,0.45); color: #dbeafe; }
-    .hero-note { margin-top: 0.65rem; font-size: 0.84rem; color: #bfdbfe; }
-    .panel { margin-top: 1rem; background: var(--panel); border: 1px solid var(--line); border-radius: 0.95rem; padding: 1rem; }
-    .panel-proprietary {
-      border-color: #bfdbfe;
-      background: linear-gradient(180deg, #eff6ff, #f8fbff);
-    }
-    .panel-proprietary p { color: #1e3a8a; }
-    h2 { margin: 0 0 0.55rem; font-size: 1.06rem; }
-    p, li { color: var(--muted); line-height: 1.7; }
-    ol { margin: 0.4rem 0 0; padding-left: 1.2rem; }
-    code { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 0.1rem 0.32rem; border-radius: 0.35rem; }
-    .note { margin-top: 0.6rem; font-size: 0.88rem; }
-  </style>
-</head>
-<body>
-  <main class="wrap">
-    <section class="hero">
-      <div class="blue-mark">BlueMark Protected Build</div>
-      <h1>Engineering Intelligence Reviewer Build Access</h1>
-      <p>Use this page to download and run the approved reviewer build package. This distribution path is intended for authorized external evaluators.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="https://github.com/asajjadi/Utmostconnect.github.io/releases/download/ei-reviewer-build-20260806/EngineeringIntelligence-ReviewerBuild.zip">Download Reviewer Build ZIP (~108MB)</a>
-      </div>
-      <p class="hero-note">Extract the ZIP first, then run <code>EngineeringIntelligence.exe</code> from the extracted folder so the required <code>_internal</code> runtime files are available.</p>
-      <p class="hero-note">It's a large file (~108MB) — the download starts in this tab, so watch your browser's download bar/tray rather than waiting for a new tab to appear.</p>
-    </section>
+---
+layout: base
+title: Pilot Setup | Engineering Intelligence
+description: Setup steps for running the Engineering Intelligence pilot application locally.
+hide_nav_links: true
+nav_cta:
+  label: Engineering Intelligence
+  href: /engineering-intelligence.html
+---
+<style>
+  /* Same teal product accent as engineering-intelligence.html -- this page
+     is reached almost entirely by direct link from there or from an
+     outreach email, so it should read as the same product area. */
+  :root {
+    --gov: #174A5B; --gov-hover: #1F6074; --gov-soft: #EEF6F7;
+    --accent: var(--gov); --accent-hover: var(--gov-hover);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --gov: #5BB4CE; --gov-hover: #78C5DC; --gov-soft: #16333D; }
+  }
+  :root[data-theme="dark"] { --gov: #5BB4CE; --gov-hover: #78C5DC; --gov-soft: #16333D; }
 
-    <section class="panel">
-      <h2>Launch from shared package</h2>
-      <ol>
-        <li>Extract the reviewer ZIP file.</li>
-        <li>Open the extracted folder and run <code>EngineeringIntelligence.exe</code>.</li>
-        <li>If Windows SmartScreen appears, click <code>More info</code> then <code>Run anyway</code> only if you trust the source.</li>
-      </ol>
-      <p class="note">Do not run a copied standalone <code>.exe</code> outside the extracted package folder.</p>
-    </section>
+  .wrap { max-width: 920px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+  .hero-panel { background: linear-gradient(135deg, var(--navy), #0A181E); color: var(--navy-text); border-radius: 1rem; padding: 1.6rem; }
+  .hero-panel h1 { margin: 0 0 .5rem; color: #F4F8F7; font-size: 1.6rem; }
+  .hero-panel p { margin: 0; line-height: 1.7; color: var(--navy-text); }
+  .badge {
+    display: inline-flex; align-items: center; border: 1px solid rgba(91,180,206,.45);
+    background: rgba(91,180,206,.14); color: #BEE3EE;
+    border-radius: 999px; font-family: var(--mono); font-size: .72rem; font-weight: 700; letter-spacing: .05em;
+    text-transform: uppercase; padding: .3rem .7rem; margin-bottom: .7rem;
+  }
+  .actions { margin-top: 1rem; display: flex; gap: .6rem; flex-wrap: wrap; }
+  .btn-dl { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: .7rem 1.2rem; font-size: .9rem; font-weight: 650; background: #fff; color: #0F2A33; }
+  .hero-note { margin-top: .7rem; font-size: .84rem; color: #9FBAC2; }
+  .panel { margin-top: 1.2rem; background: var(--surface); border: 1px solid var(--line-soft); border-radius: 1rem; padding: 1.3rem 1.5rem; box-shadow: var(--shadow); }
+  .panel-proprietary { border-color: var(--accent-line, var(--line)); background: var(--gov-soft); }
+  .panel-proprietary p { color: var(--ink-2); }
+  .panel h2 { margin: 0 0 .6rem; font-size: 1.06rem; color: var(--ink); }
+  .panel p, .panel li { color: var(--muted); line-height: 1.7; }
+  .panel ol { margin: .4rem 0 0; padding-left: 1.2rem; }
+  .panel code { background: var(--surface-raised); border: 1px solid var(--line-soft); padding: .1rem .32rem; border-radius: .35rem; font-family: var(--mono); font-size: .88em; }
+  .panel-note { margin-top: .6rem; font-size: .88rem; }
+  .panel .contact-link { display: inline-block; margin-top: .3rem; font-size: .88rem; color: var(--accent); font-weight: 600; }
+</style>
 
-    <section class="panel panel-proprietary">
-      <h2>Proprietary Distribution Notice</h2>
-      <p>This software package is distributed for approved evaluation only and is not open source.</p>
-      <p>Do not copy, redistribute, reverse engineer, or rehost package contents without written permission from the owner.</p>
-    </section>
+<div class="wrap">
+  <section class="hero-panel">
+    <div class="badge">Protected Build</div>
+    <h1>Engineering Intelligence Reviewer Build Access</h1>
+    <p>Use this page to download and run the approved reviewer build package. This distribution path is intended for authorized external evaluators.</p>
+    <div class="actions">
+      <a class="btn-dl" href="https://github.com/asajjadi/Utmostconnect.github.io/releases/download/ei-reviewer-build-20260806/EngineeringIntelligence-ReviewerBuild.zip">Download Reviewer Build ZIP (~108MB)</a>
+    </div>
+    <p class="hero-note">Extract the ZIP first, then run <code>EngineeringIntelligence.exe</code> from the extracted folder so the required <code>_internal</code> runtime files are available.</p>
+    <p class="hero-note">It's a large file (~108MB) — the download starts in this tab, so watch your browser's download bar/tray rather than waiting for a new tab to appear.</p>
+  </section>
 
-    <section class="panel">
-      <h2>Troubleshooting</h2>
-      <p>If you see a <code>python313.dll</code> or <code>_internal</code> error, the executable is being run without its bundled runtime folder. Re-extract the ZIP and run from inside that extracted folder.</p>
-      <p>If your browser shows a temporary extension such as <code>.download</code> while transferring, wait until the download completes and confirms a final <code>.zip</code> filename.</p>
-      <p>Builds from 2026-08-06 onward fix the <strong>"Unhandled exception... Failed to resolve Python.Runtime.Loader.Initialize"</strong> crash automatically — the app now strips Windows' "downloaded from the internet" flag from its own files on launch, so no manual unblock step is needed. If you're still seeing this error, you're likely running an older extracted copy; delete it and re-download from the link above.</p>
-      <p><a href="engineering-intelligence.html">Back to Engineering Intelligence page</a></p>
-    </section>
-  </main>
-</body>
-</html>
+  <section class="panel">
+    <h2>Launch from shared package</h2>
+    <ol>
+      <li>Extract the reviewer ZIP file.</li>
+      <li>Open the extracted folder and run <code>EngineeringIntelligence.exe</code>.</li>
+      <li>If Windows SmartScreen appears, click <code>More info</code> then <code>Run anyway</code> only if you trust the source.</li>
+    </ol>
+    <p class="panel-note">Do not run a copied standalone <code>.exe</code> outside the extracted package folder.</p>
+  </section>
+
+  <section class="panel panel-proprietary">
+    <h2>Proprietary Distribution Notice</h2>
+    <p>This software package is distributed for approved evaluation only and is not open source.</p>
+    <p>Do not copy, redistribute, reverse engineer, or rehost package contents without written permission from the owner.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Troubleshooting</h2>
+    <p>If you see a <code>python313.dll</code> or <code>_internal</code> error, the executable is being run without its bundled runtime folder. Re-extract the ZIP and run from inside that extracted folder.</p>
+    <p>If your browser shows a temporary extension such as <code>.download</code> while transferring, wait until the download completes and confirms a final <code>.zip</code> filename.</p>
+    <p>Builds from 2026-08-06 onward fix the <strong>"Unhandled exception... Failed to resolve Python.Runtime.Loader.Initialize"</strong> crash automatically — the app now strips Windows' "downloaded from the internet" flag from its own files on launch, so no manual unblock step is needed. If you're still seeing this error, you're likely running an older extracted copy; delete it and re-download from the link above.</p>
+    <a class="contact-link" href="engineering-intelligence.html">← Back to Engineering Intelligence page</a>
+  </section>
+</div>

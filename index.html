@@ -1,198 +1,121 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Utmost Connect - Technical Product and R&amp;D Leadership</title>
-  <meta name="description" content="Utmost Connect helps organizations move complex engineering and product initiatives forward through technical strategy, disciplined execution, and data-driven problem solving." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    /* Base reset and theme tokens */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --slate-50: #f8fafc; --slate-100: #f1f5f9; --slate-200: #e2e8f0;
-      --slate-300: #cbd5e1; --slate-500: #475569; --slate-600: #334155;
-      --slate-700: #334155; --slate-900: #0f172a; --white: #ffffff;
-      --accent: #1d4ed8;
-      --bg-gradient: linear-gradient(135deg, #dbeafe 0%, #f8fafc 42%, #dcfce7 100%);
-    }
+---
+layout: base
+title: Utmost Connect — Technical Product and R&D Leadership
+description: Utmost Connect helps organizations move complex engineering and product initiatives forward through technical strategy, disciplined execution, and data-driven problem solving.
+og_image: /images/Utmostconnect.png
+---
+<style>
+  /* ---------- Hero ---------- */
+  .hero-section { background: radial-gradient(ellipse 80% 60% at 50% -10%, var(--accent-soft) 0%, transparent 70%); }
+  .hero-section .section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .hero-layout { display: grid; grid-template-columns: 1.12fr .88fr; gap: 2.5rem; align-items: center; }
+  .hero-title { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; color: var(--ink); margin-bottom: 1.2rem; }
+  .hero-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+  .hero-sub p + p { margin-top: .85rem; }
+  .hero-media { width: 100%; aspect-ratio: 16/10; position: relative; border-radius: 1rem; overflow: hidden; box-shadow: var(--shadow-lg); }
+  .hero-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .btn-group { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.9rem; }
+  .btn-primary { background: var(--accent); color: #fff; font-size: .88rem; font-weight: 650; padding: .78rem 1.4rem; border-radius: 10px; transition: background .15s; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary { background: var(--surface); color: var(--ink-2); font-size: .88rem; font-weight: 650; padding: .78rem 1.4rem; border-radius: 10px; border: 1px solid var(--line); transition: background .15s; }
+  .btn-secondary:hover { background: var(--surface-raised); }
 
-    /* Shared layout and typography */
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: var(--slate-900); background: var(--bg-gradient); background-attachment: fixed; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--slate-200); }
-    .nav-inner { max-width: 1440px; margin: 0 auto; padding: 0 3rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
-    .brand-name { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.02em; }
-    .brand-tagline { font-size: 0.75rem; color: var(--slate-500); margin-top: 1px; }
-    nav { display: flex; gap: 2rem; }
-    nav a { font-size: 0.875rem; color: var(--slate-600); transition: color 0.15s; }
-    nav a:hover { color: var(--slate-900); }
-    .nav-cta { background: var(--slate-900); color: var(--white) !important; font-size: 0.8125rem; font-weight: 500; padding: 0.45rem 1.1rem; border-radius: 999px; transition: opacity 0.15s; }
-    .nav-cta:hover { opacity: 0.85; }
-    .section { max-width: 1440px; margin: 0 auto; padding: 5rem 3rem; }
-    .hero-section { background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(99,102,241,0.12) 0%, transparent 70%); }
-    .hero-section .section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
-    .section-bg { background: rgba(248,250,252,0.9); backdrop-filter: blur(4px); border-top: 1px solid var(--slate-300); border-bottom: 1px solid var(--slate-300); }
-    .section-bg .section { max-width: 1440px; margin: 0 auto; padding: 5rem 3rem; }
-    .hero { max-width: 1120px; width: 100%; }
-    .hero-layout { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 2rem; align-items: center; }
-    .hero-title { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; color: var(--slate-900); margin-bottom: 1.25rem; }
-    h1 { font-size: clamp(1.35rem, 2.7vw, 2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; color: var(--slate-900); }
-    .hero-sub { margin-top: 0; font-size: 1.0625rem; color: var(--slate-600); line-height: 1.7; max-width: none; margin-left: 0; margin-right: 0; text-align: left; }
-    .hero-sub p + p { margin-top: 0.75rem; }
-    .hero-media { width: 100%; aspect-ratio: 16 / 10; display: flex; align-items: center; align-self: center; position: relative; }
-    .hero-media::before { content: ''; position: absolute; inset: 10% -5% 8%; background: radial-gradient(ellipse 60% 55% at 50% 55%, rgba(29,78,216,0.2) 0%, rgba(29,78,216,0.08) 45%, transparent 80%); filter: blur(20px); z-index: 0; pointer-events: none; }
-    .hero-media img { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 0.75rem; position: relative; z-index: 1; filter: saturate(1.03) contrast(1.02); -webkit-mask-image: radial-gradient(ellipse 94% 90% at 50% 50%, #000 74%, rgba(0,0,0,0.85) 84%, rgba(0,0,0,0.45) 93%, transparent 100%); mask-image: radial-gradient(ellipse 94% 90% at 50% 50%, #000 74%, rgba(0,0,0,0.85) 84%, rgba(0,0,0,0.45) 93%, transparent 100%); }
-    .btn-group { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
-    .btn-primary { background: var(--slate-900); color: var(--white); font-size: 0.875rem; font-weight: 500; padding: 0.7rem 1.5rem; border-radius: 999px; transition: opacity 0.15s; box-shadow: 0 1px 4px rgba(0,0,0,0.15); }
-    .btn-primary:hover { opacity: 0.85; }
-    .btn-secondary { background: var(--white); color: var(--slate-700); font-size: 0.875rem; font-weight: 500; padding: 0.7rem 1.5rem; border-radius: 999px; border: 1px solid var(--slate-300); transition: background 0.15s; }
-    .btn-secondary:hover { background: var(--slate-50); }
-    .eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
-    h2 { font-size: clamp(1.5rem, 2.5vw, 2.125rem); font-weight: 700; letter-spacing: -0.025em; margin-top: 0.5rem; line-height: 1.25; }
-    .section-desc { margin-top: 0.75rem; color: var(--slate-600); line-height: 1.75; max-width: 560px; }
-    .about-grid { display: grid; grid-template-columns: 0.9fr 1.7fr; gap: 3.5rem; align-items: start; }
-    .about-profile { margin-top: 1.25rem; max-width: 300px; background: #fff; border: 1px solid var(--slate-200); border-radius: 1rem; padding: 0.75rem; box-shadow: 0 2px 10px rgba(15,23,42,0.08); }
-    .about-profile img { display: block; width: 100%; height: auto; border-radius: 0.75rem; }
-    .about-body { color: var(--slate-600); line-height: 1.75; font-size: 0.95rem; max-width: 76ch; }
-    .about-body h2 { margin-bottom: 1rem; }
-    .about-role { margin-bottom: 0.8rem; font-size: 0.9rem; font-weight: 600; color: var(--slate-700); }
-    .about-specialties { margin: 0.9rem 0 1.1rem; padding-left: 0; list-style: none; display: grid; gap: 0.45rem; }
-    .about-specialties li { padding-left: 1.1rem; position: relative; }
-    .about-specialties li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
-    .about-education-title { margin-top: 0.8rem; font-size: 0.86rem; font-weight: 700; color: var(--slate-700); }
-    .about-education { margin-top: 0.1rem; display: grid; gap: 0.01rem; font-size: 0.86rem; line-height: 1; }
-    .about-education p { margin: 0; }
-    .about-body p + p { margin-top: 1.125rem; }
-    .card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-    .card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-    .card { background: #ffffff; border: 1px solid var(--slate-200); border-radius: 1rem; padding: 2rem; box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 16px rgba(15,23,42,0.06); transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; }
-    .card:hover { box-shadow: 0 4px 12px rgba(15,23,42,0.08), 0 12px 32px rgba(15,23,42,0.08); transform: translateY(-2px); }
-    .card h3 { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; color: var(--slate-900); }
-    .card p { margin-top: 0.625rem; font-size: 0.9rem; color: var(--slate-600); line-height: 1.75; }
-    .card-icon { width: 2.75rem; height: 2.75rem; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; flex-shrink: 0; }
-    .card-icon svg { width: 1.25rem; height: 1.25rem; }
-    .card-list { margin-top: 0.875rem; padding-left: 0; list-style: none; display: grid; gap: 0.5rem; flex: 1; }
-    .card-list li { font-size: 0.875rem; color: var(--slate-600); line-height: 1.6; padding-left: 1.25rem; position: relative; }
-    .card-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; border-radius: 50%; background: var(--slate-300); }
-    .card-callout { margin-top: 1.5rem; padding: 0.75rem 1rem; background: var(--slate-50); border-radius: 0.5rem; font-size: 0.8125rem; font-weight: 500; color: var(--slate-700); line-height: 1.5; border-left: 3px solid currentColor; }
-    .projects-media-grid { margin-top: 2rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;justify-items: center}
-    .projects-media { background: rgba(255,255,255,0.96); border: 1px solid var(--slate-300); border-radius: 1.25rem; padding: 0.9rem; box-shadow: 0 2px 10px rgba(15,23,42,0.08); }
-    .projects-media img { width: 600px; height: 600px; display: block; border-radius: 0.6rem; cursor: zoom-in; }
-    .projects-media-caption { margin-top: 0.75rem; font-size: 1.3rem; color: blue; text-align: center;font-weight: 800 }
-    .image-lightbox { position: fixed; inset: 0; background: rgba(2,6,23,0.82); display: none; align-items: center; justify-content: center; padding: 2rem; z-index: 2000; }
-    .image-lightbox.open { display: flex; }
-    .lightbox-img { max-width: min(1100px, 92vw); max-height: 86vh; width: auto; height: auto; border-radius: 0.9rem; box-shadow: 0 16px 48px rgba(0,0,0,0.35); cursor: zoom-in; transform-origin: center center; transition: transform 0.12s ease-out; user-select: none; -webkit-user-drag: none; touch-action: none; }
-    .lightbox-img.zoomed { cursor: grab; }
-    .lightbox-img.dragging { cursor: grabbing; }
-    .lightbox-close { position: absolute; top: 1rem; right: 1rem; width: 2.25rem; height: 2.25rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); background: rgba(15,23,42,0.6); color: #fff; font-size: 1.35rem; line-height: 1; cursor: pointer; }
-    .lightbox-close:hover { background: rgba(15,23,42,0.85); }
-    .value-banner { background: linear-gradient(135deg, #0c1a3a 0%, #0f2657 55%, #0c1a3a 100%); border-radius: 1.5rem; padding: 2.5rem 2.75rem; color: var(--white); display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem; align-items: center; position: relative; overflow: hidden; }
-    .value-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(250,204,21,0.07) 0%, transparent 70%); pointer-events: none; }
-    .value-eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #fcd34d; }
-    .value-banner h2 { color: #fef9c3; margin-top: 0.5rem; }
-    .value-banner p { color: #bfdbfe; margin-top: 0.625rem; line-height: 1.65; font-size: 0.9rem; }
-    .value-pills { display: grid; gap: 0.625rem; position: relative; }
-    .value-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(250,204,21,0.15); border-radius: 0.75rem; padding: 0.75rem 1rem; display: flex; gap: 0.75rem; align-items: flex-start; transition: background 0.2s, border-color 0.2s; }
-    .value-pill:hover { background: rgba(250,204,21,0.06); border-color: rgba(250,204,21,0.35); }
-    .value-pill-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: #fcd34d; margin-top: 0.35rem; flex-shrink: 0; }
-    .value-pill-title { font-size: 0.9rem; font-weight: 600; color: #fef9c3; }
-    .value-pill-desc { font-size: 0.8125rem; color: #93c5fd; margin-top: 0.15rem; line-height: 1.5; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-    .contact-card { background: var(--white); border: 1px solid var(--slate-300); border-radius: 1.25rem; padding: 2rem; box-shadow: 0 2px 10px rgba(15,23,42,0.08); }
-    .contact-label { font-size: 0.75rem; color: var(--slate-500); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; }
-    .contact-value { font-size: 1rem; font-weight: 500; margin-top: 0.25rem; color: var(--slate-900); }
-    .contact-row + .contact-row { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--slate-100); }
-    .contact-link { display: flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; color: var(--accent); font-weight: 500; margin-top: 0.375rem; transition: opacity 0.15s; }
-    .contact-link + .contact-link { margin-top: 0.45rem; }
-    .contact-link:hover { opacity: 0.75; }
-    .contact-form { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--slate-100); display: grid; gap: 0.75rem; }
-    .contact-form label { font-size: 0.75rem; font-weight: 600; color: var(--slate-600); text-transform: uppercase; letter-spacing: 0.08em; }
-    .contact-form input, .contact-form textarea { width: 100%; border: 1px solid var(--slate-300); border-radius: 0.75rem; padding: 0.7rem 0.85rem; font: inherit; color: var(--slate-900); background: #fff; }
-    .contact-form textarea { min-height: 120px; resize: vertical; }
-    .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(29,78,216,0.12); }
-    .contact-note { font-size: 0.78rem; color: var(--slate-500); line-height: 1.55; }
-    footer { border-top: 1px solid var(--slate-200); padding: 2rem 1.5rem; text-align: center; font-size: 0.8125rem; color: var(--slate-500); }
+  /* ---------- About ---------- */
+  .about-grid { display: grid; grid-template-columns: .82fr 1.7fr; gap: 3.2rem; align-items: start; }
+  .about-profile { max-width: 260px; background: var(--surface); border: 1px solid var(--line-soft); border-radius: 1rem; padding: .7rem; box-shadow: var(--shadow); }
+  .about-profile img { display: block; width: 100%; height: auto; border-radius: .7rem; }
+  .about-body { color: var(--muted); line-height: 1.75; font-size: .95rem; }
+  .about-body h2 { margin-bottom: 1rem; }
+  .about-role { margin-bottom: .8rem; font-size: .9rem; font-weight: 600; color: var(--ink-2); }
+  .about-specialties { margin: .9rem 0 1.1rem; padding-left: 0; list-style: none; display: grid; gap: .45rem; }
+  .about-specialties li { padding-left: 1.1rem; position: relative; }
+  .about-specialties li::before { content: ''; position: absolute; left: 0; top: .6em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+  .about-education-title { margin-top: .8rem; font-family: var(--mono); font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--faint); }
+  .about-education { margin-top: .35rem; display: grid; gap: .2rem; font-size: .86rem; color: var(--muted); }
+  .about-body p + p { margin-top: 1.1rem; }
 
-    /* Mobile navigation */
-    .menu-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; border-radius: 8px; }
-    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--slate-700); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
-    .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .menu-toggle.open span:nth-child(2) { opacity: 0; }
-    .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-nav { display: none; position: fixed; inset: 64px 0 0 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); z-index: 99; flex-direction: column; padding: 1.5rem; border-top: 1px solid var(--slate-200); }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a { font-size: 1.125rem; font-weight: 500; color: var(--slate-700); padding: 1rem 0; border-bottom: 1px solid var(--slate-100); transition: color 0.15s; }
-    .mobile-nav a:last-child { border-bottom: none; }
-    .mobile-nav a:hover { color: var(--accent); }
-    .mobile-nav .nav-cta { margin-top: 1rem; background: var(--slate-900); color: var(--white) !important; text-align: center; padding: 0.9rem; border-radius: 999px; border: none; font-size: 1rem; }
-    @media (max-width: 768px) {
-      .menu-toggle { display: flex; }
-      nav { display: none; }
-      .about-grid, .contact-grid, .value-banner { grid-template-columns: 1fr; gap: 2rem; }
-      .about-profile { max-width: 250px; }
-      .card-grid-2, .card-grid-3 { grid-template-columns: 1fr; }
-      .section { padding: 3rem 1.25rem; }
-      .hero-section .section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
-      .hero-layout { grid-template-columns: 1fr; gap: 1.25rem; }
-      .hero-media { aspect-ratio: auto; }
-      .hero-media img { height: auto; }
-      .section-bg .section { padding: 3rem 1.25rem; }
-      .value-banner { padding: 2rem 1.5rem; border-radius: 1.25rem; }
-      .value-banner h2 { font-size: 1.35rem; }
-      h1 { font-size: 1.65rem; }
-      .hero-sub { font-size: 0.9375rem; }
-      .btn-group { flex-direction: column; }
-      .btn-primary, .btn-secondary { text-align: center; padding: 0.85rem 1.5rem; font-size: 0.9375rem; }
-      .card { padding: 1.25rem; }
-      .projects-media-grid { grid-template-columns: 1fr; }
-      .contact-card { padding: 1.5rem; }
-      footer { padding: 1.5rem 1.25rem; font-size: 0.75rem; }
-    }
-  </style>
-</head>
-<body>
+  /* ---------- Cards ---------- */
+  .card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; margin-top: 2.4rem; }
+  .card { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 14px; padding: 1.8rem; box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s; display: flex; flex-direction: column; }
+  .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .card h3 { font-family: var(--sans); font-size: 1.02rem; font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
+  .card > p { margin-top: .55rem; font-size: .9rem; color: var(--muted); line-height: 1.65; }
+  .card-icon { width: 2.6rem; height: 2.6rem; border-radius: .7rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; flex-shrink: 0; }
+  .card-icon svg { width: 1.2rem; height: 1.2rem; }
+  .card-list { margin-top: .85rem; padding-left: 0; list-style: none; display: grid; gap: .5rem; flex: 1; }
+  .card-list li { font-size: .86rem; color: var(--muted); line-height: 1.6; padding-left: 1.1rem; position: relative; }
+  .card-list li::before { content: '—'; position: absolute; left: 0; color: var(--faint); }
+  .card-link { display: inline-block; margin-top: 1rem; font-size: .82rem; font-weight: 650; color: var(--accent); transition: opacity .15s; }
+  .card-link:hover { opacity: .75; }
 
-<header>
-  <div class="nav-inner">
-    <div>
-      <div class="brand-name">Utmost Connect</div>
-      <div class="brand-tagline">Engineering Depth. Clinical Insight. Execution That Delivers.</div>
-    </div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact" class="nav-cta">Contact</a>
-    </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+  /* ---------- Projects ---------- */
+  .projects-media-grid { margin-top: 2rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+  .projects-media { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 1rem; padding: .8rem; box-shadow: var(--shadow); }
+  .projects-media img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; border-radius: .55rem; cursor: zoom-in; }
+  .projects-media-caption { margin-top: .7rem; font-size: .86rem; color: var(--ink-2); font-weight: 600; text-align: center; }
+  .image-lightbox { position: fixed; inset: 0; background: rgba(2,6,23,.82); display: none; align-items: center; justify-content: center; padding: 2rem; z-index: 2000; }
+  .image-lightbox.open { display: flex; }
+  .lightbox-img { max-width: min(1100px, 92vw); max-height: 86vh; width: auto; height: auto; border-radius: .9rem; box-shadow: 0 16px 48px rgba(0,0,0,.35); cursor: zoom-in; transform-origin: center center; transition: transform .12s ease-out; user-select: none; -webkit-user-drag: none; touch-action: none; }
+  .lightbox-img.zoomed { cursor: grab; }
+  .lightbox-img.dragging { cursor: grabbing; }
+  .lightbox-close { position: absolute; top: 1rem; right: 1rem; width: 2.25rem; height: 2.25rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); background: rgba(15,23,42,.6); color: #fff; font-size: 1.35rem; line-height: 1; cursor: pointer; }
+  .lightbox-close:hover { background: rgba(15,23,42,.85); }
 
-<div class="mobile-nav" id="mobileNav">
-  <a href="#about" onclick="closeMobileNav()">About</a>
-  <a href="#services" onclick="closeMobileNav()">Services</a>
-  <a href="#projects" onclick="closeMobileNav()">Projects</a>
-  <a href="#contact" class="nav-cta" onclick="closeMobileNav()">Contact</a>
-</div>
+  /* ---------- Value banner (reuses the same navy tokens as the EI hero) ---------- */
+  .value-banner { background: linear-gradient(135deg, var(--navy) 0%, #0A181E 100%); border-radius: 1.5rem; padding: 2.6rem 2.8rem; color: var(--navy-text); display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem; align-items: center; }
+  .value-eyebrow { font-family: var(--mono); font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-hover); }
+  .value-banner h2 { color: #F4F8F7; margin-top: .5rem; }
+  .value-banner > div > p { color: var(--navy-text); margin-top: .65rem; line-height: 1.65; font-size: .92rem; max-width: 34ch; }
+  .value-pills { display: grid; gap: .6rem; }
+  .value-pill { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: .75rem; padding: .75rem 1rem; display: flex; gap: .75rem; align-items: flex-start; transition: background .2s, border-color .2s; }
+  .value-pill:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2); }
+  .value-pill-dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent-hover); margin-top: .35rem; flex-shrink: 0; }
+  .value-pill-title { font-size: .9rem; font-weight: 600; color: #F4F8F7; }
+  .value-pill-desc { font-size: .8rem; color: var(--navy-text); margin-top: .15rem; line-height: 1.5; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .contact-card { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 1.1rem; padding: 2rem; box-shadow: var(--shadow); }
+  .contact-row + .contact-row { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line-soft); }
+  .contact-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .88rem; color: var(--accent); font-weight: 600; margin-top: .3rem; transition: opacity .15s; }
+  .contact-link:hover { opacity: .75; }
+  .contact-form { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line-soft); display: grid; gap: .75rem; }
+  .contact-form label { font-family: var(--mono); font-size: .7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .contact-form input, .contact-form textarea { width: 100%; border: 1px solid var(--line); border-radius: .7rem; padding: .7rem .85rem; font: inherit; color: var(--ink); background: var(--surface); }
+  .contact-form textarea { min-height: 120px; resize: vertical; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .contact-note { font-size: .76rem; color: var(--faint); line-height: 1.55; }
+
+  @media (max-width: 768px) {
+    .about-grid, .contact-grid, .value-banner { grid-template-columns: 1fr; gap: 2rem; }
+    .about-profile { max-width: 220px; }
+    .card-grid-2, .projects-media-grid { grid-template-columns: 1fr; }
+    .hero-section .section { padding-top: 3rem; padding-bottom: 3rem; }
+    .hero-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+    .btn-group { flex-direction: column; }
+    .btn-primary, .btn-secondary { text-align: center; }
+    .value-banner { padding: 2rem 1.5rem; border-radius: 1.1rem; }
+    .contact-card { padding: 1.5rem; }
+  }
+</style>
 
 <!-- Hero -->
 <div class="hero-section">
   <div class="section">
-    <div class="hero">
-      <div class="hero-layout">
+    <div class="hero-layout">
+      <div>
+        <h1 class="hero-title">Engineering depth. Product outcomes.</h1>
         <div class="hero-sub">
           <p>Utmost Connect supports organizations in advancing complex medical device and engineering programs from concept through validation and scale, with leadership experience spanning medical devices, healthcare innovation, and advanced engineering environments.</p>
           <p>We align engineering, clinical, and product functions to improve execution in high-uncertainty programs, with a track record that includes multi-million-dollar R&amp;D initiatives, first-in-human clinical studies, and advanced manufacturing systems.</p>
         </div>
-        <div class="hero-media">
-          <img src="images/Utmostconnect.png" alt="Advanced engineering and product development background" />
+        <div class="btn-group">
+          <a href="#contact" class="btn-primary">Book a consultation</a>
+          <a href="#services" class="btn-secondary">See services</a>
         </div>
+      </div>
+      <div class="hero-media">
+        <img src="images/Utmostconnect.png" alt="Advanced engineering and product development background">
       </div>
     </div>
   </div>
@@ -205,19 +128,18 @@
       <div>
         <div class="eyebrow">About</div>
         <div class="about-profile">
-          <img src="images/Profile - 2.png" alt="Amir Sajjadi" />
+          <img src="images/Profile - 2.png" alt="Amir Sajjadi">
         </div>
       </div>
       <div class="about-body">
         <h2>Engineering depth with product perspective</h2>
-        <p class="about-role">Amir Sajjadi, Ph.D., PMP &middot; Founder and Lead Consultant &middot; Product Development, Advanced Manufacturing, and Commercialization</p>
+        <p class="about-role">Amir Sajjadi, Ph.D., PMP · Founder and Lead Consultant · Product Development, Advanced Manufacturing, and Commercialization</p>
         <p>Amir has helped organizations turn complex technical challenges into clear, executable product and engineering outcomes.</p>
         <ul class="about-specialties">
           <li>Product Development and Commercialization</li>
           <li>Fractional CTO / R&amp;D Leadership</li>
           <li>Advanced Manufacturing, Digital Engineering, and Simulation</li>
           <li>AI-Assisted Engineering Consulting</li>
-          
         </ul>
         <p>With 15+ years across medical devices, aerospace, energy, and high-technology sectors, he has led multidisciplinary teams from concept through scale-up and commercialization.</p>
         <p>His background includes leadership roles with Harvard Medical School and Massachusetts General Hospital, Edwards Lifesciences, and other innovation-driven organizations.</p>
@@ -225,8 +147,8 @@
         <p>Technical focus areas include advanced manufacturing, laser and micro-manufacturing, PLM and Digital Thread implementation, systems engineering, simulation-driven design, and technology strategy.</p>
         <div class="about-education-title">Education</div>
         <div class="about-education">
-          <p>Postdoctoral Fellowship, Biomedical Imaging and Translational Medicine &mdash; Harvard University</p>
-          <p>Ph.D., Mechanical Engineering &mdash; Florida Institute of Technology</p>
+          <p>Postdoctoral Fellowship, Biomedical Imaging and Translational Medicine — Harvard University</p>
+          <p>Ph.D., Mechanical Engineering — Florida Institute of Technology</p>
           <p>M.Sc., Aerospace Engineering</p>
           <p>B.Sc., Mechanical Engineering</p>
         </div>
@@ -238,15 +160,15 @@
 <!-- Services -->
 <div class="section" id="services">
   <div class="eyebrow">Services</div>
-  <h2>How can we help!</h2>
-  <p class="section-desc">Flexible support for startups, growth-stage companies, and established teams tackling challenging product and engineering work.</p>
+  <h2>Flexible support for hard engineering problems</h2>
+  <p class="section-desc">For startups, growth-stage companies, and established teams tackling challenging product and engineering work.</p>
   <div class="card-grid-2">
     <div class="card">
-      <div class="card-icon" style="background:#ede9fe;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="17"/><line x1="12" y1="7" x2="19" y2="17"/><line x1="5" y1="19" x2="19" y2="19"/></svg>
+      <div class="card-icon" style="background:var(--tint-a);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--tint-a-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="17"/><line x1="12" y1="7" x2="19" y2="17"/><line x1="5" y1="19" x2="19" y2="19"/></svg>
       </div>
       <h3>R&amp;D Strategy &amp; Technical Leadership</h3>
-      <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--slate-600);">Define product strategy, development roadmaps, and execution plans for complex systems.</p>
+      <p>Define product strategy, development roadmaps, and execution plans for complex systems.</p>
       <ul class="card-list">
         <li>Align engineering, clinical, and business objectives</li>
         <li>Lead cross-functional teams and programs</li>
@@ -254,24 +176,24 @@
       </ul>
     </div>
     <div class="card">
-      <div class="card-icon" style="background:#dbeafe;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      <div class="card-icon" style="background:var(--tint-b);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--tint-b-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
       </div>
       <h3>Medical Device &amp; Regulated Development</h3>
-      <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--slate-600);">Support end-to-end development in FDA and ISO-regulated environments.</p>
+      <p>Support end-to-end development in FDA and ISO-regulated environments.</p>
       <ul class="card-list">
         <li>Design controls, risk management, and validation strategy</li>
         <li>Clinical readiness and early-stage development</li>
         <li>Design transfer and manufacturing scale-up</li>
       </ul>
-      <a href="ClearPath%20QMS/" style="display:inline-block;margin-top:0.8rem;font-size:0.8125rem;font-weight:500;color:var(--accent);text-decoration:none;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">ClearPath QMS page &rsaquo;</a>
+      <a href="ClearPath%20QMS/" class="card-link">ClearPath QMS page →</a>
     </div>
     <div class="card">
-      <div class="card-icon" style="background:#dcfce7;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4"/><line x1="12" y1="8" x2="12" y2="8.01"/></svg>
+      <div class="card-icon" style="background:var(--tint-c);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--tint-c-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4"/><line x1="12" y1="8" x2="12" y2="8.01"/></svg>
       </div>
       <h3>Laser Processing &amp; Micro-Manufacturing</h3>
-      <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--slate-600);">Development and optimization of precision laser processes, micro-fabrication technologies, automation, and production implementation.</p>
+      <p>Development and optimization of precision laser processes, micro-fabrication technologies, automation, and production implementation.</p>
       <ul class="card-list">
         <li>Optical system design and integration</li>
         <li>Laser-based processing and instrumentation</li>
@@ -279,19 +201,19 @@
       </ul>
     </div>
     <div class="card">
-      <div class="card-icon" style="background:#fef9c3;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><polyline points="6 8 10 12 14 8 18 12"/></svg>
+      <div class="card-icon" style="background:var(--tint-d);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--tint-d-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><polyline points="6 8 10 12 14 8 18 12"/></svg>
       </div>
       <h3>Data-Driven Engineering &amp; Analytics</h3>
-      <p style="margin-top:0.5rem;font-size:0.9rem;color:var(--slate-600);">Turn complex data into actionable insight.</p>
+      <p>Turn complex data into actionable insight.</p>
       <ul class="card-list">
         <li>AI-Assisted Engineering Consulting</li>
         <li>Custom analysis pipelines (Python, MATLAB)</li>
         <li>Statistical modeling and performance optimization</li>
         <li>Data-driven decision support</li>
       </ul>
-      <a href="ai-data-engineering.html" style="display:inline-block;margin-top:1rem;font-size:0.8125rem;font-weight:500;color:var(--accent);text-decoration:none;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">More info and Project Examples &rsaquo;</a>
-      <a href="engineering-intelligence.html" style="display:inline-block;margin-top:0.6rem;font-size:0.8125rem;font-weight:500;color:var(--accent);text-decoration:none;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">Engineering Intelligence &rsaquo;</a>
+      <a href="ai-data-engineering.html" class="card-link">More info and project examples →</a>
+      <a href="engineering-intelligence.html" class="card-link">Engineering Intelligence →</a>
     </div>
   </div>
 </div>
@@ -300,73 +222,36 @@
 <div class="section-bg" id="projects">
   <div class="section">
     <div class="eyebrow">Projects</div>
-    <h2>Proven Results &amp; Case Studies</h2>
+    <h2>Proven results &amp; case studies</h2>
     <p class="section-desc">Demonstrating how complex technical challenges are translated into clear outcomes and performance improvements.</p>
-    <div class="projects-media-grid">  <!--OLD  <div class="projects-media-grid"> -->
-      <!--div class="projects-media">
-        <img src="images/Clinical MGH Harvard.png" alt="Clinical research and translational engineering collaboration" />
-        <p class="projects-media-caption">Clinical and translational program support spanning research, engineering, and execution.</p>
-      </div-->
-      <!--div class="projects-media">
-        <img src="images/product-development-process.png" alt="Structured product development process" />
-        <p class="projects-media-caption">Structured product development: from concept through design transfer.</p>
-      </div-->
+    <div class="projects-media-grid">
       <div class="projects-media">
-        <img src="images/Medical Device Innovation.png" alt="Medical device innovation and product engineering" />
+        <img src="images/Medical Device Innovation.png" alt="Medical device innovation and product engineering">
         <p class="projects-media-caption">Medical device innovation programs focused on design, validation, and clinical impact.</p>
       </div>
-       <div class="projects-media">
-        <img src="images/Advanced Manufacturing.png" alt="Advanced manufacturing and process engineering workflow" />
+      <div class="projects-media">
+        <img src="images/Advanced Manufacturing.png" alt="Advanced manufacturing and process engineering workflow">
         <p class="projects-media-caption">Advanced manufacturing strategy and process optimization for scalable product execution.</p>
       </div>
       <div class="projects-media">
-        <img src="images/Data Analytics.png" alt="Data analytics workflow for engineering decisions" />
+        <img src="images/Data Analytics.png" alt="Data analytics workflow for engineering decisions">
         <p class="projects-media-caption">Data analytics and decision-support workflows for engineering and product performance.</p>
       </div>
-     
-            <!--div class="projects-media">
-        <img src="images/Optomechanical.png" alt="Optomechanical system design and development" />
-        <p class="projects-media-caption">Optomechanical system development combining precision design, testing, and optimization.</p>
-      </div-->
-      <!--div class="projects-media">
-        <img src="images/Laser.png" alt="Laser process engineering and system development" />
-        <p class="projects-media-caption">Laser process development and system-level engineering for high-performance applications.</p>
-      </div-->
-      <!--div class="projects-media">
-        <img src="images/supersonic nozzle.png" alt="Supersonic nozzle simulation and engineering" />
-        <p class="projects-media-caption">Optomechanical and fluid systems: advanced engineering problem solving.</p>
-      </div-->
-      <!--div class="projects-media">
-        <img src="images/Leadership.png" alt="Cross-functional engineering leadership and execution" />
-        <p class="projects-media-caption">Cross-functional engineering execution and technical leadership in action.</p>
-      </div-->
-      <!--div class="projects-media">
-        <img src="images/PLM.png" alt="PLM-based product lifecycle and engineering workflow" />
-        <p class="projects-media-caption">PLM-integrated engineering workflow: design, simulation, and lifecycle management.</p>
-      </div-->
       <div class="projects-media">
-        <img src="images/PLM_Desgin_Simulation_Optimization.png" alt="CAD, simulation, and data pipeline integration" />
+        <img src="images/PLM_Desgin_Simulation_Optimization.png" alt="CAD, simulation, and data pipeline integration">
         <p class="projects-media-caption">Connected digital engineering thread: CAD + simulation + data pipeline powered by PLM.</p>
       </div>
-      <!--div class="projects-media">
-        <img src="images/Medical Device.png" alt="Medical device development and innovation" />
-        <p class="projects-media-caption">Medical device platform development in regulated environments.</p>
-      </div-->
-    </div>
     </div>
   </div>
-
-
-
-
+</div>
 
 <!-- Value banner -->
 <div class="section">
   <div class="value-banner">
     <div>
       <div class="value-eyebrow">Why us</div>
-      <h2>What Makes Us Different</h2>
-      <p>Utmost Connect is built for organizations that need more than generic consulting &mdash; they need someone who understands the technical details, bridges functions, and drives execution.</p>
+      <h2>What makes us different</h2>
+      <p>Utmost Connect is built for organizations that need more than generic consulting — they need someone who understands the technical details, bridges functions, and drives execution.</p>
     </div>
     <div class="value-pills">
       <div class="value-pill">
@@ -377,7 +262,7 @@
       <div class="value-pill">
         <div class="value-pill-dot"></div>
         <div><div class="value-pill-title">Hands-On Leadership</div>
-        <div class="value-pill-desc">Not just strategy &mdash; direct involvement in solving problems and executing</div></div>
+        <div class="value-pill-desc">Not just strategy — direct involvement in solving problems and executing</div></div>
       </div>
       <div class="value-pill">
         <div class="value-pill-dot"></div>
@@ -399,23 +284,23 @@
     <div class="contact-grid">
       <div>
         <div class="eyebrow">Contact</div>
-        <h2>Let&apos;s talk about your next project</h2>
+        <h2>Let's talk about your next project</h2>
         <p class="section-desc">Whether you need technical leadership, product development support, or engineering analysis, Utmost Connect can help you move faster with greater clarity.</p>
-        <a href="https://calendly.com/utmost-connect" class="btn-primary" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:1.5rem;">Book a Consultation</a>
+        <a href="https://calendly.com/utmost-connect" class="btn-primary" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:1.5rem;">Book a consultation</a>
       </div>
       <div class="contact-card">
         <div class="contact-row">
-          <a href="https://calendly.com/utmost-connect" class="contact-link" target="_blank" rel="noopener noreferrer">Book via Calendly &rarr;</a>
+          <a href="https://calendly.com/utmost-connect" class="contact-link" target="_blank" rel="noopener noreferrer">Book via Calendly →</a>
         </div>
         <form class="contact-form" action="https://formsubmit.co/utmostconnect2026@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New consultation request from Utmost Connect website" />
-          <input type="hidden" name="_captcha" value="true" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_next" value="https://utmostconnect.org/" />
+          <input type="hidden" name="_subject" value="New consultation request from Utmost Connect website">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://utmostconnect.org/">
           <label for="contactName">Name</label>
-          <input id="contactName" name="name" type="text" required />
+          <input id="contactName" name="name" type="text" required>
           <label for="contactEmail">Email</label>
-          <input id="contactEmail" name="email" type="email" required />
+          <input id="contactEmail" name="email" type="email" required>
           <label for="contactMessage">Message</label>
           <textarea id="contactMessage" name="message" placeholder="Tell us about your project, goals, and how we can help." required></textarea>
           <p class="contact-note">Helpful details: project type, stage, key goals, and preferred contact method.</p>
@@ -426,36 +311,12 @@
   </div>
 </div>
 
-<footer>
-  <p>&copy; 2025 Utmost Connect &middot; </p>
-</footer>
-
 <div class="image-lightbox" id="imageLightbox" aria-hidden="true">
   <button class="lightbox-close" id="lightboxClose" aria-label="Close image">&times;</button>
-  <img id="lightboxImg" class="lightbox-img" src="" alt="Expanded project image" />
+  <img id="lightboxImg" class="lightbox-img" src="" alt="Expanded project image">
 </div>
 
 <script>
-  function setPageScrollLock(isLocked) {
-    document.body.style.overflow = isLocked ? 'hidden' : '';
-  }
-
-  const toggle = document.getElementById('menuToggle');
-  const mobileNav = document.getElementById('mobileNav');
-
-  // Keep the mobile menu state and page scroll behavior in sync.
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('open');
-    mobileNav.classList.toggle('open');
-    setPageScrollLock(mobileNav.classList.contains('open'));
-  });
-
-  function closeMobileNav() {
-    toggle.classList.remove('open');
-    mobileNav.classList.remove('open');
-    setPageScrollLock(false);
-  }
-
   const lightbox = document.getElementById('imageLightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
@@ -482,15 +343,14 @@
     applyLightboxTransform();
   }
 
-  // Reuse each gallery image as the source for the fullscreen lightbox.
-  document.querySelectorAll('.projects-media img').forEach(function(img) {
-    img.addEventListener('click', function() {
+  document.querySelectorAll('.projects-media img').forEach(function (img) {
+    img.addEventListener('click', function () {
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt || '';
       resetLightboxTransform();
       lightbox.classList.add('open');
       lightbox.setAttribute('aria-hidden', 'false');
-      setPageScrollLock(true);
+      document.body.style.overflow = 'hidden';
     });
   });
 
@@ -499,11 +359,10 @@
     lightbox.setAttribute('aria-hidden', 'true');
     resetLightboxTransform();
     lightboxImg.src = '';
-    setPageScrollLock(false);
+    document.body.style.overflow = '';
   }
 
-  // Wheel to zoom in/out while the lightbox is open.
-  lightboxImg.addEventListener('wheel', function(e) {
+  lightboxImg.addEventListener('wheel', function (e) {
     if (!lightbox.classList.contains('open')) return;
     e.preventDefault();
     const zoomStep = e.deltaY < 0 ? 0.2 : -0.2;
@@ -515,8 +374,7 @@
     applyLightboxTransform();
   }, { passive: false });
 
-  // Double-click toggles between fit and a readable zoom level.
-  lightboxImg.addEventListener('dblclick', function() {
+  lightboxImg.addEventListener('dblclick', function () {
     if (!lightbox.classList.contains('open')) return;
     if (lightboxZoom > 1) {
       resetLightboxTransform();
@@ -526,8 +384,7 @@
     applyLightboxTransform();
   });
 
-  // Drag to pan while zoomed.
-  lightboxImg.addEventListener('pointerdown', function(e) {
+  lightboxImg.addEventListener('pointerdown', function (e) {
     if (lightboxZoom <= 1) return;
     isLightboxDragging = true;
     dragStartX = e.clientX - lightboxOffsetX;
@@ -536,7 +393,7 @@
     lightboxImg.setPointerCapture(e.pointerId);
   });
 
-  lightboxImg.addEventListener('pointermove', function(e) {
+  lightboxImg.addEventListener('pointermove', function (e) {
     if (!isLightboxDragging || lightboxZoom <= 1) return;
     lightboxOffsetX = e.clientX - dragStartX;
     lightboxOffsetY = e.clientY - dragStartY;
@@ -553,8 +410,6 @@
   lightboxImg.addEventListener('pointercancel', stopLightboxDrag);
 
   lightboxClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
 </script>
-</body>
-</html>
