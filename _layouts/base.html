@@ -79,10 +79,11 @@
 
   /* ---------- Shared nav chrome ---------- */
   header.site-nav { position: sticky; top: 0; z-index: 100; background: color-mix(in srgb, var(--canvas) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-soft); }
-  .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 3rem; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 3rem; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .brand { min-width: 0; }
   .brand-name { font-family: var(--sans); font-size: 1.02rem; font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
-  .brand-tagline { font-family: var(--mono); font-size: .68rem; color: var(--faint); margin-top: 1px; letter-spacing: .01em; }
-  nav.nav-links { display: flex; align-items: center; gap: 2rem; }
+  .brand-tagline { font-family: var(--mono); font-size: .68rem; color: var(--faint); margin-top: 1px; letter-spacing: .01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  nav.nav-links { display: flex; align-items: center; gap: 2rem; flex: none; }
   nav.nav-links a:not(.nav-cta) { font-size: .88rem; color: var(--muted); transition: color .15s; }
   nav.nav-links a:not(.nav-cta):hover { color: var(--ink); }
   .nav-cta { font-size: .82rem; font-weight: 650; padding: .5rem 1rem; border-radius: 999px; background: var(--accent); color: #fff !important; white-space: nowrap; transition: background .15s; }
@@ -97,7 +98,12 @@
   .mobile-nav a { font-size: 1.1rem; font-weight: 500; color: var(--ink-2); padding: 1rem 0; border-bottom: 1px solid var(--line-soft); }
   .mobile-nav a:last-child { border-bottom: none; }
   .mobile-nav .nav-cta { margin-top: 1rem; text-align: center; padding: .9rem; font-size: 1rem; }
-  @media (max-width: 768px) { .menu-toggle { display: flex; } nav.nav-links { display: none; } }
+  @media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    nav.nav-links { display: none; }
+    .nav-inner { padding: 0 1.25rem; }
+  }
+  @media (max-width: 480px) { .brand-tagline { display: none; } }
 
   /* ---------- Shared footer chrome ---------- */
   footer.site-footer { border-top: 1px solid var(--line-soft); padding: 2rem 1.5rem; text-align: center; font-size: .8rem; color: var(--faint); }
