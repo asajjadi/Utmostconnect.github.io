@@ -97,6 +97,38 @@ og_image: /images/Utmostconnect.png
     .value-banner { padding: 2rem 1.5rem; border-radius: 1.1rem; }
     .contact-card { padding: 1.5rem; }
   }
+
+  /* ---------- Trust strip (stats + institution credibility line) ---------- */
+  .trust-strip { border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); background: var(--surface-raised); }
+  .trust-strip .section { padding-top: 2.6rem; padding-bottom: 2.6rem; }
+  .trust-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .trust-stat { text-align: center; }
+  .trust-stat-num { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.15rem); font-weight: 500; color: var(--accent); line-height: 1; }
+  .trust-stat-label { margin-top: .45rem; font-size: .8rem; color: var(--muted); line-height: 1.4; }
+  .trust-orgs { margin-top: 2.2rem; padding-top: 1.8rem; border-top: 1px solid var(--line-soft); text-align: center; }
+  .trust-orgs-label { display: block; font-family: var(--mono); font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin-bottom: .9rem; }
+  .trust-orgs-list { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 2.2rem; }
+  .trust-orgs-list span { font-family: var(--serif); font-size: 1.02rem; color: var(--ink-2); opacity: .85; transition: opacity .15s; }
+  .trust-orgs-list span:hover { opacity: 1; }
+
+  /* Scroll-reveal stagger for this page's grids (mechanism lives in base.html) */
+  .card-grid-2 .card:nth-child(1) { transition-delay: 0ms; }
+  .card-grid-2 .card:nth-child(2) { transition-delay: 90ms; }
+  .card-grid-2 .card:nth-child(3) { transition-delay: 180ms; }
+  .card-grid-2 .card:nth-child(4) { transition-delay: 270ms; }
+  .projects-media-grid .projects-media:nth-child(1) { transition-delay: 0ms; }
+  .projects-media-grid .projects-media:nth-child(2) { transition-delay: 90ms; }
+  .projects-media-grid .projects-media:nth-child(3) { transition-delay: 180ms; }
+  .projects-media-grid .projects-media:nth-child(4) { transition-delay: 270ms; }
+  .trust-stats .trust-stat:nth-child(1) { transition-delay: 0ms; }
+  .trust-stats .trust-stat:nth-child(2) { transition-delay: 80ms; }
+  .trust-stats .trust-stat:nth-child(3) { transition-delay: 160ms; }
+  .trust-stats .trust-stat:nth-child(4) { transition-delay: 240ms; }
+
+  @media (max-width: 768px) {
+    .trust-stats { grid-template-columns: repeat(2, 1fr); gap: 1.6rem 1rem; }
+    .trust-orgs-list { gap: .6rem 1.4rem; }
+  }
 </style>
 
 <!-- Hero -->
@@ -121,17 +153,50 @@ og_image: /images/Utmostconnect.png
   </div>
 </div>
 
+<!-- Trust strip -->
+<div class="trust-strip">
+  <div class="section">
+    <div class="trust-stats">
+      <div class="trust-stat reveal">
+        <div class="trust-stat-num">15+</div>
+        <div class="trust-stat-label">Years Leading Engineering Programs</div>
+      </div>
+      <div class="trust-stat reveal">
+        <div class="trust-stat-num">$4M+</div>
+        <div class="trust-stat-label">R&amp;D Programs Led</div>
+      </div>
+      <div class="trust-stat reveal">
+        <div class="trust-stat-num">8</div>
+        <div class="trust-stat-label">Patents Contributed</div>
+      </div>
+      <div class="trust-stat reveal">
+        <div class="trust-stat-num">20&ndash;40%</div>
+        <div class="trust-stat-label">Efficiency Gains Delivered</div>
+      </div>
+    </div>
+    <div class="trust-orgs reveal">
+      <span class="trust-orgs-label">Leadership experience with</span>
+      <div class="trust-orgs-list">
+        <span>Harvard Medical School</span>
+        <span>Massachusetts General Hospital</span>
+        <span>Edwards Lifesciences</span>
+        <span>Saratech</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- About -->
 <div class="section-bg" id="about">
   <div class="section">
     <div class="about-grid">
-      <div>
+      <div class="reveal">
         <div class="eyebrow">About</div>
         <div class="about-profile">
           <img src="images/Profile - 2.png" alt="Amir Sajjadi">
         </div>
       </div>
-      <div class="about-body">
+      <div class="about-body reveal" style="transition-delay:100ms">
         <h2>Engineering depth with product perspective</h2>
         <p class="about-role">Amir Sajjadi, Ph.D., PMP · Founder and Lead Consultant · Product Development, Advanced Manufacturing, and Commercialization</p>
         <p>Amir has helped organizations turn complex technical challenges into clear, executable product and engineering outcomes.</p>
@@ -159,11 +224,13 @@ og_image: /images/Utmostconnect.png
 
 <!-- Services -->
 <div class="section" id="services">
-  <div class="eyebrow">Services</div>
-  <h2>Flexible support for hard engineering problems</h2>
-  <p class="section-desc">For startups, growth-stage companies, and established teams tackling challenging product and engineering work.</p>
+  <div class="reveal">
+    <div class="eyebrow">Services</div>
+    <h2>Flexible support for hard engineering problems</h2>
+    <p class="section-desc">For startups, growth-stage companies, and established teams tackling challenging product and engineering work.</p>
+  </div>
   <div class="card-grid-2">
-    <div class="card">
+    <div class="card reveal">
       <div class="card-icon" style="background:var(--tint-a);">
         <svg viewBox="0 0 24 24" fill="none" stroke="var(--tint-a-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="17"/><line x1="12" y1="7" x2="19" y2="17"/><line x1="5" y1="19" x2="19" y2="19"/></svg>
       </div>
@@ -175,7 +242,7 @@ og_image: /images/Utmostconnect.png
         <li>Drive structured decision-making under uncertainty</li>
       </ul>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div class="card-icon" style="background:var(--tint-b);">
         <svg viewBox="0 0 24 24" fill="none" stroke="var(--tint-b-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
       </div>
@@ -188,7 +255,7 @@ og_image: /images/Utmostconnect.png
       </ul>
       <a href="ClearPath%20QMS/" class="card-link">ClearPath QMS page →</a>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div class="card-icon" style="background:var(--tint-c);">
         <svg viewBox="0 0 24 24" fill="none" stroke="var(--tint-c-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4"/><line x1="12" y1="8" x2="12" y2="8.01"/></svg>
       </div>
@@ -200,7 +267,7 @@ og_image: /images/Utmostconnect.png
         <li>Precision system development and validation</li>
       </ul>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div class="card-icon" style="background:var(--tint-d);">
         <svg viewBox="0 0 24 24" fill="none" stroke="var(--tint-d-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><polyline points="6 8 10 12 14 8 18 12"/></svg>
       </div>
@@ -221,23 +288,25 @@ og_image: /images/Utmostconnect.png
 <!-- Projects -->
 <div class="section-bg" id="projects">
   <div class="section">
-    <div class="eyebrow">Projects</div>
-    <h2>Proven results &amp; case studies</h2>
-    <p class="section-desc">Demonstrating how complex technical challenges are translated into clear outcomes and performance improvements.</p>
+    <div class="reveal">
+      <div class="eyebrow">Projects</div>
+      <h2>Proven results &amp; case studies</h2>
+      <p class="section-desc">Demonstrating how complex technical challenges are translated into clear outcomes and performance improvements.</p>
+    </div>
     <div class="projects-media-grid">
-      <div class="projects-media">
+      <div class="projects-media reveal">
         <img src="images/Medical Device Innovation.png" alt="Medical device innovation and product engineering">
         <p class="projects-media-caption">Medical device innovation programs focused on design, validation, and clinical impact.</p>
       </div>
-      <div class="projects-media">
+      <div class="projects-media reveal">
         <img src="images/Advanced Manufacturing.png" alt="Advanced manufacturing and process engineering workflow">
         <p class="projects-media-caption">Advanced manufacturing strategy and process optimization for scalable product execution.</p>
       </div>
-      <div class="projects-media">
+      <div class="projects-media reveal">
         <img src="images/Data Analytics.png" alt="Data analytics workflow for engineering decisions">
         <p class="projects-media-caption">Data analytics and decision-support workflows for engineering and product performance.</p>
       </div>
-      <div class="projects-media">
+      <div class="projects-media reveal">
         <img src="images/PLM_Desgin_Simulation_Optimization.png" alt="CAD, simulation, and data pipeline integration">
         <p class="projects-media-caption">Connected digital engineering thread: CAD + simulation + data pipeline powered by PLM.</p>
       </div>
@@ -247,7 +316,7 @@ og_image: /images/Utmostconnect.png
 
 <!-- Value banner -->
 <div class="section">
-  <div class="value-banner">
+  <div class="value-banner reveal">
     <div>
       <div class="value-eyebrow">Why us</div>
       <h2>What makes us different</h2>
@@ -282,13 +351,13 @@ og_image: /images/Utmostconnect.png
 <div class="section-bg" id="contact">
   <div class="section">
     <div class="contact-grid">
-      <div>
+      <div class="reveal">
         <div class="eyebrow">Contact</div>
         <h2>Let's talk about your next project</h2>
         <p class="section-desc">Whether you need technical leadership, product development support, or engineering analysis, Utmost Connect can help you move faster with greater clarity.</p>
         <a href="https://calendly.com/utmost-connect" class="btn-primary" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:1.5rem;">Book a consultation</a>
       </div>
-      <div class="contact-card">
+      <div class="contact-card reveal" style="transition-delay:100ms">
         <div class="contact-row">
           <a href="https://calendly.com/utmost-connect" class="contact-link" target="_blank" rel="noopener noreferrer">Book via Calendly →</a>
         </div>
