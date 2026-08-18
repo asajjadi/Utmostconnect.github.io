@@ -3,9 +3,25 @@ layout: base
 title: Utmost Connect — Technical Product and R&D Leadership
 description: Utmost Connect helps organizations move complex engineering and product initiatives forward through technical strategy, disciplined execution, and data-driven problem solving.
 og_image: /images/Utmostconnect.png
-theme: dark
 ---
 <style>
+  /* ---------- Dark section scope ----------
+     Local CSS-variable override, not a page-wide theme: any element with
+     this class (and everything inside it) resolves --canvas/--surface/
+     --ink/etc. to a near-black palette, while the rest of the page keeps
+     the default light tokens. This is how the hero, trust strip, and
+     contact sections go dark without touching About/Services/Projects. */
+  .dark-section {
+    --canvas: #060708; --surface: #101214; --surface-raised: #16181B;
+    --ink: #F3F4F2; --ink-2: #D6D9D6; --muted: #9AA1A6; --faint: #6E757A;
+    --line: #2A2D30; --line-soft: #1C1E20;
+    --navy: #000000; --navy-text: #B9BEC1;
+    --accent: #E0954B; --accent-hover: #ECA968; --accent-soft: #241C13; --accent-line: #3A2C1B;
+    --success: #6FCBA0; --success-soft: #122019;
+    --shadow: 0 8px 24px rgba(0,0,0,.45); --shadow-lg: 0 24px 60px rgba(0,0,0,.6);
+    background: var(--canvas);
+  }
+
   /* ---------- Hero ---------- */
   .hero-section { position: relative; overflow: hidden; background: var(--canvas); }
   .hero-section::before {
@@ -146,7 +162,7 @@ theme: dark
 </style>
 
 <!-- Hero -->
-<div class="hero-section">
+<div class="hero-section dark-section">
   <div class="section">
     <div class="hero-layout">
       <div>
@@ -168,7 +184,7 @@ theme: dark
 </div>
 
 <!-- Trust strip -->
-<div class="trust-strip">
+<div class="trust-strip dark-section">
   <div class="section">
     <div class="trust-stats">
       <div class="trust-stat reveal">
@@ -330,7 +346,7 @@ theme: dark
 
 <!-- Value banner -->
 <div class="section">
-  <div class="value-banner reveal">
+  <div class="value-banner reveal dark-section">
     <div>
       <div class="value-eyebrow">Why us</div>
       <h2>What makes us different</h2>
@@ -362,7 +378,7 @@ theme: dark
 </div>
 
 <!-- Contact -->
-<div class="section-bg" id="contact">
+<div class="section-bg dark-section" id="contact">
   <div class="section">
     <div class="contact-grid">
       <div class="reveal">
