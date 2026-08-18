@@ -78,11 +78,29 @@ og_image: /images/Utmostconnect.png
   .card-link { display: inline-block; margin-top: 1rem; font-size: .82rem; font-weight: 650; color: var(--accent); transition: opacity .15s; }
   .card-link:hover { opacity: .75; }
 
+  /* ---------- Process ---------- */
+  .process-steps { margin-top: 2.4rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
+  .process-step { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 14px; padding: 1.6rem 1.5rem; box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s; }
+  .process-step:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .process-step-num { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: var(--accent); line-height: 1; margin-bottom: .7rem; }
+  .process-step h3 { font-family: var(--sans); font-size: 1rem; font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
+  .process-step p { margin-top: .5rem; font-size: .87rem; color: var(--muted); line-height: 1.6; }
+  .process-steps .process-step:nth-child(1) { transition-delay: 0ms; }
+  .process-steps .process-step:nth-child(2) { transition-delay: 90ms; }
+  .process-steps .process-step:nth-child(3) { transition-delay: 180ms; }
+  .process-steps .process-step:nth-child(4) { transition-delay: 270ms; }
+  @media (max-width: 900px) { .process-steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .process-steps { grid-template-columns: 1fr; } }
+
   /* ---------- Projects ---------- */
   .projects-media-grid { margin-top: 2rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
   .projects-media { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 1rem; padding: .8rem; box-shadow: var(--shadow); }
   .projects-media img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; border-radius: .55rem; cursor: zoom-in; }
-  .projects-media-caption { margin-top: .7rem; font-size: .86rem; color: var(--ink-2); font-weight: 600; text-align: center; }
+  .case-study { margin-top: .8rem; padding: 0 .3rem; }
+  .case-study-title { font-family: var(--sans); font-size: .92rem; font-weight: 700; color: var(--ink); text-align: center; margin: 0 0 .7rem; }
+  .case-study-csr { margin: 0; display: grid; gap: .55rem; }
+  .case-study-csr dt { font-family: var(--mono); font-size: .64rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  .case-study-csr dd { margin: .2rem 0 0; font-size: .81rem; color: var(--muted); line-height: 1.55; }
   .image-lightbox { position: fixed; inset: 0; background: rgba(2,6,23,.82); display: none; align-items: center; justify-content: center; padding: 2rem; z-index: 2000; }
   .image-lightbox.open { display: flex; }
   .lightbox-img { max-width: min(1100px, 92vw); max-height: 86vh; width: auto; height: auto; border-radius: .9rem; box-shadow: 0 16px 48px rgba(0,0,0,.35); cursor: zoom-in; transform-origin: center center; transition: transform .12s ease-out; user-select: none; -webkit-user-drag: none; touch-action: none; }
@@ -102,6 +120,17 @@ og_image: /images/Utmostconnect.png
   .value-pill-dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent-hover); margin-top: .35rem; flex-shrink: 0; }
   .value-pill-title { font-size: .9rem; font-weight: 600; color: #F4F8F7; }
   .value-pill-desc { font-size: .8rem; color: var(--navy-text); margin-top: .15rem; line-height: 1.5; }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { margin-top: 2.2rem; max-width: 760px; display: grid; gap: 1.1rem; }
+  .faq-item { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 12px; padding: 1.25rem 1.5rem; box-shadow: var(--shadow); }
+  .faq-item h3 { font-family: var(--sans); font-size: .96rem; font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
+  .faq-item p { margin-top: .45rem; font-size: .88rem; color: var(--muted); line-height: 1.65; }
+  .faq-list .faq-item:nth-child(1) { transition-delay: 0ms; }
+  .faq-list .faq-item:nth-child(2) { transition-delay: 60ms; }
+  .faq-list .faq-item:nth-child(3) { transition-delay: 120ms; }
+  .faq-list .faq-item:nth-child(4) { transition-delay: 180ms; }
+  .faq-list .faq-item:nth-child(5) { transition-delay: 240ms; }
 
   /* ---------- Contact ---------- */
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
@@ -160,6 +189,36 @@ og_image: /images/Utmostconnect.png
     .trust-orgs-list { gap: .6rem 1.4rem; }
   }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Amir Sajjadi",
+      "alternateName": "Alex Sajjadi",
+      "jobTitle": "Founder and Lead Consultant",
+      "url": "https://utmostconnect.org/",
+      "image": "https://utmostconnect.org/images/Profile%20-%202.png",
+      "sameAs": ["https://www.linkedin.com/in/amiryousefsajjadi/"],
+      "worksFor": { "@type": "Organization", "name": "Utmost Connect" },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Florida Institute of Technology" },
+        { "@type": "CollegeOrUniversity", "name": "Harvard Medical School" }
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "name": "Utmost Connect",
+      "url": "https://utmostconnect.org/",
+      "founder": { "@type": "Person", "name": "Amir Sajjadi" },
+      "areaServed": "Worldwide",
+      "description": "Technical product and R&D leadership consulting for medical device, aerospace, and advanced engineering programs."
+    }
+  ]
+}
+</script>
 
 <!-- Hero -->
 <div class="hero-section dark-section">
@@ -315,6 +374,37 @@ og_image: /images/Utmostconnect.png
   </div>
 </div>
 
+<!-- Process -->
+<div class="section" id="process">
+  <div class="reveal">
+    <div class="eyebrow">How We Work</div>
+    <h2>A clear path from problem to execution</h2>
+    <p class="section-desc">Structured enough to de-risk the engagement, flexible enough to adapt as the work evolves.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="process-step-num">01</div>
+      <h3>Discovery</h3>
+      <p>Understand the technical challenge, business context, and constraints through structured conversations with your team.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-step-num">02</div>
+      <h3>Plan</h3>
+      <p>Define a scoped roadmap — technical approach, milestones, risk areas, and what success looks like.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-step-num">03</div>
+      <h3>Execute</h3>
+      <p>Hands-on technical leadership and cross-functional execution — direct involvement in solving problems, not just advisory input.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-step-num">04</div>
+      <h3>Handoff</h3>
+      <p>Documentation and knowledge transfer so your team can sustain progress after the engagement ends.</p>
+    </div>
+  </div>
+</div>
+
 <!-- Projects -->
 <div class="section-bg" id="projects">
   <div class="section">
@@ -326,19 +416,47 @@ og_image: /images/Utmostconnect.png
     <div class="projects-media-grid">
       <div class="projects-media reveal">
         <img src="images/Medical Device Innovation.png" alt="Medical device innovation and product engineering">
-        <p class="projects-media-caption">Medical device innovation programs focused on design, validation, and clinical impact.</p>
+        <div class="case-study">
+          <p class="case-study-title">Precision Laser Manufacturing for Cardiac Implants</p>
+          <dl class="case-study-csr">
+            <div><dt>Challenge</dt><dd>Cardiac implant components (Nitinol, CoCr, stainless steel) needed a precision cutting and mapping method that could scale to high-volume, FDA/EU MDR-compliant production.</dd></div>
+            <div><dt>Approach</dt><dd>Led $4M+ R&amp;D programs building femtosecond laser processing systems, including a supersonic gas nozzle designed through Star-CCM+ CFD analysis for high-pressure micro-laser cutting.</dd></div>
+            <div><dt>Result</dt><dd>8 patents, FDA/EU MDR compliance, and a 6% production yield increase with fleet-wide deployment.</dd></div>
+          </dl>
+        </div>
       </div>
       <div class="projects-media reveal">
         <img src="images/Advanced Manufacturing.png" alt="Advanced manufacturing and process engineering workflow">
-        <p class="projects-media-caption">Advanced manufacturing strategy and process optimization for scalable product execution.</p>
+        <div class="case-study">
+          <p class="case-study-title">Advanced Manufacturing Strategy &amp; Process Scale-Up</p>
+          <dl class="case-study-csr">
+            <div><dt>Challenge</dt><dd>Manufacturing processes for precision hardware needed to move from prototype to reliable, high-volume production without sacrificing quality or throughput.</dd></div>
+            <div><dt>Approach</dt><dd>Directed test strategy, specialized tooling/fixture design, and statistical process validation (DOE, Gage R&amp;R, Minitab) across multiple R&amp;D programs.</dd></div>
+            <div><dt>Result</dt><dd>Repeatable, validated manufacturing processes supporting scale-up in regulated production environments.</dd></div>
+          </dl>
+        </div>
       </div>
       <div class="projects-media reveal">
         <img src="images/Data Analytics.png" alt="Data analytics workflow for engineering decisions">
-        <p class="projects-media-caption">Data analytics and decision-support workflows for engineering and product performance.</p>
+        <div class="case-study">
+          <p class="case-study-title">Data-Driven Engineering Decision Support</p>
+          <dl class="case-study-csr">
+            <div><dt>Challenge</dt><dd>Engineering teams needed faster, evidence-based ways to synthesize requirements, risk, and test data into milestone-readiness decisions.</dd></div>
+            <div><dt>Approach</dt><dd>Built custom analysis pipelines (Python, MATLAB) and Engineering Intelligence, a deterministic decision-support platform for evidence-based readiness reviews.</dd></div>
+            <div><dt>Result</dt><dd>Faster, evidence-cited readiness assessments backed by a growing automated regression-test suite.</dd></div>
+          </dl>
+        </div>
       </div>
       <div class="projects-media reveal">
         <img src="images/PLM_Desgin_Simulation_Optimization.png" alt="CAD, simulation, and data pipeline integration">
-        <p class="projects-media-caption">Connected digital engineering thread: CAD + simulation + data pipeline powered by PLM.</p>
+        <div class="case-study">
+          <p class="case-study-title">Connected Digital Engineering Thread</p>
+          <dl class="case-study-csr">
+            <div><dt>Challenge</dt><dd>Multi-workstream product development programs across MedTech, aerospace, and industrial clients had disconnected CAD, simulation, and data management workflows.</dd></div>
+            <div><dt>Approach</dt><dd>Architected PLM workflows (Teamcenter, NX) for design traceability, established a Digital Twin strategy, and connected simulation data management into a single thread.</dd></div>
+            <div><dt>Result</dt><dd>~30% reduction in design iteration time through PLM/Digital Thread implementation.</dd></div>
+          </dl>
+        </div>
       </div>
     </div>
   </div>
@@ -373,6 +491,36 @@ og_image: /images/Utmostconnect.png
         <div><div class="value-pill-title">Built for Complex Problems</div>
         <div class="value-pill-desc">Comfortable operating in ambiguity, high-risk, and early-stage innovation</div></div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section" id="faq">
+  <div class="reveal">
+    <div class="eyebrow">FAQ</div>
+    <h2>Common questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <h3>What types of engagements do you take on?</h3>
+      <p>Everything from focused technical advisory and feasibility studies to hands-on, fractional CTO/R&amp;D leadership roles embedded with your team.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h3>Do you work on-site, remote, or hybrid?</h3>
+      <p>Both — engagements are scoped around what the program actually needs, from fully remote technical strategy work to on-site leadership for complex, hands-on programs.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h3>What industries do you work with?</h3>
+      <p>Primarily medical device, aerospace, and energy/advanced technology, with deep experience in FDA- and ISO-regulated development.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h3>How long do engagements typically run?</h3>
+      <p>It varies by scope — from short, focused projects to multi-month fractional leadership roles. We define the scope and milestones together before starting.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h3>How do we get started?</h3>
+      <p>Book a free consultation call below, or reach out directly to share your project details.</p>
     </div>
   </div>
 </div>
