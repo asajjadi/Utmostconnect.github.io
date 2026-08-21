@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From Breadboard to Built — Mentored Projects | Utmost Connect</title>
+<meta name="description" content="Four product concepts developed by Utmost Connect in partnership with UC Irvine's Mechanical & Aerospace Engineering senior-design program.">
+<meta property="og:title" content="From Breadboard to Built — Mentored Projects">
+<meta property="og:description" content="Four product concepts developed by Utmost Connect in partnership with UC Irvine's Mechanical & Aerospace Engineering senior-design program.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://utmostconnect.org/mentored-projects.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #EDEFEA;
+  --paper-raised: #F8F9F6;
+  --ink: #1A1D1B;
+  --ink-soft: #545C55;
+  --ink-faint: #8A9088;
+  --line: #CBD0C6;
+  --accent: #C1531F;
+  --accent-ink: #7A3512;
+  --accent-tint: #F1DFCE;
+  --warn: #A6431E;
+
+  --display: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --body-f: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14170F; --paper-raised: #1C201A; --ink: #E9EBE4; --ink-soft: #A9B0A2;
+    --ink-faint: #6E756A; --line: #333A2F; --accent: #E8823D; --accent-ink: #F3A468;
+    --accent-tint: #3A2A1B; --warn: #E8823D;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #14170F; --paper-raised: #1C201A; --ink: #E9EBE4; --ink-soft: #A9B0A2;
+  --ink-faint: #6E756A; --line: #333A2F; --accent: #E8823D; --accent-ink: #F3A468;
+  --accent-tint: #3A2A1B; --warn: #E8823D;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body-f);
+  font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--accent-ink); }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.1rem, 4vw, 2.5rem); }
+
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(6px); border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  max-width: 1180px; margin: 0 auto; padding: 0.7rem clamp(1.1rem, 4vw, 2.5rem);
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.topbar-inner nav { display: flex; gap: 1.1rem; }
+.topbar-inner nav a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; }
+.topbar-inner nav a:hover { color: var(--accent-ink); border-color: var(--accent); }
+
+.hero { padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 6vw, 4rem); }
+.hero h1 {
+  font-family: var(--display); font-weight: 800; text-transform: uppercase;
+  font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: 0.95; letter-spacing: -0.01em;
+  margin: 0 0 1.1rem; text-wrap: balance;
+}
+.hero h1 em { font-style: normal; color: var(--accent-ink); }
+.hero .sub { max-width: 46rem; font-size: clamp(1rem, 1.6vw, 1.2rem); color: var(--ink-soft); margin: 0 0 2.6rem; }
+
+.proof-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; margin-bottom: 2.4rem; }
+.proof-item { display: block; text-decoration: none; color: var(--ink-soft); }
+.proof-item img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; border: 1px solid var(--line);
+  display: block; transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.proof-item:hover img { border-color: var(--accent); transform: translateY(-2px); }
+.proof-item span {
+  display: block; margin-top: 0.5rem; font-family: var(--mono); font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+@media (max-width: 640px) { .proof-strip { grid-template-columns: repeat(2, 1fr); } }
+
+.about {
+  display: flex; gap: 1.4rem; align-items: flex-start; border: 1px solid var(--line);
+  background: var(--paper-raised); border-radius: 4px; padding: 1.3rem 1.5rem; margin-bottom: 3rem;
+}
+.about-mark {
+  font-family: var(--display); font-weight: 800; font-size: 2.4rem; color: var(--accent);
+  line-height: 1; flex: none; margin-top: 0.15rem;
+}
+.about p { margin: 0; color: var(--ink-soft); max-width: 46rem; font-size: 0.96rem; }
+.about strong { color: var(--ink); font-weight: 600; }
+
+.index-table { border-top: 1px solid var(--ink); }
+.index-head {
+  display: grid; grid-template-columns: 3.5rem 1fr 1fr auto; gap: 1rem; padding: 0.55rem 0;
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-faint); border-bottom: 1px solid var(--line);
+}
+.hero-row {
+  display: grid; grid-template-columns: 3.5rem 1fr 1fr auto; gap: 1rem; align-items: center;
+  padding: 0.95rem 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink);
+  transition: background 0.15s ease, padding-left 0.15s ease;
+}
+.hero-row:hover { background: var(--paper-raised); padding-left: 0.4rem; }
+.hr-num { font-family: var(--mono); color: var(--ink-faint); font-size: 0.95rem; }
+.hr-name { font-weight: 600; font-size: 1rem; }
+.hr-sys { color: var(--ink-soft); font-size: 0.92rem; }
+.hr-status { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-ink); display: flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+@media (max-width: 700px) {
+  .index-head { display: none; }
+  .hero-row { grid-template-columns: 2.2rem 1fr; row-gap: 0.3rem; }
+  .hr-sys { grid-column: 2; font-size: 0.85rem; }
+  .hr-status { grid-column: 2; }
+}
+
+.dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; flex: none;
+  box-shadow: 0 0 0 3px var(--accent-tint); animation: pulse 2.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+
+.sheet {
+  padding: clamp(3rem, 7vw, 5rem) 0; border-top: 2px dashed var(--line);
+  opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.sheet.in { opacity: 1; transform: translateY(0); }
+
+.sheet-head { display: flex; align-items: flex-start; gap: 1.4rem; margin-bottom: 2.2rem; flex-wrap: wrap; }
+.sheet-num { font-family: var(--display); font-weight: 800; font-size: clamp(2.6rem, 6vw, 4rem); color: var(--ink-faint); line-height: 1; }
+.sheet-head-text { flex: 1; min-width: 14rem; }
+.sheet-head h2 {
+  font-family: var(--display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem); margin: 0 0 0.3rem; letter-spacing: -0.01em; text-wrap: balance;
+}
+.dek { margin: 0 0 0.55rem; color: var(--ink-soft); font-size: 1.05rem; max-width: 36rem; }
+.team-credit { margin: 0; font-size: 0.82rem; color: var(--ink-faint); max-width: 36rem; }
+.eyebrow-inline {
+  font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.68rem;
+  color: var(--ink-faint); margin-right: 0.5rem; border-right: 1px solid var(--line); padding-right: 0.5rem;
+}
+.status-pill {
+  font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em;
+  border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.8rem;
+  display: inline-flex; align-items: center; gap: 0.5rem; color: var(--ink-soft); white-space: nowrap; margin-top: 0.3rem;
+}
+
+.sheet-body { display: grid; grid-template-columns: 1.25fr 0.85fr; gap: clamp(1.6rem, 4vw, 3rem); align-items: start; }
+@media (max-width: 780px) { .sheet-body { grid-template-columns: 1fr; } }
+
+.field { margin-bottom: 1.7rem; }
+.field:last-child { margin-bottom: 0; }
+.eyebrow { display: block; font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-ink); margin-bottom: 0.5rem; }
+.field p { margin: 0; max-width: 40rem; }
+
+.tick-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.tick-list li { position: relative; padding-left: 1.1rem; max-width: 40rem; }
+.tick-list li::before { content: "\25B8"; position: absolute; left: 0; top: 0.05em; color: var(--accent); font-size: 0.85em; }
+
+.spec-panel { border: 1px solid var(--line); background: var(--paper-raised); border-radius: 4px; padding: 1.1rem 1.2rem 1.3rem; }
+.spec-panel-head { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; color: var(--ink-faint); border-bottom: 1px solid var(--line); padding-bottom: 0.6rem; margin-bottom: 0.6rem; }
+.spec-row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.42rem 0; border-bottom: 1px solid var(--line); font-size: 0.86rem; }
+.spec-row:last-child { border-bottom: none; }
+.spec-k { font-family: var(--mono); color: var(--ink-faint); font-size: 0.7rem; letter-spacing: 0.03em; white-space: nowrap; padding-top: 0.1rem; }
+.spec-v { text-align: right; font-weight: 500; }
+
+.hero-media {
+  margin: 0 0 2.4rem; border-radius: 6px; overflow: hidden; border: 1px solid var(--line);
+  position: relative;
+}
+.hero-media-frame {
+  background: #0b0d0a; display: flex; align-items: center; justify-content: center;
+  max-height: 480px; min-height: 220px;
+}
+.hero-media-el {
+  display: block; width: auto; height: auto; max-width: 100%; max-height: 480px; object-fit: contain;
+}
+.hero-media figcaption {
+  padding: 0.85rem 1.1rem; font-size: 0.95rem; color: var(--ink-soft); background: var(--paper-raised);
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 700px) { .hero-media-frame { max-height: 68vw; } .hero-media-el { max-height: 68vw; } }
+
+.figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.3rem; margin-top: 2.4rem; }
+.figs-head {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-faint); margin: 2.4rem 0 0.8rem; border-top: 1px solid var(--line); padding-top: 1.2rem;
+}
+.fig { margin: 0; }
+.fig-frame { border: 1px solid var(--line); background: var(--paper-raised); overflow: hidden; border-radius: 3px; position: relative; transition: border-color 0.2s ease; aspect-ratio: var(--r, 4/3); display: flex; align-items: center; justify-content: center; }
+.fig-frame img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s ease; }
+.fig-frame:hover { border-color: var(--accent); }
+.fig-frame:hover img { transform: scale(1.03); }
+.fig-video .fig-frame { background: #000; }
+.video-frame video { width: 100%; height: auto; max-height: 420px; display: block; }
+.fig figcaption { margin-top: 0.55rem; font-size: 0.82rem; color: var(--ink-soft); }
+.fig-tag { font-family: var(--mono); color: var(--accent-ink); margin-right: 0.5rem; font-size: 0.75rem; }
+
+.chart-card { grid-column: 1 / -1; border: 1px solid var(--line); border-radius: 4px; padding: 1.2rem 1.3rem 1rem; background: var(--paper-raised); }
+.chart-svg { width: 100%; height: auto; display: block; }
+.grid-line { stroke: var(--line); stroke-width: 1; }
+.axis-label { font-family: var(--mono); font-size: 8px; fill: var(--ink-faint); }
+.axis-caption { letter-spacing: 0.06em; }
+.legend-label { font-family: var(--mono); font-size: 8px; fill: var(--ink-soft); }
+.chart-card figcaption { margin-top: 0.8rem; font-size: 0.82rem; color: var(--ink-soft); }
+
+footer { padding: clamp(3rem, 7vw, 5rem) 0 4rem; border-top: 2px dashed var(--line); margin-top: 1rem; }
+footer h3 { font-family: var(--display); font-weight: 700; text-transform: uppercase; font-size: 1.5rem; margin: 0 0 1.2rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 2.4rem; }
+.chip { font-family: var(--mono); font-size: 0.76rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.85rem; color: var(--ink-soft); }
+.credit { font-size: 0.85rem; color: var(--ink-faint); border-top: 1px solid var(--line); padding-top: 1.4rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>Amir Sajjadi — Originator &amp; Sponsor, UCI MAE Senior Design Pipeline</span>
+    <nav><a href="#p01">01</a>
+<a href="#p02">02</a>
+<a href="#p03">03</a>
+<a href="#p04">04</a>
+<a href="#simulations">Σ</a>
+<a href="/">← utmostconnect.org</a></nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <h1>From breadboard<br>to <em>built.</em></h1>
+    <p class="sub"><strong>Originator &amp; sponsor.</strong> <strong>Utmost Connect</strong> works closely with academic institutions to sponsor applied engineering programs — originating each of these concepts, funding and directing their technical development, and building working prototypes alongside student engineering teams at UC Irvine's Mechanical &amp; Aerospace Engineering senior-design program. These are prototypes in active development, not closed coursework: every project here has advanced to a funding pitch, and Home Lock took first place at its UCI design showcase.</p>
+
+    <div class="proof-strip"><a class="proof-item" href="#p01">
+      <img src="images/mentored-projects/home_lock_vcpitch_product.jpg" alt="Home Lock" loading="lazy">
+      <span>Home Lock</span>
+    </a>
+<a class="proof-item" href="#p02">
+      <img src="images/mentored-projects/fire_bench_photo.jpg" alt="Fire Extinguisher" loading="lazy">
+      <span>Fire Extinguisher</span>
+    </a>
+<a class="proof-item" href="#p03">
+      <img src="images/mentored-projects/bio_worn_photo.jpg" alt="Biosensor" loading="lazy">
+      <span>Biosensor</span>
+    </a>
+<a class="proof-item" href="#p04">
+      <img src="images/mentored-projects/ebbo_cells_photo.jpg" alt="EBBO+" loading="lazy">
+      <span>EBBO+</span>
+    </a></div>
+
+    <div class="index-table">
+      <div class="index-head"><span>Sheet</span><span>Project</span><span>Core system</span><span>Validation</span></div>
+      <a class="hero-row" href="#p01">
+      <span class="hr-num">01</span>
+      <span class="hr-name">Home Lock Management System</span>
+      <span class="hr-sys">Wi-Fi reed-switch deadbolt sensor</span>
+      <span class="hr-status"><i class="dot"></i>🏆 1st place, UCI showcase</span>
+    </a>
+<a class="hero-row" href="#p02">
+      <span class="hr-num">02</span>
+      <span class="hr-name">Autonomous Fire Extinguishing System</span>
+      <span class="hr-sys">Thermal-tracking suppression turret</span>
+      <span class="hr-status"><i class="dot"></i>Live-fire tested</span>
+    </a>
+<a class="hero-row" href="#p03">
+      <span class="hr-num">03</span>
+      <span class="hr-name">SmartSweat — Wearable Lactate Biosensor</span>
+      <span class="hr-sys">Electrochemical sweat-lactate patch</span>
+      <span class="hr-status"><i class="dot"></i>Electronics verified · chemistry failed</span>
+    </a>
+<a class="hero-row" href="#p04">
+      <span class="hr-num">04</span>
+      <span class="hr-name">EBBO+ E-Bike Battery Pack</span>
+      <span class="hr-sys">CFD-cooled 14s3p BMS enclosure</span>
+      <span class="hr-status"><i class="dot"></i>Cooling verified: −0.48°C/min</span>
+    </a>
+    </div>
+  </section>
+
+  
+    <section class="sheet" id="p01">
+      <div class="sheet-head">
+        <span class="sheet-num">01</span>
+        <div class="sheet-head-text">
+          <h2>Home Lock Management System</h2>
+          <p class="dek">A clip-on sensor that tells you whether the door is actually locked.</p>
+          <p class="team-credit"><span class="eyebrow-inline">Team</span>BEND-CL MechTechs — Criss Azer, Brady Muramoto, Edward Leija, Neil Hoffman, Lucas Lin, Daniel Stoll</p>
+          <p class="team-credit"><span class="eyebrow-inline">Official</span><a href="https://projects.eng.uci.edu/projects/2023-2024/home-lock-management" target="_blank" rel="noopener noreferrer">projects.eng.uci.edu ↗</a></p>
+        </div>
+        <span class="status-pill"><i class="dot"></i>🏆 1st place, UCI showcase</span>
+      </div>
+
+      <figure class="hero-media">
+      <div class="hero-media-frame"><img class="hero-media-el" src="images/mentored-projects/home_lock_vcpitch_product.jpg" alt="The product, from the team's own investor pitch — sensor mounted flush on a display door block." loading="lazy"></div>
+      <figcaption>The product, from the team's own investor pitch — sensor mounted flush on a display door block.</figcaption>
+    </figure>
+
+      <div class="sheet-body">
+        <div class="narrative">
+          <div class="field">
+            <span class="eyebrow">Problem</span>
+            <p>Most homes have no reliable answer to “is the door actually locked?” Commercial smart locks solve it by replacing the whole deadbolt — $100–350+, a visible aesthetic change, and no coverage for windows at all. My concept: a cheap, invisible add-on that reports lock state on doors and windows without touching the existing hardware — funded and technically directed through my company, built with the student team below.</p>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Solution</span>
+            <p>A small sensor clips onto the deadbolt's slide bolt (or a window's sash) and reads position with a reed switch and magnet — no rekeying, no visible hardware change. It reports locked or unlocked over Wi-Fi in real time to a phone.</p>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Technical approach</span>
+            <ul class="tick-list"><li>Electronics shrank across the project — from a full STM32 Nucleo dev board down to a coin-cell-sized ESP32-C3 for the final MVP.</li>
+<li>Firmware watches a reed switch on a pull-up pin and publishes a locked/unlocked event over MQTT the instant the state changes.</li>
+<li>A parallel reed-switch sensor was built for windows, extending the same approach to whole-entry monitoring — the gap the team's competitive teardown (August, SimpliSafe, Ring, Nest, and Saratech's own smart-sensor line) found no one else covered well.</li>
+<li>Housing went through five SolidWorks revisions (V1–V5), refining battery compartment, hinge, and thumbturn clearance for a clean non-invasive retrofit.</li></ul>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Results &amp; validation</span>
+            <ul class="tick-list"><li>Door-to-phone latency verified live — a state change on the deadbolt reaches the app in about a second (Fig. 06; Clip 01 for the bench bring-up).</li>
+<li>Modeled at $13.93 per unit against $100–350 for commercial smart locks; per-unit material cost fell from $9 (V1) to $3 (V3) as the design matured across three prototype generations.</li>
+<li>Business case explored a B2B path — partnering with door manufacturers (e.g. Marvin Doors) to embed the sensor at the factory, rather than selling direct to consumers.</li>
+<li>Took first place at its UCI design showcase, then went on to a full investor pitch — the path from student prototype to funding conversation, not just a class deliverable.</li>
+<li>That path got real traction, not just a slide: Styline Windows &amp; Doors reviewed the prototype in person and expressed interest in participating, alongside early conversations with an outside investor.</li></ul>
+          </div>
+        </div>
+
+        <aside class="spec-panel">
+          <div class="spec-panel-head">SPEC SHEET</div>
+          <div class="spec-row"><span class="spec-k">MCU</span><span class="spec-v">Seeed XIAO ESP32-C3</span></div>
+<div class="spec-row"><span class="spec-k">PREV. REV.</span><span class="spec-v">STM32 Nucleo-F411RE</span></div>
+<div class="spec-row"><span class="spec-k">SENSE</span><span class="spec-v">Reed switch + magnet</span></div>
+<div class="spec-row"><span class="spec-k">LINK</span><span class="spec-v">Wi-Fi → MQTT (Adafruit IO)</span></div>
+<div class="spec-row"><span class="spec-k">APP</span><span class="spec-v">Android, AWS IoT SDK</span></div>
+<div class="spec-row"><span class="spec-k">EST. UNIT COST</span><span class="spec-v">$13.93 vs. $100–350 commercial</span></div>
+<div class="spec-row"><span class="spec-k">MARKET</span><span class="spec-v">Smart-lock category, 19.6% CAGR to 2032</span></div>
+        </aside>
+      </div>
+
+      <div class="figs-head">More from this project</div>
+      <div class="figs">
+        <figure class="fig fig-video">
+      <div class="fig-frame video-frame">
+        <video controls playsinline preload="metadata">
+          <source src="videos/mentored-projects/homelock_bench_video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption><span class="fig-tag">CLIP 01</span>Bench bring-up, in motion — reed-switch trigger and LED indicator tested live on a logic analyzer.</figcaption>
+    </figure><figure class="fig" style="--r:1.0264">
+      <div class="fig-frame"><img src="images/mentored-projects/home_lock_final_proto.png" alt="The final prototype — hinged lid for battery access, gold-plated contacts, PCB inside." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 01</span>The final prototype — hinged lid for battery access, gold-plated contacts, PCB inside.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.386">
+      <div class="fig-frame"><img src="images/mentored-projects/home_lock_webapp.png" alt="The companion web app — live lock status for two sensors, from the team's own pitch deck." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 02</span>The companion web app — live lock status for two sensors, from the team's own pitch deck.</figcaption>
+    </figure>
+<figure class="fig" style="--r:0.8864">
+      <div class="fig-frame"><img src="images/mentored-projects/home_lock_branded_box.png" alt="Packaging concept, branded HLM — the team explored this as a real consumer product." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 03</span>Packaging concept, branded HLM — the team explored this as a real consumer product.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.5148">
+      <div class="fig-frame"><img src="images/mentored-projects/home_lock_cad_render.png" alt="An earlier design variant — PCB, reed switch, and battery sealed inside an oval shell." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 04</span>An earlier design variant — PCB, reed switch, and battery sealed inside an oval shell.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.3146">
+      <div class="fig-frame"><img src="images/mentored-projects/home_lock_drawing.png" alt="Engineering drawing of the housing unit." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 05</span>Engineering drawing of the housing unit.</figcaption>
+    </figure>
+<figure class="fig" style="--r:0.4414">
+      <div class="fig-frame"><img src="images/mentored-projects/home_lock_mqtt.png" alt="Live field test — an unlock event arriving over MQTT in real time." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 06</span>Live field test — an unlock event arriving over MQTT in real time.</figcaption>
+    </figure>
+      </div>
+    </section>
+    <section class="sheet" id="p02">
+      <div class="sheet-head">
+        <span class="sheet-num">02</span>
+        <div class="sheet-head-text">
+          <h2>Autonomous Fire Extinguishing System</h2>
+          <p class="dek">It finds the fire, aims, and puts itself out — no one has to pull a trigger.</p>
+          <p class="team-credit"><span class="eyebrow-inline">Team</span>Team 3, “Fire Fight Club” — Matthew Keith, Christopher Tran, Yuqi Hu, Chris Rami Makarem, Benson Yu</p>
+          <p class="team-credit"><span class="eyebrow-inline">Official</span><a href="https://projects.eng.uci.edu/projects/2024-2025/fire-extinguishing-system" target="_blank" rel="noopener noreferrer">projects.eng.uci.edu ↗</a></p>
+        </div>
+        <span class="status-pill"><i class="dot"></i>Live-fire tested</span>
+      </div>
+
+      <figure class="hero-media">
+      <div class="hero-media-frame"><video class="hero-media-el reduced-motion-pause" autoplay muted loop controls playsinline preload="auto">
+          <source src="videos/mentored-projects/fire_hero_video.mp4" type="video/mp4">
+        </video></div>
+      <figcaption>Real time, real fire — the turret (top left) standing over a live test flame until it's out. A bystander's face is blurred.</figcaption>
+    </figure>
+
+      <div class="sheet-body">
+        <div class="narrative">
+          <div class="field">
+            <span class="eyebrow">Problem</span>
+            <p>A small fire can outrun a person's reaction time. I framed the alternative directly against traditional sprinkler systems — pricey, slow-responding, and hard to install — and directed the team to build a ceiling-mounted system that finds a fire's exact location on its own, aims at it, and suppresses it within 10 seconds of detection (an early pitch-deck target had been 30s), built against NFPA 750 (water-mist fire suppression).</p>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Solution</span>
+            <p>A ceiling-mounted pod (≈10 ft coverage radius) reads the room with a thermal camera, drives a two-axis servo gimbal onto the hottest point above a fire threshold, and opens a solenoid valve to release a pressurized water mist once it's centered.</p>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Technical approach</span>
+            <ul class="tick-list"><li>Targeting logic centers the gimbal on the hottest pixel in the thermal frame once it crosses 50°C, then holds and fires.</li>
+<li>Live telemetry — temperature, fluid level, battery — streams over BLE to a companion app.</li>
+<li>The mechanical arm and nozzle went through three design generations across 87 CAD files before the final geometry; formal engineering test procedures target extinguishing a contained fire in under 5 seconds at ranges from 2 to 10 feet.</li>
+<li>A dedicated wiring diagram (Fig. 04) documents the full electronics build: dual servos, relay, solenoid, and battery-level sensing on an LM339 comparator.</li></ul>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Results &amp; validation</span>
+            <ul class="tick-list"><li>Project log records the system successfully putting out a live test fire on 1/29 — the video above is that test — ahead of that day's Critical Design Review.</li>
+<li>Finalized prototype completed 3/19 after a pass on space efficiency and a full mechanical drawing package.</li>
+<li>Full bill of materials came to $334.05 across 26 line items; a fabrication guide and safety/operation manual were written for repeatable builds.</li>
+<li>Pitched under their own brand, Fire-Fight Club, with the funding case resting on three points: inexpensive and easy to install, autonomous rather than manually triggered, and app-monitored end to end.</li></ul>
+          </div>
+        </div>
+
+        <aside class="spec-panel">
+          <div class="spec-panel-head">SPEC SHEET</div>
+          <div class="spec-row"><span class="spec-k">MCU</span><span class="spec-v">XIAO ESP32-C3 (BLE)</span></div>
+<div class="spec-row"><span class="spec-k">SENSE</span><span class="spec-v">Waveshare MLX90641, 40–300°C ±2°C, 1–10m range</span></div>
+<div class="spec-row"><span class="spec-k">AIM</span><span class="spec-v">2-axis servo gimbal, P-feedback</span></div>
+<div class="spec-row"><span class="spec-k">ACT</span><span class="spec-v">Relay-driven solenoid, 100 PSI mist</span></div>
+<div class="spec-row"><span class="spec-k">LINK</span><span class="spec-v">BLE → app, readings every 3s</span></div>
+<div class="spec-row"><span class="spec-k">SIZE</span><span class="spec-v">0.352 ft³ (9×9×7.5 in)</span></div>
+<div class="spec-row"><span class="spec-k">STANDARD</span><span class="spec-v">Built against NFPA 750</span></div>
+<div class="spec-row"><span class="spec-k">FULL BOM</span><span class="spec-v">$334.05, 26 line items</span></div>
+        </aside>
+      </div>
+
+      <div class="figs-head">More from this project</div>
+      <div class="figs">
+        <figure class="fig fig-video">
+      <div class="fig-frame video-frame">
+        <video controls playsinline preload="metadata">
+          <source src="videos/mentored-projects/fire_telemetry_video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption><span class="fig-tag">CLIP 02</span>Live BLE telemetry during a run — temperature, fluid, and battery draining in real time.</figcaption>
+    </figure><figure class="fig" style="--r:1.3333">
+      <div class="fig-frame"><img src="images/mentored-projects/fire_obj_tree.jpg" alt="Design objective tree translating the brief into engineering requirements." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 01</span>Design objective tree translating the brief into engineering requirements.</figcaption>
+    </figure>
+<figure class="fig" style="--r:0.5943">
+      <div class="fig-frame"><img src="images/mentored-projects/fire_full_assembly.png" alt="The complete assembly, from the team's own Critical Design Review — extinguishing canister, tubing, and the targeting gimbal." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 02</span>The complete assembly, from the team's own Critical Design Review — extinguishing canister, tubing, and the targeting gimbal.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.3333">
+      <div class="fig-frame"><img src="images/mentored-projects/fire_bench_photo.jpg" alt="The bench prototype — gimbal head, thermal camera, and breadboard electronics." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 03</span>The bench prototype — gimbal head, thermal camera, and breadboard electronics.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.8121">
+      <div class="fig-frame"><img src="images/mentored-projects/fire_wiring.png" alt="Electronics build: thermal camera, dual-servo gimbal, relay-driven solenoid." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 04</span>Electronics build: thermal camera, dual-servo gimbal, relay-driven solenoid.</figcaption>
+    </figure>
+<figure class="fig" style="--r:0.916">
+      <div class="fig-frame"><img src="images/mentored-projects/fire_exploded_labeled.png" alt="Labeled exploded assembly — every part from mounting plate to extinguishing container." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 05</span>Labeled exploded assembly — every part from mounting plate to extinguishing container.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.2702">
+      <div class="fig-frame"><img src="images/mentored-projects/fire_gantt.png" alt="Project log entry — live-fire test, 1/29." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 06</span>Project log entry — live-fire test, 1/29.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.0">
+      <div class="fig-frame"><img src="images/mentored-projects/fire_team_logo.png" alt="Fire-Fight Club — the team's own brand for their investor pitch." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 07</span>Fire-Fight Club — the team's own brand for their investor pitch.</figcaption>
+    </figure>
+      </div>
+    </section>
+    <section class="sheet" id="p03">
+      <div class="sheet-head">
+        <span class="sheet-num">03</span>
+        <div class="sheet-head-text">
+          <h2>SmartSweat — Wearable Lactate Biosensor</h2>
+          <p class="dek">The electronics worked. The chemistry didn't survive shipping — here's why.</p>
+          <p class="team-credit"><span class="eyebrow-inline">Team</span>Team SmartSweat — Agustin Gutierrez, Luke Hsing, Tanya Nguyen, Eileen Hom</p>
+          <p class="team-credit"><span class="eyebrow-inline">Official</span><a href="https://projects.eng.uci.edu/projects/2025-2026/smartsweat-lactate-sweat-analyte-band" target="_blank" rel="noopener noreferrer">projects.eng.uci.edu ↗</a></p>
+        </div>
+        <span class="status-pill"><i class="dot"></i>Electronics verified · chemistry failed</span>
+      </div>
+
+      <figure class="hero-media">
+      <div class="hero-media-frame"><img class="hero-media-el" src="images/mentored-projects/bio_worn_photo.jpg" alt="The finished sensor, worn for a real test — electrode band on the arm, leads run down to the potentiostat." loading="lazy"></div>
+      <figcaption>The finished sensor, worn for a real test — electrode band on the arm, leads run down to the potentiostat.</figcaption>
+    </figure>
+
+      <div class="sheet-body">
+        <div class="narrative">
+          <div class="field">
+            <span class="eyebrow">Problem</span>
+            <p>Coaches want a read on an athlete's exertion in real time, but the standard method means drawing blood and running it through a lab analyzer. The sponsor asked for a non-invasive alternative: a patch that reads lactate straight from sweat.</p>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Solution</span>
+            <p>A wearable patch worn against the skin measures lactate in sweat through a custom potentiostat and an enzyme-functionalized membrane — built and calibrated from the electronics up, on an 18-week timeline compressed to about 10 working weeks after a delayed project approval.</p>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Technical approach</span>
+            <ul class="tick-list"><li>The potentiostat was validated against known hydrogen-peroxide concentrations first, bypassing the enzyme layer to confirm the electronics before trusting the chemistry.</li>
+<li>The enzyme membrane is hand-manufactured over a multi-day chemical process, cast onto graphite electrodes and air-dried.</li>
+<li>Housing iterated through a watchband-integrated capsule and a compact waistband module, wear-tested for stability, fit, and comfort.</li>
+<li>Requirements traceability was tracked line-by-line against pass/fail criteria — the team's own discipline is what surfaces the honest result below.</li>
+<li>The research phase weighed alternatives before committing to lactate — body-odor profiling and cortisol sensing were both evaluated and set aside in favor of a sweat-lactate approach.</li></ul>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Results &amp; validation</span>
+            <ul class="tick-list"><li>Electronics and mechanical subsystems passed verification outright: stable output over a full hour of simulated exercise use, independent battery operation, and a housing that stayed put and stayed comfortable through wear-testing.</li>
+<li>The lactate-sensing chemistry did not survive the supply chain: the enzyme sat at room temperature for 3 days in university purchasing before the team could refrigerate it, most likely denaturing it and leaving the electrode layer unable to selectively detect lactate — 3 of 4 chemistry requirements are logged as failed in the team's own traceability matrix.</li>
+<li>Root cause, cost, and schedule impact were all documented rather than glossed over: BOM landed at $632 against a $400 budget (a same-part replacement enzyme alone would have added $216 and another week of lead time), which the team's own retro ties directly to the compressed timeline.</li>
+<li>Benchmarked against every commercial lactate sensor on the market (Onasport, Pinnacle, Zimmerman Peacock, and others) to confirm the price/performance gap this device is meant to fill, and pitched for continued funding on that basis — the enzyme fix is the next item in the pipeline, not a dead end.</li></ul>
+          </div>
+        </div>
+
+        <aside class="spec-panel">
+          <div class="spec-panel-head">SPEC SHEET</div>
+          <div class="spec-row"><span class="spec-k">CONTROLLER</span><span class="spec-v">Arduino Nano BLE</span></div>
+<div class="spec-row"><span class="spec-k">ANALOG FRONT-END</span><span class="spec-v">LM324 op-amp transimpedance stage</span></div>
+<div class="spec-row"><span class="spec-k">ELECTRODES</span><span class="spec-v">Graphite WE/CE + Ag/AgCl RE</span></div>
+<div class="spec-row"><span class="spec-k">METHOD</span><span class="spec-v">Chronoamperometry, fixed +0.6V bias</span></div>
+<div class="spec-row"><span class="spec-k">BUDGET</span><span class="spec-v">$632 actual vs. $400 allotted</span></div>
+<div class="spec-row"><span class="spec-k">REQ. COMPLIANCE</span><span class="spec-v">5/5 electronics · 1/4 chemistry</span></div>
+        </aside>
+      </div>
+
+      <div class="figs-head">More from this project</div>
+      <div class="figs">
+        <figure class="fig fig-video">
+      <div class="fig-frame video-frame">
+        <video controls playsinline preload="metadata">
+          <source src="videos/mentored-projects/bio_athletic_video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption><span class="fig-tag">CLIP 01</span>The athletic field test in motion — pedaling while the rig logs data live to a laptop.</figcaption>
+    </figure><figure class="fig" style="--r:0.7494">
+      <div class="fig-frame"><img src="images/mentored-projects/bio_electrode.jpg" alt="A finished electrode, fresh out of the membrane manufacturing process." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 01</span>A finished electrode, fresh out of the membrane manufacturing process.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.712">
+      <div class="fig-frame"><img src="images/mentored-projects/bio_circuit_schematic.png" alt="Potentiostat circuit — transimpedance stage feeding the 3-electrode cell." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 02</span>Potentiostat circuit — transimpedance stage feeding the 3-electrode cell.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.3627">
+      <div class="fig-frame"><img src="images/mentored-projects/bio_potentiostat_photo.png" alt="The potentiostat build — 3-electrode leads (RE/CE/WE) into the Arduino Nano shield." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 03</span>The potentiostat build — 3-electrode leads (RE/CE/WE) into the Arduino Nano shield.</figcaption>
+    </figure>
+<figure class="fig" style="--r:0.75">
+      <div class="fig-frame"><img src="images/mentored-projects/bio_fabrication_photo.jpg" alt="Casting the enzyme membrane by hand, drop by drop, onto a 3D-printed electrode housing." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 04</span>Casting the enzyme membrane by hand, drop by drop, onto a 3D-printed electrode housing.</figcaption>
+    </figure>
+<figure class="fig" style="--r:0.7416">
+      <div class="fig-frame"><img src="images/mentored-projects/bio_exploded.png" alt="Exploded view — electrode assembly and strap housing." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 05</span>Exploded view — electrode assembly and strap housing.</figcaption>
+    </figure>
+      </div>
+    </section>
+    <section class="sheet" id="p04">
+      <div class="sheet-head">
+        <span class="sheet-num">04</span>
+        <div class="sheet-head-text">
+          <h2>EBBO+ E-Bike Battery Pack</h2>
+          <p class="dek">Cooling airflow for a battery pack, proven with a thermometer, not just a simulation.</p>
+          <p class="team-credit"><span class="eyebrow-inline">Team</span>Team 13 — Christine Joy Angeles (Lead), Wen Wu (Product Design), Andrew Liu (QA), Wen-Kai Kevin Lee (Manufacturing) — advised by Mark Walter and David Copp, with UCI's Battery Lab</p>
+          <p class="team-credit"><span class="eyebrow-inline">Official</span><a href="https://projects.eng.uci.edu/projects/2023-2024/2024-e-bike-battery-optimization-team-13" target="_blank" rel="noopener noreferrer">projects.eng.uci.edu ↗</a></p>
+        </div>
+        <span class="status-pill"><i class="dot"></i>Cooling verified: up to −0.48°C/min</span>
+      </div>
+
+      <figure class="hero-media">
+      <div class="hero-media-frame"><img class="hero-media-el" src="images/mentored-projects/ebbo_cells_photo.jpg" alt="The real pack, lid open — 18650 cells seated in their 3D-printed holder, mid-assembly on the bench." loading="lazy"></div>
+      <figcaption>The real pack, lid open — 18650 cells seated in their 3D-printed holder, mid-assembly on the bench.</figcaption>
+    </figure>
+
+      <div class="sheet-body">
+        <div class="narrative">
+          <div class="field">
+            <span class="eyebrow">Problem</span>
+            <p>E-bike packs cram dense lithium-ion cells into small enclosures with little airflow — a known thermal-runaway risk. The sponsor's brief was ambitious on purpose: something genuinely new in the category, not an incremental tweak, with a hard thermal ceiling of 40°C.</p>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Solution</span>
+            <p>A redesigned 14s3p (42-cell) enclosure pairs a battery management system with active cooling airflow, sized and verified in CFD before a single part was cut — then proven again with a thermocouple against a fan-off control.</p>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Technical approach</span>
+            <ul class="tick-list"><li>Airflow and fan placement were validated in Siemens StarCCM+ CFD before committing to a physical build.</li>
+<li>A custom cell holder carries the 14s3p pack alongside the BMS and a DC-DC converter for auxiliary power, inside an enclosure that iterated through three generations — Prototype C integrates cell holder, BMS, and fan cooling path into one case, lid, and fan-lid assembly.</li>
+<li>Safety envelope was set explicitly before testing began: 60A discharge ceiling, per-cell voltage window of 2.5–4.25V, and a hard 40°C thermal limit.</li>
+<li>Validated in a real environmental test chamber, not just on a bench — the full pack was instrumented with thermocouples and run inside a controlled-temperature enclosure (Fig. 03).</li></ul>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Results &amp; validation</span>
+            <ul class="tick-list"><li>Side-by-side proof-of-concept testing (see the chart below, and Clip 01 for the physical test) is the real evidence: with the fan off, pack temperature held flat near 50°C for 40+ minutes with no meaningful drop. With the fan on, temperature fell at an average of −0.39°C/min across trials — as fast as −0.48°C/min — pulling the pack down into the mid-30s°C, comfortably inside the 40°C ceiling.</li>
+<li>One trial turned the fan off partway through and watched the pack start reheating immediately — the clearest possible confirmation that the cooling path, not ambient drift, is what's doing the work.</li>
+<li>Delivered as a two-quarter (151A + 151B) capstone, with sponsor interviews, a pitch deck, and a poster presentation — pitched for continued funding to carry the pack past this prototype stage.</li></ul>
+          </div>
+        </div>
+
+        <aside class="spec-panel">
+          <div class="spec-panel-head">SPEC SHEET</div>
+          <div class="spec-row"><span class="spec-k">PACK</span><span class="spec-v">14s3p (42-cell) 18650, 35–59.5V</span></div>
+<div class="spec-row"><span class="spec-k">SAFETY LIMITS</span><span class="spec-v">60A max · cells 2.5–4.25V · ≤40°C</span></div>
+<div class="spec-row"><span class="spec-k">MANAGEMENT</span><span class="spec-v">Custom BMS + DC-DC converter</span></div>
+<div class="spec-row"><span class="spec-k">COOLING</span><span class="spec-v">70×70×15mm fan, custom blades</span></div>
+<div class="spec-row"><span class="spec-k">SIMULATION</span><span class="spec-v">Siemens StarCCM+ CFD</span></div>
+<div class="spec-row"><span class="spec-k">ENCLOSURE</span><span class="spec-v">3 prototype generations (A→C)</span></div>
+<div class="spec-row"><span class="spec-k">TARGET</span><span class="spec-v">IP65-rated, ~$300 (competitive w/ market)</span></div>
+        </aside>
+      </div>
+
+      <div class="figs-head">More from this project</div>
+      <div class="figs">
+        <figure class="fig fig-video">
+      <div class="fig-frame video-frame">
+        <video controls playsinline preload="metadata">
+          <source src="videos/mentored-projects/ebbo_test_video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption><span class="fig-tag">CLIP 01</span>The physical pack under test — probe thermometer readings taken live through the vents.</figcaption>
+    </figure><figure class="fig" style="--r:1.6395">
+      <div class="fig-frame"><img src="images/mentored-projects/ebbo_cfd_contour.png" alt="StarCCM+ CFD — velocity magnitude around a single cell, guiding fan and vent placement." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 01</span>StarCCM+ CFD — velocity magnitude around a single cell, guiding fan and vent placement.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.055">
+      <div class="fig-frame"><img src="images/mentored-projects/ebbo_enclosure_render.png" alt="The final enclosure design — vented case, cell channel, and fan-lid mount, closed up." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 02</span>The final enclosure design — vented case, cell channel, and fan-lid mount, closed up.</figcaption>
+    </figure>
+<figure class="fig" style="--r:0.75">
+      <div class="fig-frame"><img src="images/mentored-projects/ebbo_thermal_chamber.jpg" alt="Instrumented and run inside a real environmental test chamber, not just on a bench." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 03</span>Instrumented and run inside a real environmental test chamber, not just on a bench.</figcaption>
+    </figure>
+<figure class="fig" style="--r:0.75">
+      <div class="fig-frame"><img src="images/mentored-projects/ebbo_standing_product.jpg" alt="The finished, assembled pack — standing free, vents and power leads visible." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 04</span>The finished, assembled pack — standing free, vents and power leads visible.</figcaption>
+    </figure>
+<figure class="fig" style="--r:0.75">
+      <div class="fig-frame"><img src="images/mentored-projects/ebbo_cells_ruler.jpg" alt="Bare cells and BMS wiring, shown against a ruler for scale." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 05</span>Bare cells and BMS wiring, shown against a ruler for scale.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.7778">
+      <div class="fig-frame"><img src="images/mentored-projects/ebbo_real_photo.jpg" alt="The physical build, closed — probe thermometer reading 40.5°C through the vents mid-test." loading="lazy"></div>
+      <figcaption><span class="fig-tag">FIG. 06</span>The physical build, closed — probe thermometer reading 40.5°C through the vents mid-test.</figcaption>
+    </figure>
+<div class="chart-card">
+          <svg viewBox="0 0 620 300" class="chart-svg" role="img" aria-label="Battery pack temperature over time, with and without active cooling">
+<line x1="46" y1="251.3" x2="606" y2="251.3" class="grid-line"/>
+<text x="38" y="254.3" text-anchor="end" class="axis-label">35°</text>
+<line x1="46" y1="177.8" x2="606" y2="177.8" class="grid-line"/>
+<text x="38" y="180.8" text-anchor="end" class="axis-label">40°</text>
+<line x1="46" y1="104.2" x2="606" y2="104.2" class="grid-line"/>
+<text x="38" y="107.2" text-anchor="end" class="axis-label">45°</text>
+<line x1="46" y1="30.7" x2="606" y2="30.7" class="grid-line"/>
+<text x="38" y="33.7" text-anchor="end" class="axis-label">50°</text>
+<text x="46.0" y="284" text-anchor="middle" class="axis-label">1m</text>
+<text x="175.2" y="284" text-anchor="middle" class="axis-label">10m</text>
+<text x="318.8" y="284" text-anchor="middle" class="axis-label">20m</text>
+<text x="462.4" y="284" text-anchor="middle" class="axis-label">30m</text>
+<text x="606.0" y="284" text-anchor="middle" class="axis-label">40m</text>
+<text x="46" y="294" class="axis-label axis-caption">TIME SINCE CHARGE START</text>
+<polyline points="46.0,36.6 60.4,29.2 74.7,27.8 89.1,27.8 103.4,27.8 117.8,27.8 132.2,29.2 146.5,29.2 160.9,29.2 175.2,29.2 189.6,29.2 203.9,30.7 218.3,30.7 232.7,32.2 247.0,30.7 261.4,32.2 275.7,30.7 290.1,30.7 304.5,30.7 318.8,30.7 333.2,30.7 347.5,30.7 361.9,30.7 376.3,29.2 390.6,30.7 405.0,30.7 419.3,30.7 433.7,32.2 448.1,30.7 462.4,30.7 476.8,30.7 491.1,29.2 505.5,29.2 519.8,29.2 534.2,30.7 548.6,30.7 562.9,30.7 577.3,30.7 591.6,30.7 606.0,30.7" fill="none" stroke="#8A9088" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="606.0" cy="30.7" r="3" fill="#8A9088"/>
+<polyline points="46.0,38.1 60.4,35.1 74.7,33.6 89.1,32.2 103.4,29.2 117.8,26.3 132.2,30.7 146.5,33.6 160.9,39.5 175.2,49.8 189.6,58.6 203.9,68.9 218.3,77.8 232.7,88.1 247.0,95.4 261.4,104.2 275.7,110.1 290.1,116.0 304.5,121.9 318.8,126.3 333.2,132.2 347.5,135.1 361.9,139.5 376.3,142.5 390.6,145.4 405.0,148.4 419.3,149.8 433.7,151.3 448.1,155.7 462.4,155.7 476.8,151.3 491.1,145.4 505.5,139.5 519.8,135.1 534.2,127.8 548.6,120.4 562.9,114.5 577.3,104.2 591.6,98.4 606.0,89.5" fill="none" stroke="#C1531F" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="606.0" cy="89.5" r="3" fill="#C1531F"/>
+<polyline points="46.0,29.2 60.4,51.3 74.7,77.8 89.1,91.0 103.4,107.2 117.8,124.8 132.2,139.5 146.5,152.8 160.9,166.0 175.2,173.4 189.6,183.6 203.9,191.0 218.3,199.8 232.7,204.2 247.0,208.6 261.4,214.5 275.7,217.5 290.1,221.9 304.5,224.8 318.8,227.8 333.2,229.2 347.5,232.2 361.9,233.6 376.3,235.1 390.6,236.6 405.0,238.1 419.3,239.5 433.7,239.5 448.1,241.0 462.4,242.5 476.8,242.5 491.1,243.9 505.5,243.9 519.8,243.9 534.2,243.9 548.6,243.9 562.9,245.4 577.3,245.4 591.6,245.4 606.0,246.9" fill="none" stroke="#3F7D5B" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="606.0" cy="246.9" r="3" fill="#3F7D5B"/>
+<rect x="52" y="10" width="10" height="10" fill="#8A9088"/>
+<text x="66" y="19" class="legend-label">Control (fan off)</text>
+<rect x="52" y="25" width="10" height="10" fill="#C1531F"/>
+<text x="66" y="34" class="legend-label">Exp. 2 (fan on, off@27)</text>
+<rect x="52" y="40" width="10" height="10" fill="#3F7D5B"/>
+<text x="66" y="49" class="legend-label">Exp. 3 (fan on)</text>
+</svg>
+          <figcaption><span class="fig-tag">FIG. 07</span>Proof-of-concept thermal test — real thermocouple data, fan off vs. fan on (three trials).</figcaption>
+        </div>
+      </div>
+    </section>
+
+  
+    <section class="sheet sim-sheet" id="simulations">
+      <div class="sheet-head">
+        <span class="sheet-num">Σ</span>
+        <div class="sheet-head-text">
+          <h2>Simulating Before Cutting Metal</h2>
+          <p class="dek">CFD and thermal simulation work behind the EBBO+ battery pack — run in Siemens StarCCM+ and Ansys before a single part was fabricated.</p>
+          <p class="team-credit"><span class="eyebrow-inline">From</span><a href="#p04">04 — EBBO+ E-Bike Battery Pack</a></p>
+        </div>
+        <span class="status-pill"><i class="dot"></i>Multiple cases modeled</span>
+      </div>
+
+      <div class="sheet-body">
+        <div class="narrative" style="grid-column: 1 / -1; max-width: 100%;">
+          <div class="field">
+            <span class="eyebrow">Why simulate first</span>
+            <p>Before committing to an enclosure, the team modeled how heat actually moves through a 42-cell pack — with and without airflow. The spread between cases is the whole argument for active cooling: a sealed, natural-convection pack cooks itself past 200°C at the hotspot, while the same geometry with a fan-fed duct holds every cell under 55°C.</p>
+          </div>
+          <div class="field">
+            <span class="eyebrow">Two tools, two views</span>
+            <p>Ansys gave a full 3D temperature-and-streamline picture of airflow moving around individual cells (Sim. A/B); Siemens StarCCM+ was used for faster 2D cross-section sweeps to compare duct geometries before settling on the final case design (Sim. C/D). Both point the same direction, which is part of why the physical thermometer test later confirmed the same effect.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="figs-head">The simulation set</div>
+      <div class="figs">
+        <figure class="fig" style="--r:1.5065">
+      <div class="fig-frame"><img src="images/mentored-projects/sim_case1_ansys.jpg" alt="Case 1 — natural convection, no active cooling. Hotspots run past 200°C in this Ansys model, well into thermal-runaway territory." loading="lazy"></div>
+      <figcaption><span class="fig-tag">SIM. A</span>Case 1 — natural convection, no active cooling. Hotspots run past 200°C in this Ansys model, well into thermal-runaway territory.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.5655">
+      <div class="fig-frame"><img src="images/mentored-projects/sim_case3_ansys.jpg" alt="Case 3 — forced convection with a wide outlet. The same pack, same cells, now holding under 55°C with airflow streamlines mapped cell by cell." loading="lazy"></div>
+      <figcaption><span class="fig-tag">SIM. B</span>Case 3 — forced convection with a wide outlet. The same pack, same cells, now holding under 55°C with airflow streamlines mapped cell by cell.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.8069">
+      <div class="fig-frame"><img src="images/mentored-projects/sim_2d_no_fan.png" alt="2D cross-section of the final 3×14 pack with no airflow duct — uniformly hot, no path for heat to leave." loading="lazy"></div>
+      <figcaption><span class="fig-tag">SIM. C</span>2D cross-section of the final 3×14 pack with no airflow duct — uniformly hot, no path for heat to leave.</figcaption>
+    </figure>
+<figure class="fig" style="--r:2.7329">
+      <div class="fig-frame"><img src="images/mentored-projects/sim_2d_with_fan.png" alt="The same cross-section with the fan-fed duct in place — cool intake air (dark blue) visibly displacing the hot zone." loading="lazy"></div>
+      <figcaption><span class="fig-tag">SIM. D</span>The same cross-section with the fan-fed duct in place — cool intake air (dark blue) visibly displacing the hot zone.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.3367">
+      <div class="fig-frame"><img src="images/mentored-projects/sim_physics_setup.png" alt="The actual solver setup — coupled energy + flow, laminar, steady, 2D — not just a pretty picture." loading="lazy"></div>
+      <figcaption><span class="fig-tag">SIM. E</span>The actual solver setup — coupled energy + flow, laminar, steady, 2D — not just a pretty picture.</figcaption>
+    </figure>
+      </div>
+
+      <div class="sheet-body" style="margin-top: 2.6rem; border-top: 2px dashed var(--line); padding-top: 2.4rem;">
+        <div class="narrative" style="grid-column: 1 / -1; max-width: 100%;">
+          <div class="field">
+            <span class="eyebrow">Beyond the classroom</span>
+            <p>I also work with these tools professionally — through Saratech, a Siemens Simcenter partner. The four examples below are <strong>not</strong> from a UCI project or Saratech's own work; they're Siemens' own vendor case studies and product-capability material, included here (with credit) to show the professional-grade version of the same fluids/thermal problem the EBBO+ team tackled as students — a battery pack's cooling design carried all the way from molecular electrolyte chemistry up to full production hardware, and the same category of problem showing up again at gas-turbine scale.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="figs-head">Professional CFD — via Saratech (Siemens Simcenter), credited to Siemens</div>
+      <div class="figs">
+        <figure class="fig" style="--r:1.7808">
+      <div class="fig-frame"><img src="images/mentored-projects/pro_battery_cooling.jpg" alt="An EV battery pack's serpentine cooling-plate design — hot (red) and cold (blue) coolant paths mapped across the pack floor. Siemens Simcenter capability demo, not a Saratech or student project." loading="lazy"></div>
+      <figcaption><span class="fig-tag">PRO. 1</span>An EV battery pack's serpentine cooling-plate design — hot (red) and cold (blue) coolant paths mapped across the pack floor. Siemens Simcenter capability demo, not a Saratech or student project.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.1923">
+      <div class="fig-frame"><img src="images/mentored-projects/pro_turbine_cfd.jpg" alt="A full-scale gas-turbine cutaway CFD model — the same “where does the heat go” question as EBBO+, at a completely different scale. Siemens Gas and Power case study, via Simcenter." loading="lazy"></div>
+      <figcaption><span class="fig-tag">PRO. 2</span>A full-scale gas-turbine cutaway CFD model — the same “where does the heat go” question as EBBO+, at a completely different scale. Siemens Gas and Power case study, via Simcenter.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.2487">
+      <div class="fig-frame"><img src="images/mentored-projects/pro_battery_molecular.jpg" alt="Battery electrolyte modeled at the molecular scale (ionic conductivity, via Simcenter Culgi) — the same battery-chemistry problem EBBO+ tackled at the pack level, solved several orders of magnitude smaller." loading="lazy"></div>
+      <figcaption><span class="fig-tag">PRO. 3</span>Battery electrolyte modeled at the molecular scale (ionic conductivity, via Simcenter Culgi) — the same battery-chemistry problem EBBO+ tackled at the pack level, solved several orders of magnitude smaller.</figcaption>
+    </figure>
+<figure class="fig" style="--r:1.0">
+      <div class="fig-frame"><img src="images/mentored-projects/pro_simcenter_wheel.jpg" alt="The breadth of the toolset behind these — fluids &amp; thermal, mechanical, systems, electronics — all under Siemens Simcenter." loading="lazy"></div>
+      <figcaption><span class="fig-tag">PRO. 4</span>The breadth of the toolset behind these — fluids &amp; thermal, mechanical, systems, electronics — all under Siemens Simcenter.</figcaption>
+    </figure>
+      </div>
+    </section>
+
+  <footer>
+    <h3>Toolbox</h3>
+    <div class="chips"><span class="chip">SolidWorks CAD</span>
+<span class="chip">Arduino / C++ firmware</span>
+<span class="chip">ESP32 (Wi-Fi &amp; BLE)</span>
+<span class="chip">MQTT &amp; BLE telemetry</span>
+<span class="chip">Thermal imaging (MLX90640/41)</span>
+<span class="chip">Potentiostat &amp; electrochemistry</span>
+<span class="chip">CFD thermal simulation (StarCCM+)</span>
+<span class="chip">PCB / breadboard prototyping</span>
+<span class="chip">Servo feedback control</span>
+<span class="chip">Battery management (BMS)</span>
+<span class="chip">Requirements traceability</span>
+<span class="chip">Sponsor &amp; program management</span></div>
+    <p class="credit">UCI Mechanical &amp; Aerospace Engineering, Senior Design (151A/151B) — originated and sponsored via Utmost Connect. Team credits above; source CAD, firmware, BOMs, and test logs on file. Results reported as tested, including where a subsystem did not meet spec.</p>
+  </footer>
+</div>
+
+<script>
+(function() {
+  var sheets = document.querySelectorAll('.sheet');
+  if (!('IntersectionObserver' in window)) { sheets.forEach(function(s){ s.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  sheets.forEach(function(s) { io.observe(s); });
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reduced-motion-pause').forEach(function(v) {
+      v.removeAttribute('autoplay'); v.removeAttribute('loop'); v.pause();
+    });
+  }
+})();
+</script>
+</body>
+</html>
