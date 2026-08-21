@@ -50,10 +50,10 @@ nav_cta:
     <h1>Engineering Intelligence Reviewer Build Access</h1>
     <p>Use this page to download and run the approved reviewer build package. This distribution path is intended for authorized external evaluators.</p>
     <div class="actions">
-      <a class="btn-dl" href="https://github.com/asajjadi/Utmostconnect.github.io/releases/download/ei-reviewer-build-20260806/EngineeringIntelligence-ReviewerBuild.zip">Download Reviewer Build ZIP (~108MB)</a>
+      <a class="btn-dl" href="https://github.com/asajjadi/Utmostconnect.github.io/releases/download/ei-reviewer-build-20260821/EngineeringIntelligence-ReviewerBuild-2026-08-21.zip">Download Reviewer Build ZIP (~152MB)</a>
     </div>
     <p class="hero-note">Extract the ZIP first, then run <code>EngineeringIntelligence.exe</code> from the extracted folder so the required <code>_internal</code> runtime files are available.</p>
-    <p class="hero-note">It's a large file (~108MB) — the download starts in this tab, so watch your browser's download bar/tray rather than waiting for a new tab to appear.</p>
+    <p class="hero-note">It's a large file (~152MB) — the download starts in this tab, so watch your browser's download bar/tray rather than waiting for a new tab to appear.</p>
   </section>
 
   <section class="panel">
@@ -77,6 +77,7 @@ nav_cta:
     <p>If you see a <code>python313.dll</code> or <code>_internal</code> error, the executable is being run without its bundled runtime folder. Re-extract the ZIP and run from inside that extracted folder.</p>
     <p>If your browser shows a temporary extension such as <code>.download</code> while transferring, wait until the download completes and confirms a final <code>.zip</code> filename.</p>
     <p>Builds from 2026-08-06 onward fix the <strong>"Unhandled exception... Failed to resolve Python.Runtime.Loader.Initialize"</strong> crash automatically — the app now strips Windows' "downloaded from the internet" flag from its own files on launch, so no manual unblock step is needed. If you're still seeing this error, you're likely running an older extracted copy; delete it and re-download from the link above.</p>
+    <p>Builds from 2026-08-21 onward also fix a "cannot open"/extraction error some reviewers hit — the package no longer bundles an unused reference-data folder whose deeply nested file names could exceed Windows' 260-character path limit. If extraction fails, re-download the current build from the link above.</p>
     <a class="contact-link" href="engineering-intelligence.html">← Back to Engineering Intelligence page</a>
   </section>
 </div>
