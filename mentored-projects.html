@@ -105,12 +105,12 @@ a { color: var(--accent-ink); }
 
 .index-table { border-top: 1px solid var(--ink); }
 .index-head {
-  display: grid; grid-template-columns: 3.5rem 1fr 1fr auto; gap: 1rem; padding: 0.55rem 0;
+  display: grid; grid-template-columns: 3.5rem 1fr 1fr auto auto; gap: 1rem; padding: 0.55rem 0;
   font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--ink-faint); border-bottom: 1px solid var(--line);
 }
 .hero-row {
-  display: grid; grid-template-columns: 3.5rem 1fr 1fr auto; gap: 1rem; align-items: center;
+  display: grid; grid-template-columns: 3.5rem 1fr 1fr auto auto; gap: 1rem; align-items: center;
   padding: 0.95rem 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink);
   transition: background 0.15s ease, padding-left 0.15s ease;
 }
@@ -118,11 +118,13 @@ a { color: var(--accent-ink); }
 .hr-num { font-family: var(--mono); color: var(--ink-faint); font-size: 0.95rem; }
 .hr-name { font-weight: 600; font-size: 1rem; }
 .hr-sys { color: var(--ink-soft); font-size: 0.92rem; }
+.hr-year { font-family: var(--mono); color: var(--ink-faint); font-size: 0.8rem; white-space: nowrap; }
 .hr-status { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-ink); display: flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
 @media (max-width: 700px) {
   .index-head { display: none; }
   .hero-row { grid-template-columns: 2.2rem 1fr; row-gap: 0.3rem; }
   .hr-sys { grid-column: 2; font-size: 0.85rem; }
+  .hr-year { grid-column: 2; }
   .hr-status { grid-column: 2; }
 }
 
@@ -261,29 +263,33 @@ footer h3 { font-family: var(--display); font-weight: 700; text-transform: upper
     </a></div>
 
     <div class="index-table">
-      <div class="index-head"><span>Sheet</span><span>Project</span><span>Core system</span><span>Validation</span></div>
+      <div class="index-head"><span>Sheet</span><span>Project</span><span>Core system</span><span>Year</span><span>Validation</span></div>
       <a class="hero-row" href="#p01">
       <span class="hr-num">01</span>
       <span class="hr-name">Home Lock Management System</span>
       <span class="hr-sys">Wi-Fi reed-switch deadbolt sensor</span>
+      <span class="hr-year">2023–2024</span>
       <span class="hr-status"><i class="dot"></i>🏆 1st place, UCI showcase</span>
     </a>
 <a class="hero-row" href="#p02">
       <span class="hr-num">02</span>
       <span class="hr-name">Autonomous Fire Extinguishing System</span>
       <span class="hr-sys">Thermal-tracking suppression turret</span>
+      <span class="hr-year">2024–2025</span>
       <span class="hr-status"><i class="dot"></i>Live-fire tested</span>
     </a>
 <a class="hero-row" href="#p03">
       <span class="hr-num">03</span>
       <span class="hr-name">SmartSweat — Wearable Lactate Biosensor</span>
       <span class="hr-sys">Electrochemical sweat-lactate patch</span>
+      <span class="hr-year">2025–2026</span>
       <span class="hr-status"><i class="dot"></i>Electronics verified · chemistry failed</span>
     </a>
 <a class="hero-row" href="#p04">
       <span class="hr-num">04</span>
       <span class="hr-name">EBBO+ E-Bike Battery Pack</span>
       <span class="hr-sys">CFD-cooled 14s3p BMS enclosure</span>
+      <span class="hr-year">2023–2024</span>
       <span class="hr-status"><i class="dot"></i>Cooling verified: −0.48°C/min</span>
     </a>
     </div>
@@ -297,6 +303,7 @@ footer h3 { font-family: var(--display); font-weight: 700; text-transform: upper
           <h2>Home Lock Management System</h2>
           <p class="dek">A clip-on sensor that tells you whether the door is actually locked.</p>
           <p class="team-credit"><span class="eyebrow-inline">Team</span>BEND-CL MechTechs — Criss Azer, Brady Muramoto, Edward Leija, Neil Hoffman, Lucas Lin, Daniel Stoll</p>
+          <p class="team-credit"><span class="eyebrow-inline">Academic year</span>2023–2024</p>
           <p class="team-credit"><span class="eyebrow-inline">Official</span><a href="https://projects.eng.uci.edu/projects/2023-2024/home-lock-management" target="_blank" rel="noopener noreferrer">projects.eng.uci.edu ↗</a></p>
         </div>
         <span class="status-pill"><i class="dot"></i>🏆 1st place, UCI showcase</span>
@@ -388,6 +395,7 @@ footer h3 { font-family: var(--display); font-weight: 700; text-transform: upper
           <h2>Autonomous Fire Extinguishing System</h2>
           <p class="dek">It finds the fire, aims, and puts itself out — no one has to pull a trigger.</p>
           <p class="team-credit"><span class="eyebrow-inline">Team</span>Team 3, “Fire Fight Club” — Matthew Keith, Christopher Tran, Yuqi Hu, Chris Rami Makarem, Benson Yu</p>
+          <p class="team-credit"><span class="eyebrow-inline">Academic year</span>2024–2025</p>
           <p class="team-credit"><span class="eyebrow-inline">Official</span><a href="https://projects.eng.uci.edu/projects/2024-2025/fire-extinguishing-system" target="_blank" rel="noopener noreferrer">projects.eng.uci.edu ↗</a></p>
         </div>
         <span class="status-pill"><i class="dot"></i>Live-fire tested</span>
@@ -485,6 +493,7 @@ footer h3 { font-family: var(--display); font-weight: 700; text-transform: upper
           <h2>SmartSweat — Wearable Lactate Biosensor</h2>
           <p class="dek">The electronics worked. The chemistry didn't survive shipping — here's why.</p>
           <p class="team-credit"><span class="eyebrow-inline">Team</span>Team SmartSweat — Agustin Gutierrez, Luke Hsing, Tanya Nguyen, Eileen Hom</p>
+          <p class="team-credit"><span class="eyebrow-inline">Academic year</span>2025–2026</p>
           <p class="team-credit"><span class="eyebrow-inline">Official</span><a href="https://projects.eng.uci.edu/projects/2025-2026/smartsweat-lactate-sweat-analyte-band" target="_blank" rel="noopener noreferrer">projects.eng.uci.edu ↗</a></p>
         </div>
         <span class="status-pill"><i class="dot"></i>Electronics verified · chemistry failed</span>
@@ -571,6 +580,7 @@ footer h3 { font-family: var(--display); font-weight: 700; text-transform: upper
           <h2>EBBO+ E-Bike Battery Pack</h2>
           <p class="dek">Cooling airflow for a battery pack, proven with a thermometer, not just a simulation.</p>
           <p class="team-credit"><span class="eyebrow-inline">Team</span>Team 13 — Christine Joy Angeles (Lead), Wen Wu (Product Design), Andrew Liu (QA), Wen-Kai Kevin Lee (Manufacturing) — advised by Mark Walter and David Copp, with UCI's Battery Lab</p>
+          <p class="team-credit"><span class="eyebrow-inline">Academic year</span>2023–2024</p>
           <p class="team-credit"><span class="eyebrow-inline">Official</span><a href="https://projects.eng.uci.edu/projects/2023-2024/2024-e-bike-battery-optimization-team-13" target="_blank" rel="noopener noreferrer">projects.eng.uci.edu ↗</a></p>
         </div>
         <span class="status-pill"><i class="dot"></i>Cooling verified: up to −0.48°C/min</span>
