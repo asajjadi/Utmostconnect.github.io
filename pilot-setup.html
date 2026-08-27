@@ -1,7 +1,7 @@
 ---
 layout: base
 title: Pilot Setup | Engineering Intelligence
-description: Setup steps for running the Engineering Intelligence pilot application locally.
+description: Try the Engineering Intelligence reviewer demo live in your browser, or download the local build.
 hide_nav_links: true
 nav_cta:
   label: Engineering Intelligence
@@ -42,42 +42,45 @@ nav_cta:
   .panel code { background: var(--surface-raised); border: 1px solid var(--line-soft); padding: .1rem .32rem; border-radius: .35rem; font-family: var(--mono); font-size: .88em; }
   .panel-note { margin-top: .6rem; font-size: .88rem; }
   .panel .contact-link { display: inline-block; margin-top: .3rem; font-size: .88rem; color: var(--accent); font-weight: 600; }
+  .btn-dl.secondary { background: transparent; color: #F4F8F7; border: 1px solid rgba(244,248,247,.5); }
+  .fine-print { margin-top: .5rem; font-size: .8rem; color: var(--muted); }
 </style>
 
 <div class="wrap">
   <section class="hero-panel">
-    <div class="badge">Protected Build</div>
-    <h1>Engineering Intelligence Reviewer Build Access</h1>
-    <p>Use this page to download and run the approved reviewer build package. This distribution path is intended for authorized external evaluators.</p>
+    <div class="badge">Live Reviewer Demo</div>
+    <h1>Try Engineering Intelligence</h1>
+    <p>Click below — it opens straight in your browser. Nothing to download, nothing to install. Poke around the built-in demo cases, or try it on a real question of your own.</p>
     <div class="actions">
-      <a class="btn-dl" href="https://github.com/asajjadi/Utmostconnect.github.io/releases/download/ei-reviewer-build-20260821/EngineeringIntelligence-ReviewerBuild-2026-08-21.zip">Download Reviewer Build ZIP (~152MB)</a>
+      <a class="btn-dl" href="https://engineering-intelligence-xkxkjtn83f5qxj7fe79eoa.streamlit.app/" target="_blank" rel="noopener">Open Live Demo →</a>
     </div>
-    <p class="hero-note">Extract the ZIP first, then run <code>EngineeringIntelligence.exe</code> from the extracted folder so the required <code>_internal</code> runtime files are available.</p>
-    <p class="hero-note">It's a large file (~152MB) — the download starts in this tab, so watch your browser's download bar/tray rather than waiting for a new tab to appear.</p>
+    <p class="hero-note">First load can take up to ~30 seconds if the demo has been idle — it's waking back up, not stuck.</p>
+  </section>
+
+  <section class="panel panel-proprietary">
+    <h2>Proprietary Distribution Notice</h2>
+    <p>This software is shared for approved evaluation only and is not open source.</p>
+    <p>Do not copy, redistribute, reverse engineer, or rehost its contents without written permission from the owner.</p>
   </section>
 
   <section class="panel">
-    <h2>Launch from shared package</h2>
+    <h2>Prefer to run it fully locally instead?</h2>
+    <p>The live demo above is the fastest way to look around, using built-in sample cases. If you'd rather evaluate it against your own confidential data on your own machine — with nothing sent over any network — a downloadable desktop build is also available.</p>
+    <div class="actions">
+      <a class="btn-dl secondary" href="https://github.com/asajjadi/Utmostconnect.github.io/releases/download/ei-reviewer-build-20260821/EngineeringIntelligence-ReviewerBuild-2026-08-21.zip">Download Local Build ZIP (~152MB)</a>
+    </div>
     <ol>
-      <li>Extract the reviewer ZIP file.</li>
+      <li>Extract the ZIP file.</li>
       <li>Open the extracted folder and run <code>EngineeringIntelligence.exe</code>.</li>
       <li>If Windows SmartScreen appears, click <code>More info</code> then <code>Run anyway</code> only if you trust the source.</li>
     </ol>
     <p class="panel-note">Do not run a copied standalone <code>.exe</code> outside the extracted package folder.</p>
   </section>
 
-  <section class="panel panel-proprietary">
-    <h2>Proprietary Distribution Notice</h2>
-    <p>This software package is distributed for approved evaluation only and is not open source.</p>
-    <p>Do not copy, redistribute, reverse engineer, or rehost package contents without written permission from the owner.</p>
-  </section>
-
   <section class="panel">
     <h2>Troubleshooting</h2>
-    <p>If you see a <code>python313.dll</code> or <code>_internal</code> error, the executable is being run without its bundled runtime folder. Re-extract the ZIP and run from inside that extracted folder.</p>
-    <p>If your browser shows a temporary extension such as <code>.download</code> while transferring, wait until the download completes and confirms a final <code>.zip</code> filename.</p>
-    <p>Builds from 2026-08-06 onward fix the <strong>"Unhandled exception... Failed to resolve Python.Runtime.Loader.Initialize"</strong> crash automatically — the app now strips Windows' "downloaded from the internet" flag from its own files on launch, so no manual unblock step is needed. If you're still seeing this error, you're likely running an older extracted copy; delete it and re-download from the link above.</p>
-    <p>Builds from 2026-08-21 onward also fix a "cannot open"/extraction error some reviewers hit — the package no longer bundles an unused reference-data folder whose deeply nested file names could exceed Windows' 260-character path limit. If extraction fails, re-download the current build from the link above.</p>
+    <p><strong>Live demo:</strong> if the page shows a red error box instead of the app, refresh once (it may still be waking up); if it persists, let Amir know — the demo may be mid-update.</p>
+    <p><strong>Local build:</strong> a <code>python313.dll</code> or <code>_internal</code> error means the executable is being run without its bundled runtime folder — re-extract the ZIP and run from inside that extracted folder. If your browser shows a temporary <code>.download</code> extension while transferring, wait for it to finish and confirm a final <code>.zip</code> filename. Builds from 2026-08-06 onward auto-fix the "Failed to resolve Python.Runtime.Loader.Initialize" crash; builds from 2026-08-21 onward also fix a Windows path-length extraction error. If either shows up, delete any old extracted copy and re-download from the link above.</p>
     <a class="contact-link" href="engineering-intelligence.html">← Back to Engineering Intelligence page</a>
   </section>
 </div>
